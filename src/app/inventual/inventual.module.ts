@@ -73,7 +73,6 @@ import { AddexpenseComponent } from './expense/addexpense/addexpense.component';
 import { CreatepaymentComponent } from './expense/createpayment/createpayment.component';
 import { CategoryComponent } from './expense/category/category.component';
 import { ExpenselistComponent } from './expense/expenselist/expenselist.component';
-import { AdduserComponent } from './usermanagement/adduser/adduser.component';
 import { CreateroleComponent } from './usermanagement/createrole/createrole.component';
 import { UserlistComponent } from './usermanagement/userlist/userlist.component';
 import { WarehouselistComponent } from './warehouse/warehouselist/warehouselist.component';
@@ -176,6 +175,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   exports: [
     CommonModule,
+    HeaderComponent,
+    MenuComponent,
+    CopyrightComponent,
     RouterModule,
     MatCheckboxModule,
     MatDialogModule,
@@ -253,7 +255,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CreatepaymentComponent,
     CategoryComponent,
     ExpenselistComponent,
-    AdduserComponent,
     CreateroleComponent,
     UserlistComponent,
     WarehouselistComponent,
@@ -319,6 +320,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     EmailIconComponent,
     GlobeIconComponent,
     NotFoundComponent,
-  ],
+  ]
 })
 export class InventualModule {}
