@@ -6,15 +6,14 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InventualModule } from './inventual/inventual.module';
 import { MatIconModule } from '@angular/material/icon';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatPaginatorModule,
     BrowserAnimationsModule,
-    InventualModule,
-    MatIconModule
+    SharedModule
   ],
   declarations: [
     AppComponent

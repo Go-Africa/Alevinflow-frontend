@@ -65,6 +65,32 @@ import { NotFoundComponent } from './inventual/not-found/not-found.component';
 
 const routes: Routes = [ 
   { path: '', component: LoginComponent, pathMatch: 'full' },
+  {path: 'auth',
+    loadChildren : () => import("./features/auth/auth.module").then(m => m.AuthModule)
+  },
+  {path: 'customers',
+    loadChildren : () => import("./features/customer/customer.module").then(m => m.CustomerModule)
+  },
+  {path: 'products',
+    loadChildren : () => import("./features/product/product.module").then(m => m.ProductModule)
+  },
+  {path: 'productions',
+    loadChildren : () => import("./features/production/production.module").then(m => m.ProductionModule)
+  },
+  {path: 'stocks',
+    loadChildren : () => import("./features/stock/stock.module").then(m => m.StockModule)
+  },
+  {path: 'suppliers',
+    loadChildren : () => import("./features/supplier/supplier.module").then(m => m.SupplierModule)
+  },
+  {path: 'users',
+    loadChildren : () => import("./features/user/user.module").then(m => m.UserModule)
+  },
+
+
+
+
+
   {
     path: 'dashboard',
     component: DashboardComponent
