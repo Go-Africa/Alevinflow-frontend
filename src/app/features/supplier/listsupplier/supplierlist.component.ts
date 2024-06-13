@@ -3,15 +3,15 @@ import { AfterViewInit, Component, ViewChild, ViewEncapsulation } from '@angular
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { CustomerInterfaceData, customerData } from 'src/app/inventual/data/customerData';
+import { SupplierInterfaceData, supplierData } from 'src/app/inventual/data/supplierData';
 
 @Component({
-  selector: 'app-list-customer',
-  templateUrl: './list-customer.component.html',
-  styleUrls: ['./list-customer.component.scss'],
+  selector: 'app-supplierlist',
+  templateUrl: './supplierlist.component.html',
+  styleUrls: ['./supplierlist.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ListCustomerComponent implements AfterViewInit {
+export class SupplierlistComponent implements AfterViewInit {
   displayedColumns: string[] = [
     'select',
     'id',
@@ -23,8 +23,8 @@ export class ListCustomerComponent implements AfterViewInit {
     'address',
     'action',
   ];
-  dataSource: MatTableDataSource<CustomerInterfaceData>;
-  selection = new SelectionModel<CustomerInterfaceData>(true, []);
+  dataSource: MatTableDataSource<SupplierInterfaceData>;
+  selection = new SelectionModel<SupplierInterfaceData>(true, []);
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -33,7 +33,7 @@ export class ListCustomerComponent implements AfterViewInit {
 
   constructor() {
     // Assign your data array to the data source
-    this.dataSource = new MatTableDataSource(customerData);
+    this.dataSource = new MatTableDataSource(supplierData);
   }
 
   ngAfterViewInit() {
@@ -68,12 +68,12 @@ export class ListCustomerComponent implements AfterViewInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: CustomerInterfaceData): string {
+  checkboxLabel(row?: SupplierInterfaceData): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
-      row.id + 1
+      row.supplierCode + 1
     }`;
   }
 
@@ -90,4 +90,5 @@ export class ListCustomerComponent implements AfterViewInit {
 
   ngOnInit(): void {}
 }
+
 

@@ -14,6 +14,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   ],
   exports: [
     InventualModule,
+    MatIconModule,
+    MatPaginatorModule,
   ]
 })
 export class SharedModule { }

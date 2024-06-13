@@ -207,6 +207,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpClientModule,
     MatTableModule,
     DragDropModule,
+    FilterIconComponent,
+    PdfIconComponent,
+    CsvIconComponent,
+    PrinterIconComponent,
   ]
   ,
   declarations: [
