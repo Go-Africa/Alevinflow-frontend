@@ -6,10 +6,14 @@ describe('ListuserComponent', () => {
   let component: ListuserComponent;
   let fixture: ComponentFixture<ListuserComponent>;
 
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ ListuserComponent ]
+    })
+    .compileComponents();
+  });
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [ListuserComponent]
-    });
     fixture = TestBed.createComponent(ListuserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -18,4 +22,4 @@ describe('ListuserComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+})
