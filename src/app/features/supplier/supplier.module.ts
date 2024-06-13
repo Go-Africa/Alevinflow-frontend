@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SupplierRoutingModule } from './supplier-routing.module';
-import { AddsupplierComponent } from './addsupplier/addsupplier.component';
+import { AddsupplierComponent } from './pages/addsupplier/addsupplier.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { SupplierlistComponent } from './listsupplier/supplierlist.component';
-import { UpdatesupplierComponent } from './updatesupplier/updatesupplier.component';
+import { SupplierlistComponent } from './pages/listsupplier/supplierlist.component';
+import { UpdatesupplierComponent } from './pages/updatesupplier/updatesupplier.component';
 
 
 @NgModule({

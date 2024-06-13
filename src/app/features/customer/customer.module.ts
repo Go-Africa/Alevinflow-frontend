@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CustomerRoutingModule } from './customer-routing.module';
-import { AddCustomerComponent } from './add-customer/add-customer.component';
-import { UpdateCustomerComponent } from './update-customer/update-customer.component';
-import { ListCustomerComponent } from './list-customer/list-customer.component';
+import { AddCustomerComponent } from './pages/add-customer/add-customer.component';
+import { UpdateCustomerComponent } from './pages/update-customer/update-customer.component';
+import { ListCustomerComponent } from './pages/list-customer/list-customer.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 

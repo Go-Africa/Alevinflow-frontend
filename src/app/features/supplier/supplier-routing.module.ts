@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddsuplierComponent } from 'src/app/inventual/supplier/addsuplier/addsuplier.component';
-import { UpdatesupplierComponent } from './updatesupplier/updatesupplier.component';
-import { SupplierlistComponent } from './listsupplier/supplierlist.component';
+import { UpdatesupplierComponent } from './pages/updatesupplier/updatesupplier.component';
+import { SupplierlistComponent } from './pages/listsupplier/supplierlist.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'list', pathMatch: 'full'},

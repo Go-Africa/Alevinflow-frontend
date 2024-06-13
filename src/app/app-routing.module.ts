@@ -29,7 +29,7 @@ import { AddexpenseComponent } from './inventual/expense/addexpense/addexpense.c
 import { CreatepaymentComponent } from './inventual/expense/createpayment/createpayment.component';
 import { CategoryComponent } from './inventual/expense/category/category.component';
 import { ExpenselistComponent } from './inventual/expense/expenselist/expenselist.component';
-import { AdduserComponent } from './features/user/adduser/adduser.component';
+import { AdduserComponent } from './features/user/pages/adduser/adduser.component';
 import { CreateroleComponent } from './inventual/usermanagement/createrole/createrole.component';
 import { UserlistComponent } from './inventual/usermanagement/userlist/userlist.component';
 import { WarehouselistComponent } from './inventual/warehouse/warehouselist/warehouselist.component';

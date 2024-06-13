@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
-import { AdduserComponent } from './adduser/adduser.component';
+import { AdduserComponent } from './pages/adduser/adduser.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ListuserComponent } from './listuser/listuser.component';
-import { UpdateuserComponent } from './updateuser/updateuser.component';
+import { ListuserComponent } from './pages/listuser/listuser.component';
+import { UpdateuserComponent } from './pages/updateuser/updateuser.component';
 
 
 @NgModule({

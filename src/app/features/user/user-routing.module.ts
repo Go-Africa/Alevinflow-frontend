@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdduserComponent } from './adduser/adduser.component';
+import { AdduserComponent } from './pages/adduser/adduser.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'list', pathMatch: 'full'},
