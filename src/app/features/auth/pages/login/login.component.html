@@ -1,5 +1,5 @@
 <div class="inventual-login-area flex justify-center items-center w-full min-h-screen h-full">
-    <div class="inventual-login-wrapper">
+    <div  [formGroup]="form" (ngSubmit)="signIn(form.value)" class="inventual-login-wrapper">
         <div class="inventual-login-logo text-center mb-12">
             <img src="../../../../assets/img/logo/login-logo.png" alt="logo not found">
         </div>
@@ -7,7 +7,7 @@
             <div class="inventual-input-field-style">
               <mat-form-field class="w-full" [floatLabel]="'always'">
                 <mat-label class="hidden">Joseph Tylor</mat-label>
-                <input matInput [placeholder]="'Username'" value="Admin">
+                <input matInput [placeholder]="'Matricule'" formControlName="matricule">
               </mat-form-field>
               <caption><mat-icon>person_outline</mat-icon></caption>
             </div>
@@ -16,7 +16,7 @@
             <div class="inventual-input-field-style inventual-input-field-style-eye">
                 <mat-form-field appearance="fill">
                     <mat-label class="hidden">Enter your password</mat-label>
-                    <input matInput [placeholder]="'Password'" [type]="hide ? 'password' : 'text'" value="123456">
+                    <input matInput [placeholder]="'Password'" [type]="hide ? 'password' : 'text'"  formControlName="matricule" >
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -29,7 +29,7 @@
         </div>
         <div class="inventual-login-btn mb-7">
             <div class="inventual-material-btn">
-                <button [routerLink]="['/dashboard']" type="submit" mat-raised-button color="primary">Log in</button>
+                <button type="submit" mat-raised-button color="primary">Log in</button>
             </div>
         </div>
         <div class="inventual-login-footer">

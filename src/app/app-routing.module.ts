@@ -61,10 +61,11 @@ import { CustomerreportComponent } from './inventual/report/customerreport/custo
 import { WarehousereportComponent } from './inventual/report/warehousereport/warehousereport.component';
 import { ElementsComponent } from './inventual/elements/elements.component';
 import { NotFoundComponent } from './inventual/not-found/not-found.component';
+import { AuthGuard } from './features/auth/guard/auth.guard';
 
 
 const routes: Routes = [ 
-  { path: '', component: LoginComponent, pathMatch: 'full' },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
   {path: 'auth',
     loadChildren : () => import("./features/auth/auth.module").then(m => m.AuthModule)
   },
@@ -93,240 +94,241 @@ const routes: Routes = [
 
   {
     path: 'dashboard',
+    canActivate: [AuthGuard],
     component: DashboardComponent
   },
-  {
-    path: 'trading/sales/possale',
-    component: PossaleComponent
-  },
-  {
-    path: 'trading/sales/newsale',
-    component: NewsaleComponent
-  },
-  {
-    path: 'trading/sales/managesale',
-    component: ManagesaleComponent
-  },
-  {
-    path: 'orderdiscount',
-    component: OrderdiscountComponent
-  },
-  {
-    path: 'trading/sales/salereturns',
-    component: SalereturnsComponent
-  },
-  {
-    path: 'trading/purchase/addpurchase',
-    component: AddpurchaseComponent
-  },
-  {
-    path: 'trading/purchase/managepurchase',
-    component: ManagepurchaseComponent
-  },
-  {
-    path: 'trading/purchase/purchasereturns',
-    component: PurchasereturnsComponent
-  },
-  {
-    path: 'trading/invoice/saleinvoice',
-    component: SaleinvoiceComponent
-  },
-  {
-    path: 'trading/invoice/expenseinvoice',
-    component: ExpenseinvoiceComponent
-  },
-  {
-    path: 'trading/invoice/salesinvoice',
-    component: SalesinvoiceComponent
-  },
-  {
-    path: 'trading/invoice/expenselistinvoice',
-    component: ExpenselistinvoiceComponent
-  },
-  {
-    path: 'trading/invoice/purchaselistinvoice',
-    component: PurchaseinvoiceComponent
-  },
-  {
-    path: 'trading/invoice/purchaseinvoice',
-    component: PurchaselistinvoiveComponent
-  },
-  {
-    path: 'product/productlist',
-    component: ProductlistComponent
-  },
-  {
-    path: 'product/addbrand',
-    component: AddbrandComponent
-  },
-  {
-    path: 'product/adjustment',
-    component: AdjustmentComponent
-  },
-  {
-    path: 'product/addadjustment',
-    component: AddadjustmentComponent
-  },
-  {
-    path: 'product/unit',
-    component: UnitComponent
-  },
-  {
-    path: 'product/addproduct',
-    component: AddproductComponent
-  },
-  {
-    path: 'product/generatebarcode',
-    component: GeneratebarcodeComponent
-  },
-  {
-    path: 'people/addsupplier',
-    component: AddsuplierComponent
-  },
-  {
-    path: 'people/addcustomer',
-    component: AddcustomerComponent
-  },
-  {
-    path: 'people/addbiller',
-    component: AddbillerComponent
-  },
-  {
-    path: 'people/supplierlist',
-    component: SupplierlistComponent
-  },
-  {
-    path: 'people/customerlist',
-    component: CustomerlistComponent
-  },
-  {
-    path: 'people/billerlist',
-    component: BillerlistComponent
-  },
-  {
-    path: 'expesne/addexpense',
-    component: AddexpenseComponent
-  },
-  {
-    path: 'expesne/createpayment',
-    component: CreatepaymentComponent
-  },
-  {
-    path: 'expesne/expensecategory',
-    component: CategoryComponent
-  },
-  {
-    path: 'expesne/expenselist',
-    component: ExpenselistComponent
-  },
-  {
-    path: 'client/adduser',
-    component: AdduserComponent
-  },
-  {
-    path: 'client/createrole',
-    component: CreateroleComponent
-  },
-  {
-    path: 'client/userlist',
-    component: UserlistComponent
-  },
-  {
-    path: 'warehouselist',
-    component: WarehouselistComponent
-  },
-  {
-    path: 'report/productreport',
-    component: ProductreportComponent
-  },
-  {
-    path: 'report/stockreport',
-    component: StockreportComponent
-  },
-  {
-    path: 'report/paymentreport',
-    component: PaymentreportComponent
-  },
-  {
-    path: 'report/salereport',
-    component: SalereportComponent
-  },
-  {
-    path: 'report/purchasereport',
-    component: PurchasereportComponent
-  },
-  {
-    path: 'report/expensereport',
-    component: ExpensereportComponent
-  },
-  {
-    path: 'report/discountreport',
-    component: DiscountreportComponent
-  },
-  {
-    path: 'report/taxreport',
-    component: TaxreportComponent
-  },
-  {
-    path: 'report/userreport',
-    component: UserreportComponent
-  },
-  {
-    path: 'report/customerreport',
-    component: CustomerreportComponent
-  },
-  {
-    path: 'report/warehousereport',
-    component: WarehousereportComponent
-  },
-  {
-    path: 'report/supplierreport',
-    component: SupplierreportComponent
-  },
-  {
-    path: 'report/shippingchargereport',
-    component: ShippingchargereportComponent
-  },
-  {
-    path: 'product/productcategory',
-    component: ProductcategoryComponent
-  },
-  {
-    path: 'rolepermission',
-    component: RolepermissionComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'forgotpassword',
-    component: ForgotpasswordComponent
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent
-  },
-  {
-    path: 'message',
-    component: MessageinboxComponent
-  },
-  {
-    path: 'newmessage',
-    component: NewmessageComponent
-  },
-  {
-    path: 'transfer/addtransfer',
-    component: AddtransferComponent
-  },
-  {
-    path: 'transfer/transferlist',
-    component: TransferlistComponent
-  },
-  {
-    path: 'elements',
-    component: ElementsComponent
-  },
+  // {
+  //   path: 'trading/sales/possale',
+  //   component: PossaleComponent
+  // },
+  // {
+  //   path: 'trading/sales/newsale',
+  //   component: NewsaleComponent
+  // },
+  // {
+  //   path: 'trading/sales/managesale',
+  //   component: ManagesaleComponent
+  // },
+  // {
+  //   path: 'orderdiscount',
+  //   component: OrderdiscountComponent
+  // },
+  // {
+  //   path: 'trading/sales/salereturns',
+  //   component: SalereturnsComponent
+  // },
+  // {
+  //   path: 'trading/purchase/addpurchase',
+  //   component: AddpurchaseComponent
+  // },
+  // {
+  //   path: 'trading/purchase/managepurchase',
+  //   component: ManagepurchaseComponent
+  // },
+  // {
+  //   path: 'trading/purchase/purchasereturns',
+  //   component: PurchasereturnsComponent
+  // },
+  // {
+  //   path: 'trading/invoice/saleinvoice',
+  //   component: SaleinvoiceComponent
+  // },
+  // {
+  //   path: 'trading/invoice/expenseinvoice',
+  //   component: ExpenseinvoiceComponent
+  // },
+  // {
+  //   path: 'trading/invoice/salesinvoice',
+  //   component: SalesinvoiceComponent
+  // },
+  // {
+  //   path: 'trading/invoice/expenselistinvoice',
+  //   component: ExpenselistinvoiceComponent
+  // },
+  // {
+  //   path: 'trading/invoice/purchaselistinvoice',
+  //   component: PurchaseinvoiceComponent
+  // },
+  // {
+  //   path: 'trading/invoice/purchaseinvoice',
+  //   component: PurchaselistinvoiveComponent
+  // },
+  // {
+  //   path: 'product/productlist',
+  //   component: ProductlistComponent
+  // },
+  // {
+  //   path: 'product/addbrand',
+  //   component: AddbrandComponent
+  // },
+  // {
+  //   path: 'product/adjustment',
+  //   component: AdjustmentComponent
+  // },
+  // {
+  //   path: 'product/addadjustment',
+  //   component: AddadjustmentComponent
+  // },
+  // {
+  //   path: 'product/unit',
+  //   component: UnitComponent
+  // },
+  // {
+  //   path: 'product/addproduct',
+  //   component: AddproductComponent
+  // },
+  // {
+  //   path: 'product/generatebarcode',
+  //   component: GeneratebarcodeComponent
+  // },
+  // {
+  //   path: 'people/addsupplier',
+  //   component: AddsuplierComponent
+  // },
+  // {
+  //   path: 'people/addcustomer',
+  //   component: AddcustomerComponent
+  // },
+  // {
+  //   path: 'people/addbiller',
+  //   component: AddbillerComponent
+  // },
+  // {
+  //   path: 'people/supplierlist',
+  //   component: SupplierlistComponent
+  // },
+  // {
+  //   path: 'people/customerlist',
+  //   component: CustomerlistComponent
+  // },
+  // {
+  //   path: 'people/billerlist',
+  //   component: BillerlistComponent
+  // },
+  // {
+  //   path: 'expesne/addexpense',
+  //   component: AddexpenseComponent
+  // },
+  // {
+  //   path: 'expesne/createpayment',
+  //   component: CreatepaymentComponent
+  // },
+  // {
+  //   path: 'expesne/expensecategory',
+  //   component: CategoryComponent
+  // },
+  // {
+  //   path: 'expesne/expenselist',
+  //   component: ExpenselistComponent
+  // },
+  // {
+  //   path: 'client/adduser',
+  //   component: AdduserComponent
+  // },
+  // {
+  //   path: 'client/createrole',
+  //   component: CreateroleComponent
+  // },
+  // {
+  //   path: 'client/userlist',
+  //   component: UserlistComponent
+  // },
+  // {
+  //   path: 'warehouselist',
+  //   component: WarehouselistComponent
+  // },
+  // {
+  //   path: 'report/productreport',
+  //   component: ProductreportComponent
+  // },
+  // {
+  //   path: 'report/stockreport',
+  //   component: StockreportComponent
+  // },
+  // {
+  //   path: 'report/paymentreport',
+  //   component: PaymentreportComponent
+  // },
+  // {
+  //   path: 'report/salereport',
+  //   component: SalereportComponent
+  // },
+  // {
+  //   path: 'report/purchasereport',
+  //   component: PurchasereportComponent
+  // },
+  // {
+  //   path: 'report/expensereport',
+  //   component: ExpensereportComponent
+  // },
+  // {
+  //   path: 'report/discountreport',
+  //   component: DiscountreportComponent
+  // },
+  // {
+  //   path: 'report/taxreport',
+  //   component: TaxreportComponent
+  // },
+  // {
+  //   path: 'report/userreport',
+  //   component: UserreportComponent
+  // },
+  // {
+  //   path: 'report/customerreport',
+  //   component: CustomerreportComponent
+  // },
+  // {
+  //   path: 'report/warehousereport',
+  //   component: WarehousereportComponent
+  // },
+  // {
+  //   path: 'report/supplierreport',
+  //   component: SupplierreportComponent
+  // },
+  // {
+  //   path: 'report/shippingchargereport',
+  //   component: ShippingchargereportComponent
+  // },
+  // {
+  //   path: 'product/productcategory',
+  //   component: ProductcategoryComponent
+  // },
+  // {
+  //   path: 'rolepermission',
+  //   component: RolepermissionComponent
+  // },
+  // {
+  //   path: 'register',
+  //   component: RegisterComponent
+  // },
+  // {
+  //   path: 'forgotpassword',
+  //   component: ForgotpasswordComponent
+  // },
+  // {
+  //   path: 'profile',
+  //   component: ProfileComponent
+  // },
+  // {
+  //   path: 'message',
+  //   component: MessageinboxComponent
+  // },
+  // {
+  //   path: 'newmessage',
+  //   component: NewmessageComponent
+  // },
+  // {
+  //   path: 'transfer/addtransfer',
+  //   component: AddtransferComponent
+  // },
+  // {
+  //   path: 'transfer/transferlist',
+  //   component: TransferlistComponent
+  // },
+  // {
+  //   path: 'elements',
+  //   component: ElementsComponent
+  // },
   { path: '**', component: NotFoundComponent },
 ];
 
