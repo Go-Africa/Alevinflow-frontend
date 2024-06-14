@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdatesupplierComponent } from './updatesupplier.component';
+import { ListuserComponent } from './listuser.component';
 
-describe('UpdatesupplierComponent', () => {
-  let component: UpdatesupplierComponent;
-  let fixture: ComponentFixture<UpdatesupplierComponent>;
+describe('ListuserComponent', () => {
+  let component: ListuserComponent;
+  let fixture: ComponentFixture<ListuserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UpdatesupplierComponent ]
+      declarations: [ ListuserComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdatesupplierComponent);
+    fixture = TestBed.createComponent(ListuserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,4 +22,4 @@ describe('UpdatesupplierComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+})

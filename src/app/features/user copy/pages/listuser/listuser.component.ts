@@ -3,14 +3,14 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { SupplierInterfaceData, supplierData } from 'src/app/inventual/data/supplierData';
+import { UserInterfaceData, userData } from 'src/app/inventual/data/userData';
 
 @Component({
-  selector: 'app-updatesupplier',
-  templateUrl: './updatesupplier.component.html',
-  styleUrls: ['./updatesupplier.component.scss']
+  selector: 'app-listuser',
+  templateUrl: './listuser.component.html',
+  styleUrls: ['./listuser.component.scss']
 })
-export class UpdatesupplierComponent  implements AfterViewInit {
+export class ListuserComponent implements AfterViewInit {
   displayedColumns: string[] = [
     'select',
     'id',
@@ -22,18 +22,17 @@ export class UpdatesupplierComponent  implements AfterViewInit {
     'address',
     'action',
   ];
-  dataSource: MatTableDataSource<SupplierInterfaceData>;
-  selection = new SelectionModel<SupplierInterfaceData>(true, []);
+  dataSource: MatTableDataSource<UserInterfaceData>;
+  selection = new SelectionModel<UserInterfaceData>(true, []);
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
-hide: any;
 
   constructor() {
     // Assign your data array to the data source
-    this.dataSource = new MatTableDataSource(supplierData);
+    this.dataSource = new MatTableDataSource(userData);
   }
 
   ngAfterViewInit() {
@@ -68,12 +67,12 @@ hide: any;
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: SupplierInterfaceData): string {
+  checkboxLabel(row?: UserInterfaceData): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
-      row.supplierCode + 1
+      row.id + 1
     }`;
   }
 
@@ -90,3 +89,8 @@ hide: any;
 
   ngOnInit(): void {}
 }
+
+
+
+
+

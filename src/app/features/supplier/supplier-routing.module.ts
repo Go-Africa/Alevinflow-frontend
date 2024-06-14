@@ -7,7 +7,7 @@ import { SupplierlistComponent } from './pages/listsupplier/supplierlist.compone
 const routes: Routes = [
   {path: '', redirectTo: 'list', pathMatch: 'full'},
   {path: 'add', component: AddsuplierComponent},
-  // {path: 'update', component: UpdatesupplierComponent},
+  {path: 'update', component: UpdatesupplierComponent},
   {path: 'list', component: SupplierlistComponent}
 ];
 
