@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ILogin } from '../../models/login.interface';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     matricule: new FormControl(''),
-    password: new FormControl(''),
+    mot_de_passe: new FormControl(''),
   });
 
 
@@ -35,6 +35,32 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.form = this._formBuilder.group(
+      {
+        matricule: ['', [Validators.required, Validators.email]],
+        mot_de_passe: [
+          '',
+          [
+            Validators.required,
+            // Validators.minLength(8),
+            // Validators.maxLength(40),
+            // PasswordValidators.patternValidator(new RegExp("(?=.*[0-9])"), {
+            //   requiresDigit: true
+            // }),
+            // PasswordValidators.patternValidator(new RegExp("(?=.*[A-Z])"), {
+            //   requiresUppercase: true
+            // }),
+            // PasswordValidators.patternValidator(new RegExp("(?=.*[a-z])"), {
+            //   requiresLowercase: true
+            // }),
+            // PasswordValidators.patternValidator(new RegExp("(?=.*[$@^!%*?&])"), {
+            //   requiresSpecialChars: true
+            // })         
+          ]
+        ],
+      }
+    );
   }
 
 
@@ -64,7 +90,6 @@ export class LoginComponent implements OnInit {
         console.log(err);
         if (err.error.error = 'Username or password is incorrect')
         if (err.status == 0)
-        window.location.reload()
         if (err.status === 401) console.log("");
       }
     });

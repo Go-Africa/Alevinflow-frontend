@@ -46,7 +46,7 @@ export class AuthService {
    * @returns {IUtilisateurGet}
    */
   login(data: ILogin): Observable<IUtilisateurGet> {
-    return this._http.post<IUtilisateurGet>(`${this.apiURL}/auth/login`, data);
+    return this._http.post<IUtilisateurGet>(`${this.apiURL}/users/login`, data);
   }
 
   /**

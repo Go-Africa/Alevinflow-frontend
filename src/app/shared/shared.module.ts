@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InventualModule } from '../inventual/inventual.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './components/header/header.component';
+import { CopyrightComponent } from './components/copyright/copyright.component';
+import { ContentLayoutComponent } from './components/content-layout/content-layout.component';
+import { InventualModule } from '../inventual/inventual.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HeaderComponent,
+    CopyrightComponent,
+    ContentLayoutComponent
+  ],
   imports: [
     CommonModule,
     MatPaginatorModule,
@@ -15,8 +22,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   exports: [
-    InventualModule,
     ReactiveFormsModule,
+    InventualModule,
+    HeaderComponent,
+    CopyrightComponent,
+    ContentLayoutComponent
   ]
 })
 export class SharedModule { }

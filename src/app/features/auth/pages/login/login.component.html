@@ -16,7 +16,7 @@
             <div class="inventual-input-field-style inventual-input-field-style-eye">
                 <mat-form-field appearance="fill">
                     <mat-label class="hidden">Enter your password</mat-label>
-                    <input matInput [placeholder]="'Password'" [type]="hide ? 'password' : 'text'"  formControlName="matricule" >
+                    <input matInput [placeholder]="'Password'" [type]="hide ? 'password' : 'text'"  formControlName="mot_de_passe" >
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -29,7 +29,7 @@
         </div>
         <div class="inventual-login-btn mb-7">
             <div class="inventual-material-btn">
-                <button type="submit" mat-raised-button color="primary">Log in</button>
+                <button type="submit" mat-raised-button color="primary" (click)="signIn(form.value)">Log in</button>
             </div>
         </div>
         <div class="inventual-login-footer">
