@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CopyrightComponent } from './components/copyright/copyright.component';
 import { ContentLayoutComponent } from './components/content-layout/content-layout.component';
 import { InventualModule } from '../inventual/inventual.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [

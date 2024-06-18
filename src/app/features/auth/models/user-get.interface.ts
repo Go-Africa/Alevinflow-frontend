@@ -1,32 +1,21 @@
 
 export interface IUtilisateurGet {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    token: string;
-    phoneNumber: string;
-    role: IRole;
-    createdDate: Date;
-    lastModifiedDate: Date;
-    enable: boolean;
+    data: {
+        id: number,
+        nom: string,
+        prenom: string,
+        matricule: string,
+        email: string,
+        id_role: string,
+        nom_utilisateur: string,
+        mot_de_passe?: string
+    },
+    token: string,
+    message?: string,
+    status?: number
 
 }
 
-export interface IRole {
-    id: number;
-    name: string;
-    description: string;
-    privileges: IPrivilege[];
-    createdDate: Date;
-    lastModifiedDate: Date;
-    editable: boolean;
-}
-
-export interface IPrivilege {
-    name: string;
-    code: string
-}
 
 
 

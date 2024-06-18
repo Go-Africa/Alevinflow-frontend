@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { ILogin } from '../models/login.interface';
 import { IResetPassword } from '../models/reset-password.interface';
 import { IUtilisateurGet } from '../models/user-get.interface';
 import { apiUrl } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,11 @@ export class AuthService {
   private apiURL: string = apiUrl.baseUrl;
   private jwtHelper!: JwtHelperService;
 
-  constructor(private _http: HttpClient,) {
+  constructor(
+    private _http: HttpClient,
+    private _toastr: ToastrService,
+    private _router: Router
+  ) {
     this.jwtHelper = new JwtHelperService();
   }
 
@@ -46,7 +52,29 @@ export class AuthService {
    * @returns {IUtilisateurGet}
    */
   login(data: ILogin): Observable<IUtilisateurGet> {
-    return this._http.post<IUtilisateurGet>(`${this.apiURL}/users/login`, data);
+    return this._http.post<IUtilisateurGet>(`${this.apiURL}/users/login`, data)
+    .pipe(
+      tap({
+        next: (res: IUtilisateurGet) => {
+          if (res.status == 200) {
+            const user = {...res}
+              delete user.status;
+              delete user.data.mot_de_passe;
+            localStorage.setItem("user", JSON.stringify(user.data))
+            localStorage.setItem("token", JSON.stringify(user.token))
+            console.log("L'UTILISATEUR : ", JSON.parse(localStorage.getItem("user")|| ""));
+            this._toastr.success(`Bienvenu ${res.data.prenom} ${res.data.nom} !`, "Connecté !")
+            this._router.navigate(['/dashboard']);
+          }
+        },
+        error: (err: any) => {
+          localStorage.clear(),
+            this._toastr.error(`Indentifinat incorrecte !`, `${err.error.message}`)
+          console.log("");
+            
+        }
+      })
+    );
   }
 
   /**
