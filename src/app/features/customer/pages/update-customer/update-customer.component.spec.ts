@@ -6,10 +6,14 @@ describe('UpdateCustomerComponent', () => {
   let component: UpdateCustomerComponent;
   let fixture: ComponentFixture<UpdateCustomerComponent>;
 
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ UpdateCustomerComponent ]
+    })
+    .compileComponents();
+  });
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [UpdateCustomerComponent]
-    });
     fixture = TestBed.createComponent(UpdateCustomerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,3 +23,4 @@ describe('UpdateCustomerComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
