@@ -13,7 +13,7 @@ import { CustomerInterfaceData, customerData } from 'src/app/inventual/data/cust
 })
 export class ListCustomerComponent implements AfterViewInit {
   displayedColumns: string[] = [
-    'select',
+   'select',
     'id',
     'name',
     'phone',
