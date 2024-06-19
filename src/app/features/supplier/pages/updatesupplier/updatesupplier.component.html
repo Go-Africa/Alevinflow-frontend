@@ -21,11 +21,11 @@
     </div>
     <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
       <div class="inventual-breadcrumb-area-inner px-0.5">
-        <h5 class="text-[20px] text-heading font-bold mb-3">Update Supplier</h5>
+        <h5 class="text-[20px] text-heading font-bold mb-3">Modifier Fournisseur</h5>
         <div class="inventual-breadcrumb-area-inner-wrap">
-          <span class="text-[14px] text-body font-normal inline-block me-2">Supplier Management</span>
+          <span class="text-[14px] text-body font-normal inline-block me-2">Gestion Fournisseurs</span>
           <span class="text-[14px] text-body font-normal inline-block me-2">></span>
-          <span class="text-[14px] text-body font-normal inline-block me-2">Update Supplier</span>
+          <span class="text-[14px] text-body font-normal inline-block me-2">Modifier Fournisseur</span>
         </div>
       </div>
     </div>
@@ -75,10 +75,31 @@
                 </mat-form-field>
               </div>
             </div>
+          </div><div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Tel</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input matInput [placeholder]="'tel'">
+                </mat-form-field>
+              </div>
+            </div>
           </div>
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Address</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input matInput [placeholder]="'address'">
+                </mat-form-field>
+              </div>
+            </div>
+           </div>
           <div class="col-span-12">
             <div class="inventual-material-btn pt-2.5 justify-end">
-              <button mat-raised-button color="primary">Update Supplier</button>
+              <button mat-raised-button color="primary">Modifier Fournisseur</button>
             </div>
           </div>
         </div>

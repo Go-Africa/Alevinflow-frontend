@@ -14,11 +14,11 @@ export class ListuserComponent implements AfterViewInit {
   displayedColumns: string[] = [
     'select',
     'id',
-    'name',
-    'phone',
+    'matricule',
+    'nom',
+    'prenom',
     'email',
     'role',
-    'status',
     'address',
     'action',
   ];

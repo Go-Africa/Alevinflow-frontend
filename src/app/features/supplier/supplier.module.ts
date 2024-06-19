@@ -6,7 +6,6 @@ import { AddsupplierComponent } from './pages/addsupplier/addsupplier.component'
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SupplierlistComponent } from './pages/listsupplier/supplierlist.component';
 import { UpdatesupplierComponent } from './pages/updatesupplier/updatesupplier.component';
-import { DetailsupplierComponent } from './pages/detailsupplier/detailsupplier.component';
 
 
 @NgModule({
@@ -14,8 +13,9 @@ import { DetailsupplierComponent } from './pages/detailsupplier/detailsupplier.c
     AddsupplierComponent,
     SupplierlistComponent,
     UpdatesupplierComponent,
-    DetailsupplierComponent
-   
+  
+    
+    
   ],
   imports: [
     CommonModule,
