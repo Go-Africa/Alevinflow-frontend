@@ -10,17 +10,21 @@ import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './features/auth/interceptors/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
     ToastrModule.forRoot(), // ToastrModule added
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+   
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]

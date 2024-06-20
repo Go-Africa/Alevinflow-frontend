@@ -1,24 +1,25 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserInterfaceData, userData } from 'src/app/inventual/data/userData';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-listuser',
   templateUrl: './listuser.component.html',
   styleUrls: ['./listuser.component.scss']
 })
-export class ListuserComponent implements AfterViewInit {
+export class ListuserComponent implements OnInit {
   displayedColumns: string[] = [
     'select',
     'id',
-    'name',
-    'phone',
+    'matricule',
+    'nom',
+    'prenom',
     'email',
     'role',
-    'status',
     'address',
     'action',
   ];
@@ -30,14 +31,21 @@ export class ListuserComponent implements AfterViewInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor() {
+  constructor(
+    private _userService: UserService,
+  ) {
     // Assign your data array to the data source
-    this.dataSource = new MatTableDataSource(userData);
+    this.dataSource = new MatTableDataSource(this.users);
   }
 
-  ngAfterViewInit() {
+  users: any[] = [];
+
+
+  ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.getAllUser()
+
   }
 
   applyFilter(event: Event) {
@@ -87,7 +95,15 @@ export class ListuserComponent implements AfterViewInit {
   }
   //sidebar menu activation end
 
-  ngOnInit(): void {}
+  // ngOnInit(): void {
+  //   this.getAllUser()
+  // }
+
+  getAllUser(){
+    this._userService.getAllUser().subscribe(res => {
+      this.users = res.data
+    })
+  }
 }
 
 

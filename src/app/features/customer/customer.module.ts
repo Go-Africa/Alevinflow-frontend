@@ -6,8 +6,6 @@ import { AddCustomerComponent } from './pages/add-customer/add-customer.componen
 import { UpdateCustomerComponent } from './pages/update-customer/update-customer.component';
 import { ListCustomerComponent } from './pages/list-customer/list-customer.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { DetailcustomerComponent } from './pages/detailcustomer/detailcustomer.component';
-
 
 
 @NgModule({
@@ -15,7 +13,7 @@ import { DetailcustomerComponent } from './pages/detailcustomer/detailcustomer.c
     AddCustomerComponent,
     UpdateCustomerComponent,
     ListCustomerComponent,
-    DetailcustomerComponent,
+    
    
   ],
   imports: [

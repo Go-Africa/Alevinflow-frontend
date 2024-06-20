@@ -42,7 +42,7 @@ export class AuthService {
    * @returns {string}
    */
   get token(): any {
-    return localStorage.getItem('token')!;
+    return localStorage.getItem('token')?.toString();
   }
 
   /**
@@ -61,7 +61,7 @@ export class AuthService {
               delete user.status;
               delete user.data.mot_de_passe;
             localStorage.setItem("user", JSON.stringify(user.data))
-            localStorage.setItem("token", JSON.stringify(user.token))
+            localStorage.setItem("token", user.token)
             console.log("L'UTILISATEUR : ", JSON.parse(localStorage.getItem("user")|| ""));
             this._toastr.success(`Bienvenu ${res.data.prenom} ${res.data.nom} !`, "Connecté !")
             this._router.navigate(['/dashboard']);

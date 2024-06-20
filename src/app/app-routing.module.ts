@@ -66,9 +66,6 @@ import { AuthGuard } from './features/auth/guard/auth.guard';
 
 const routes: Routes = [ 
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  {path: 'auth',
-    loadChildren : () => import("./features/auth/auth.module").then(m => m.AuthModule)
-  },
   {path: 'customers',
     loadChildren : () => import("./features/customer/customer.module").then(m => m.CustomerModule)
   },
@@ -86,6 +83,9 @@ const routes: Routes = [
   },
   {path: 'users',
     loadChildren : () => import("./features/user/user.module").then(m => m.UserModule)
+  },
+  {path: 'auth',
+    loadChildren : () => import("./features/auth/auth.module").then(m => m.AuthModule)
   },
 
 
