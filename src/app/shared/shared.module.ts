@@ -11,11 +11,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { HeaderComponent } from '../inventual/dashboard/header/header.component';
 import { CopyrightComponent } from '../inventual/dashboard/copyright/copyright.component';
 
+
 @NgModule({
   declarations: [
     // HeaderComponent,
     // CopyrightComponent,
-    ContentLayoutComponent
+    ContentLayoutComponent,
+    // MenuComponent,
+    // SublevelMenuComponent
   ],
   imports: [
     CommonModule,

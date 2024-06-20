@@ -6,6 +6,7 @@ import { AddCycleComponent } from './pages/add-cycle/add-cycle.component';
 import { ListCycleComponent } from './pages/list-cycle/list-cycle.component';
 import { DetailCycleComponent } from './pages/detail-cycle/detail-cycle.component';
 import { UpdateCycleComponent } from './pages/update-cycle/update-cycle.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { UpdateCycleComponent } from './pages/update-cycle/update-cycle.componen
   ],
   imports: [
     CommonModule,
-    ProductionRoutingModule
+    ProductionRoutingModule,
+    SharedModule
   ]
 })
 export class ProductionModule { }

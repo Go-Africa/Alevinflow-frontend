@@ -15,14 +15,12 @@ export class ListuserComponent implements OnInit {
   displayedColumns: string[] = [
     'select',
     'id',
+    'matricule',
     'nom',
-    'prénom',
-    'mot de passe',
+    'prenom',
     'email',
-    'tél',
-    'adresse',
-    'fonction',
-    'rôle',
+    'role',
+    'address',
     'action',
   ];
   dataSource: MatTableDataSource<UserInterfaceData>;
@@ -37,7 +35,7 @@ export class ListuserComponent implements OnInit {
     private _userService: UserService,
   ) {
     // Assign your data array to the data source
-    this.dataSource = new MatTableDataSource(this.users);
+    this.dataSource = new MatTableDataSource(userData);
   }
 
   users: any[] = [];
