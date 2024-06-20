@@ -15,11 +15,14 @@ export class SupplierlistComponent implements AfterViewInit {
   displayedColumns: string[] = [
     'select',
     'id',
-    'matricule',
     'nom',
-    'prenom',
+    'prénom',
     'email',
-    'address',
+    'tél',
+    'adresse',
+    'fonction',
+    'nom entreprise',
+    'statut',
     'action',
   ];
   dataSource: MatTableDataSource<SupplierInterfaceData>;

@@ -15,12 +15,14 @@ export class ListCustomerComponent implements AfterViewInit {
   displayedColumns: string[] = [
    'select',
     'id',
-    'matricule',
     'nom',
-    'prenom',
+    'prénom',
     'email',
-    'role',
-    'address',
+    'tél',
+    'adresse',
+    'fonction',
+    'nom entreprise',
+    'statut',
     'action',
   ];
   dataSource: MatTableDataSource<CustomerInterfaceData>;

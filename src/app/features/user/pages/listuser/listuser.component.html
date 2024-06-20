@@ -24,7 +24,7 @@
                 <h5 class="text-[20px] text-heading font-bold mb-3">Liste Utilisateurs</h5>
                 <div class="inventual-breadcrumb-area-inner-wrap">
                     <span class="text-[14px] text-body font-normal inline-block me-2">Gestion Utilisateurs</span>
-                    <span class="text-[14px] text-body font-normal inline-block me-2"></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
                     <span class="text-[14px] text-body font-normal inline-block me-2">Liste Utilisateurs</span>
                 </div>
             </div>
@@ -41,8 +41,8 @@
                             <div class="inventual-select-field">
                                 <div class="inventual-input-field-style">
                                     <mat-form-field class="w-full" [floatLabel]="'always'">
-                                        <mat-label class="hidden">Filter</mat-label>
-                                        <input matInput (keyup)="applyFilter($event)" placeholder="Search here" #input>
+                                        <mat-label class="hidden">Filtre</mat-label>
+                                        <input matInput (keyup)="applyFilter($event)" placeholder="recherche" #input>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                         <div class="col-span-7 md:col-span-6 sm:col-span-12">
                             <div class="inventual-table-header-search-action-btn text-end sm:text-start">
                                 <button type="button" class="filter" [matMenuTriggerFor]="beforeMenuA">
-                                    <app-filter-icon></app-filter-icon> Filter
+                                    <app-filter-icon></app-filter-icon> Filtre
                                 </button>
                                 <mat-menu #beforeMenuA="matMenu" xPosition="before">
                                     <button mat-menu-item>
@@ -97,7 +97,7 @@
                         </ng-container>
 
                         <ng-container matColumnDef="id">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> SL </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  Nº </th>
                             <td mat-cell *matCellDef="let row"> {{row.id}} </td>
                         </ng-container>
 

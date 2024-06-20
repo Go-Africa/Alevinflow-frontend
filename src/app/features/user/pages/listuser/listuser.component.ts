@@ -15,12 +15,14 @@ export class ListuserComponent implements OnInit {
   displayedColumns: string[] = [
     'select',
     'id',
-    'matricule',
     'nom',
-    'prenom',
+    'prénom',
+    'mot de passe',
     'email',
-    'role',
-    'address',
+    'tél',
+    'adresse',
+    'fonction',
+    'rôle',
     'action',
   ];
   dataSource: MatTableDataSource<UserInterfaceData>;
