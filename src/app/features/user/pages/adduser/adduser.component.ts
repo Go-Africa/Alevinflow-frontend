@@ -27,12 +27,14 @@ submitted: any;
 
   initialize() {
     this.createForm = this._formBuilder.group({
-      matricule: ['', [Validators.required]],
       nom: ['', Validators.required],
-      prenom: [''],
+      prenom: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      nom_utilisateur: ['', [Validators.required]], // Initialisé à false par défaut
+      adresse: ['', [Validators.required]],
+      telephone: [, [Validators.required]], // Initialisé à false par défaut
+      fonction: ['', [Validators.required]], // Initialisé à false par défaut
       mot_de_passe: ['', [Validators.required]], // Initialisé à false par défaut
+      statut: ['ACTIF', [Validators.required]], // Initialisé à false par défaut
       id_role: ['', [Validators.required]],
     });
   }
