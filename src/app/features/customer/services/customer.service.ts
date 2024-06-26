@@ -24,7 +24,7 @@ export class CustomerService {
   */
   public createCustomer(value: any): Observable<any> {
     const data = { ...value }
-    return this._http.post<any>(`${this.apiURL}/customers/create`, data).pipe(
+    return this._http.post<any>(`${this.apiURL}/clients/create`, data).pipe(
       tap(users => {
         users.status == 201 ? this._toastrService.success("Client crée avec succès !", "Succès") : ""
       }),
@@ -41,7 +41,7 @@ export class CustomerService {
     * @returns {any[]}
   */
   public getAllCustomer(): Observable<any> {
-    return this._http.get<any>(`${this.apiURL}/customers`).pipe(
+    return this._http.get<any>(`${this.apiURL}/clients`).pipe(
       tap(users => {
       }),
       catchError(error => {
@@ -58,9 +58,9 @@ export class CustomerService {
     * @param {any}
     * @returns {any[]}
   */
-  public updateCustomer(value: any, id_fournisseur: number): Observable<any> {
+  public updateCustomer(value: any, id_client: number): Observable<any> {
     const data = { ...value }
-    return this._http.put<any>(`${this.apiURL}/customers/update/${id_fournisseur}`, data).pipe(
+    return this._http.put<any>(`${this.apiURL}/clients/update/${id_client}`, data).pipe(
       tap(users => {
         users.status == 201 ? this._toastrService.success("Client mise à jour avec succès !", "Succès") : ""
       }),
@@ -77,8 +77,8 @@ export class CustomerService {
     * @param {any}
     * @returns {any[]}
   */
-  public deleteCustomer(id_fournisseur: number): Observable<any> {
-    return this._http.delete<any>(`${this.apiURL}/customers/delete/${id_fournisseur}`).pipe(
+  public deleteCustomer(id_customer: number): Observable<any> {
+    return this._http.delete<any>(`${this.apiURL}/clients/delete/${id_customer}`).pipe(
       tap(users => {
         users.status == 201 ? this._toastrService.success("Client mise à jour avec succès !", "Succès") : ""
       }),

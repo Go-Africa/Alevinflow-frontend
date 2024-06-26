@@ -11,6 +11,9 @@ import { AuthInterceptor } from './features/auth/interceptors/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
+import { AddpurchaseComponent } from './features/purchase/page/addpurchase/addpurchase.component';
+import { ListpurchaseComponent } from './features/purchase/page/listpurchase/listpurchase.component';
+import { UpdatepurchaseComponent } from './features/purchase/page/updatepurchase/updatepurchase.component';
 
 
 @NgModule({
@@ -24,6 +27,10 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [
     AppComponent,
+    AddpurchaseComponent,
+    ListpurchaseComponent,
+    UpdatepurchaseComponent,
+    
    
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
