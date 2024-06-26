@@ -135,6 +135,14 @@
                                             <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
                                             <span>Editer Utilisateur</span>
                                         </button>
+                                        <button mat-menu-item (click)="updateStatutCycle(+row.id, 'ACTIF')">
+                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
+                                            <span>Démarrer le cycle</span>
+                                        </button>
+                                        <button mat-menu-item (click)="updateStatutCycle(+row.id, 'CLORURÉ')">
+                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
+                                            <span>Cloturer le cycle</span>
+                                        </button>
                                         <button mat-menu-item (click)="deleteCycle(row.id)">
                                             <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
                                             <span>Supprimer Utilisateur</span>

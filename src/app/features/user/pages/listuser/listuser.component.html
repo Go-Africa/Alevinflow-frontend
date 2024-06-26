@@ -151,9 +151,9 @@
                                             <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
                                             <span>Editer Utilisateur</span>
                                         </button>
-                                        <button mat-menu-item>
+                                        <button mat-menu-item (click)="updateStatutUser(+row.id, 'INACTIF')">
                                             <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Supprimer Utilisateur</span>
+                                            <span>Archiver l'Utilisateur</span>
                                         </button>
                                     </mat-menu>
                                 </div>

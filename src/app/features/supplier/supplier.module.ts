@@ -13,9 +13,6 @@ import { UpdatesupplierComponent } from './pages/updatesupplier/updatesupplier.c
     AddsupplierComponent,
     SupplierlistComponent,
     UpdatesupplierComponent,
-  
-    
-    
   ],
   imports: [
     CommonModule,

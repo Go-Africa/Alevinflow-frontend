@@ -106,4 +106,10 @@ export class ListCycleComponent {
       this.getAllCycle()
     })
   }
+
+  updateStatutCycle(id_cycle: number, statut: string){
+    this._productionService.updateStatusCycle(id_cycle, statut).subscribe(res => {
+      this.getAllCycle()
+    })
+  }
 }

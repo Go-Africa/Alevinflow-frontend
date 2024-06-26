@@ -106,6 +106,12 @@ export class ListuserComponent implements OnInit {
       this.users = res.data
     })
   }
+
+  updateStatutUser(id_user: number, statut: string){
+    this._userService.updateStatutUser(id_user, statut).subscribe(res => {
+      this.getAllUser()
+    })
+  }
 }
 
 

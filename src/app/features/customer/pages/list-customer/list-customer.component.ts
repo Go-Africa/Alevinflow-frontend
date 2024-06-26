@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustomerInterfaceData, customerData } from 'src/app/inventual/data/customerData';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-list-customer',
@@ -32,8 +33,11 @@ export class ListCustomerComponent implements AfterViewInit {
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
+  customers: any = [];
 
-  constructor() {
+  constructor(
+    private _customerService: CustomerService
+  ) {
     // Assign your data array to the data source
     this.dataSource = new MatTableDataSource(customerData);
   }
@@ -90,6 +94,20 @@ export class ListCustomerComponent implements AfterViewInit {
   }
   //sidebar menu activation end
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllCustomer()
+  }
+
+  getAllCustomer(){
+    this._customerService.getAllCustomer().subscribe(res => {
+      this.customers = res.data
+    })
+  }
+
+  deleteCustomer(id_customer: number){
+    this._customerService.deleteCustomer(id_customer).subscribe(res => {
+      this.getAllCustomer()
+    })
+  }
 }
 

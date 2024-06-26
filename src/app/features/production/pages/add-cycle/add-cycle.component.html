@@ -65,41 +65,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-span-6 md:col-span-6 sm:col-span-12">
-              <div class="inventual-select-field mb-5">
-                <h5 class="text-[15px] text-heading font-semibold mb-3">Date de fin</h5>
-                <div class="inventual-input-field-style">
-                  <mat-form-field class="w-full" [floatLabel]="'always'">
-                    <mat-label class="hidden"></mat-label>
-                    <input type="date" matInput [placeholder]="'Date de fin'" formControlName="date_fin">
-                  </mat-form-field>
-                  <small>
-                    <div class="text-danger mt-1" *ngIf="createForm.get('date_fin')?.invalid && (createForm.get('date_fin')?.dirty || submitted || createForm.get('date_fin')?.touched)">
-                        La date de fin est requis !
-                    </div>
-                </small>
-                </div>
-              </div>
-            </div>
-            <div class="col-span-6 md:col-span-6 sm:col-span-12">
-              <div class="inventual-select-field mb-5">
-                <h5 class="text-[15px] text-heading font-semibold mb-3">Statut</h5>
-                <div class="inventual-input-field-style">
-                  <mat-form-field class="w-full" [floatLabel]="'always'">
-                    <mat-label class="hidden"></mat-label>
-                    <input type="text" matInput [placeholder]="'Statut'" formControlName="statut">
-                  </mat-form-field>
-                  <small>
-                    <div class="text-danger mt-1" *ngIf="createForm.get('statut')?.invalid && (createForm.get('statut')?.dirty || submitted || createForm.get('statut')?.touched)">
-                        Le statut est requis !
-                    </div>
-                </small>
-                </div>
-              </div>
-            </div>
             <div class="col-span-12">
               <div class="inventual-material-btn pt-2.5 justify-end">
-                <button mat-raised-button color="primary" (click)="createUser()">Créer Cycle</button>
+                <button mat-raised-button color="primary" (click)="createCycle()">Créer Cycle</button>
               </div>
             </div>
           </div>

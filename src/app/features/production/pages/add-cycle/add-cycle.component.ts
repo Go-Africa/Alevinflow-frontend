@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/features/user/services/user.service';
 import { ProductionService } from '../../services/production.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-cycle',
@@ -18,6 +19,7 @@ submitted: any;
     private _productionService: ProductionService,
     private _toastrService: ToastrService,
     private _formBuilder: FormBuilder,
+    private router: Router
 
   ) { }
 
@@ -29,19 +31,17 @@ submitted: any;
     this.createForm = this._formBuilder.group({
       nom: ['', Validators.required],
       date_debut: ['', Validators.required],
-      date_fin: ['', [Validators.required]],
-      statut: ['', [Validators.required]], // Initialisé à false par défaut
     });
   }
 
 
-  public createUser() {
+  public createCycle() {
     this.submitted = true;
     if (!this.createForm.valid) {
       return ""
     }
     this._productionService.createCycle(this.createForm.value).subscribe(res => {
-      // this.createForm.reset()
+      this.router.navigate(['/productions'])
     })
     return ""
   }

@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { SupplierInterfaceData, supplierData } from 'src/app/inventual/data/supplierData';
+import { SupplierService } from '../../services/supplier.service';
 
 @Component({
   selector: 'app-supplierlist',
@@ -32,8 +33,11 @@ export class SupplierlistComponent implements AfterViewInit {
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
+  suppliers: any = [];
 
-  constructor() {
+  constructor(
+    private _supplierService: SupplierService
+  ) {
     // Assign your data array to the data source
     this.dataSource = new MatTableDataSource(supplierData);
   }
@@ -90,7 +94,21 @@ export class SupplierlistComponent implements AfterViewInit {
   }
   //sidebar menu activation end
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllSupplier()
+  }
+
+  getAllSupplier(){
+    this._supplierService.getAllSupplier().subscribe(res => {
+      this.suppliers = res.data
+    })
+  }
+
+  deleteSupplier(id_supplier: number){
+    this._supplierService.deleteSupplier(id_supplier).subscribe(res => {
+      this.getAllSupplier()
+    })
+  }
 }
 
 

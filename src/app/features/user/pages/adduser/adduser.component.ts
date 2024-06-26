@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adduser',
@@ -18,6 +19,7 @@ submitted: any;
     private _userService: UserService,
     private _toastrService: ToastrService,
     private _formBuilder: FormBuilder,
+    private router: Router
 
   ) { }
 
@@ -46,7 +48,6 @@ submitted: any;
       return ""
     }
     this._userService.createUser(this.createForm.value).subscribe(res => {
-      this.createForm.reset()
     })
     return ""
   }
