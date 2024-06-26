@@ -27,10 +27,7 @@ import { UpdatepurchaseComponent } from './features/purchase/page/updatepurchase
   ],
   declarations: [
     AppComponent,
-    AddpurchaseComponent,
-    ListpurchaseComponent,
-    UpdatepurchaseComponent,
-    
+   
    
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
