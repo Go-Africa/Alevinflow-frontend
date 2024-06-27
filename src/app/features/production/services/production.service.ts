@@ -59,6 +59,23 @@ export class ProductionService {
       })
     )
   }
+   
+   /**
+    * Récupérer la liste des cycles en fonction de id
+    * 
+    * @returns {any[]}
+  */
+   public getProduction(id_cycle: number): Observable<any> {
+    return this._http.get<any>(`${this.apiURL}/cycles/${id_cycle}`).pipe(
+      tap(users => {
+      }),
+      catchError(error => {
+        error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
+        error.status == 0 ? this._toastrService.error(`${error.message}`, "Echec") : ""
+        throw error
+      })
+    )
+  }
 
   /**
     * Mise à jour d'un cycle
@@ -66,9 +83,9 @@ export class ProductionService {
     * @param {any}
     * @returns {any[]}
   */
-  public updateCycle(value: any, id_fournisseur: number): Observable<any> {
+  public updateCycle(value: any, id_cycle: number): Observable<any> {
     const data = { ...value }
-    return this._http.put<any>(`${this.apiURL}/cycles/update/${id_fournisseur}`, data).pipe(
+    return this._http.put<any>(`${this.apiURL}/cycles/update/${id_cycle}`, data).pipe(
       tap(users => {
         users.status == 200 ? this._toastrService.success("Cycle mise à jour avec succès !", "Succès") : ""
       }),

@@ -26,10 +26,10 @@ export class CustomerService {
   */
   public createCustomer(value: any): Observable<any> {
     const data = { ...value }
-    return this._http.post<any>(`${this.apiURL}/customers/create`, data).pipe(
+    return this._http.post<any>(`${this.apiURL}/clients/create`, data).pipe(
       tap(customer => {
         customer.status == 200 ? this._toastrService.success(`${customer.message}`, "Succès") : ""
-        this.router.navigate(['/customers'])
+        this.router.navigate(['/clients'])
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -44,8 +44,8 @@ export class CustomerService {
     * @returns {any[]}
   */
   public getAllCustomer(): Observable<any> {
-    return this._http.get<any>(`${this.apiURL}/customers`).pipe(
-      tap(customers => {
+    return this._http.get<any>(`${this.apiURL}/clients`).pipe(
+      tap(users => {
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -63,9 +63,9 @@ export class CustomerService {
   */
   public updateCustomer(value: any, id_client: number): Observable<any> {
     const data = { ...value }
-    return this._http.put<any>(`${this.apiURL}/customers/update/${id_client}`, data).pipe(
-      tap(customer => {
-        customer.status == 200 ? this._toastrService.success(`${customer.message}`, "Succès") : ""
+    return this._http.put<any>(`${this.apiURL}/clients/update/${id_client}`, data).pipe(
+      tap(users => {
+        users.status == 201 ? this._toastrService.success("Client mise à jour avec succès !", "Succès") : ""
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -80,10 +80,10 @@ export class CustomerService {
     * @param {any}
     * @returns {any[]}
   */
-  public deleteCustomer(id_client: number): Observable<any> {
-    return this._http.delete<any>(`${this.apiURL}/customers/delete/${id_client}`).pipe(
-      tap(customer => {
-        customer.status == 200 ? this._toastrService.success(`${customer.message}`, "Succès") : ""
+  public deleteCustomer(id_customer: number): Observable<any> {
+    return this._http.delete<any>(`${this.apiURL}/clients/delete/${id_customer}`).pipe(
+      tap(users => {
+        users.status == 201 ? this._toastrService.success("Client mise à jour avec succès !", "Succès") : ""
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""

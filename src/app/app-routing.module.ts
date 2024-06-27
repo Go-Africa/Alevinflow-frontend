@@ -102,7 +102,7 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () => import("./features/user/user.module").then(m => m.UserModule)
   },
 
@@ -341,6 +341,16 @@ const routes: Routes = [
   },
 
   
+  {
+    path: 'purchases',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import("./features/purchase/purchase.module").then(m => m.PurchaseModule)
+  },
+  {
+    path: 'expenses',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import("./features/expense/expense.module").then(m => m.ExpenseModule)
+  },
   { path: '**', component: NotFoundComponent },
 
   
