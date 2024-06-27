@@ -5,9 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { apiUrl } from 'src/environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
   private apiURL = apiUrl.baseUrl
@@ -26,7 +24,7 @@ export class UserService {
   */
   public createUser(value: any): Observable<any> {
     const data = { ...value }
-    return this._http.post<any>(`${this.apiURL}/utilisateurs/create`, data).pipe(
+    return this._http.post<any>(`${this.apiURL}/users/create`, data).pipe(
       tap(users => {
         users.status == 200 ? this._toastrService.success("Utilisateur crée avec succès !", "Succès") : ""
         this.router.navigate(['/suppliers'])
@@ -39,12 +37,12 @@ export class UserService {
   }
 
   /**
-    * Récupérer la liste totale des utilisateurs
+    * Récupérer la liste totale des users
     * 
     * @returns {any[]}
   */
   public getAllUser(): Observable<any> {
-    return this._http.get<any>(`${this.apiURL}/utilisateurs`).pipe(
+    return this._http.get<any>(`${this.apiURL}/users`).pipe(
       tap(users => {
       }),
       catchError(error => {
@@ -63,7 +61,7 @@ export class UserService {
   */
   public updateStatutUser( id_user: number, statut: string): Observable<any> {
     const data = { statut }
-    return this._http.put<any>(`${this.apiURL}/utilisateurs/update-statut/${id_user}`, data).pipe(
+    return this._http.put<any>(`${this.apiURL}/users/update-statut/${id_user}`, data).pipe(
       tap(user => {
         user.status == 200 ? this._toastrService.success(`Sucess`, `${user.message}`) : ""
       }),

@@ -14,6 +14,7 @@ import { TransactionComponent } from 'src/app/inventual/dashboard/transaction/tr
 import { TopsellerComponent } from 'src/app/inventual/dashboard/topseller/topseller.component';
 import { UserComponent } from 'src/app/inventual/dashboard/user/user.component';
 import { InventualModule } from 'src/app/inventual/inventual.module';
+import { DashboardService } from './services/dashboard.service';
 // import { BarchartComponent } from './pages/charts/barchart/barchart.component';
 // import { LinechartComponent } from './pages/charts/linechart/linechart.component';
 // import { PiechartComponent } from './pages/charts/piechart/piechart.component';
@@ -41,7 +42,8 @@ import { InventualModule } from 'src/app/inventual/inventual.module';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    // SharedModule
-  ]
+    // Sha,redModule
+  ],
+  providers: [DashboardService]
 })
 export class DashboardModule { }

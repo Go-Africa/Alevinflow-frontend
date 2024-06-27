@@ -5,9 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable, tap, catchError } from 'rxjs';
 import { apiUrl } from 'src/environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CustomerService {
 
   private apiURL = apiUrl.baseUrl
@@ -26,10 +24,10 @@ export class CustomerService {
   */
   public createCustomer(value: any): Observable<any> {
     const data = { ...value }
-    return this._http.post<any>(`${this.apiURL}/clients/create`, data).pipe(
+    return this._http.post<any>(`${this.apiURL}/customers/create`, data).pipe(
       tap(customer => {
         customer.status == 200 ? this._toastrService.success(`${customer.message}`, "Succès") : ""
-        this.router.navigate(['/clients'])
+        this.router.navigate(['/customers'])
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -39,12 +37,12 @@ export class CustomerService {
   }
 
   /**
-    * Récupérer la liste totale des clients
+    * Récupérer la liste totale des customers
     * 
     * @returns {any[]}
   */
   public getAllCustomer(): Observable<any> {
-    return this._http.get<any>(`${this.apiURL}/clients`).pipe(
+    return this._http.get<any>(`${this.apiURL}/customers`).pipe(
       tap(users => {
       }),
       catchError(error => {
@@ -63,9 +61,9 @@ export class CustomerService {
   */
   public updateCustomer(value: any, id_client: number): Observable<any> {
     const data = { ...value }
-    return this._http.put<any>(`${this.apiURL}/clients/update/${id_client}`, data).pipe(
+    return this._http.put<any>(`${this.apiURL}/customers/update/${id_client}`, data).pipe(
       tap(users => {
-        users.status == 201 ? this._toastrService.success("Client mise à jour avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Client mise à jour avec succès !", "Succès") : ""
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -81,9 +79,9 @@ export class CustomerService {
     * @returns {any[]}
   */
   public deleteCustomer(id_customer: number): Observable<any> {
-    return this._http.delete<any>(`${this.apiURL}/clients/delete/${id_customer}`).pipe(
+    return this._http.delete<any>(`${this.apiURL}/customers/delete/${id_customer}`).pipe(
       tap(users => {
-        users.status == 201 ? this._toastrService.success("Client mise à jour avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Client mise à jour avec succès !", "Succès") : ""
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""

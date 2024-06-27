@@ -351,6 +351,11 @@ const routes: Routes = [
     // canActivate: [AuthGuard],
     loadChildren: () => import("./features/expense/expense.module").then(m => m.ExpenseModule)
   },
+  {
+    path: 'sales',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import("./features/sale/sale.module").then(m => m.SaleModule)
+  },
   { path: '**', component: NotFoundComponent },
 
   

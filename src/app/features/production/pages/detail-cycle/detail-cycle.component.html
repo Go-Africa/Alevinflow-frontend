@@ -78,14 +78,15 @@
                     </div>
                     <div class="col-span-12">
                         <div class="inventual-material-btn pt-2.5 justify-end">
-                            <button mat-raised-button color="warn" (click)="deleteCycle()">{{cycle.statut == "ACTIF" ? "Cloturer" : "Démarrer"}}</button>
+                            <button mat-raised-button color="warn" (click)="deleteCycle()">{{cycle.statut == "ACTIF" ?
+                                "Cloturer" : "Démarrer"}}</button>
                             <button mat-raised-button color="primary" (click)="updateCycle()">Modifier</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-       
+
         <div class="inventual-content-area px-7">
             <div class="inventual-cycle-detail-area bg-white p-7 custom-shadow rounded-8 mb-5">
                 <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
@@ -116,10 +117,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-12">
-                        <div class="inventual-material-btn pt-2.5 justify-end">
-                            <button mat-raised-button color="primary" (click)="updateAlevin()">Modifier</button>
-                        </div>
+                    <div class="col-span-12 mt-10">
+                        <table class="w-full border border-gray-300">
+                            <thead>
+                                <tr class="bg-gray-100 border border-gray-300">
+                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Calibre</th>
+                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Quantité</th>
+                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Nombre de décès</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border border-gray-300">
+                                    <td class="px-4 py-3">{{0}} - {{2}} gr</td>
+                                    <td class="px-4 py-3">{{ 26 }} Kg</td>
+                                    <td class="px-4 py-3">{{ 15 }} Kg</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -155,11 +169,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-12">
-                        <div class="inventual-material-btn pt-2.5 justify-end">
-                            <button mat-raised-button color="primary" (click)="updateCycle()">Modifier</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -170,120 +179,71 @@
                     <div class="col-span-12">
                         <h4 class="text-[18px] text-heading font-bold mb-5">Informations sur les aliments</h4>
                     </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field row mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Nom</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ "Aliment 0.5" }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Quantité</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ 15 }}Kg</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Date de fin</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ cycle.date_fin ? (cycle.date_fin | date:'dd/MM/yyyy' ) : "Cycle en cours"}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field row mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Nom</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ "Aliment 0.2" }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Quantité</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ 15 }}Kg</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Date de fin</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ cycle.date_fin ? (cycle.date_fin | date:'dd/MM/yyyy' ) : "Cycle en cours"}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field row mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Nom</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ "Aliment 0.7" }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Quantité</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ 15 }}Kg</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Date de fin</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ cycle.date_fin ? (cycle.date_fin | date:'dd/MM/yyyy' ) : "Cycle en cours"}}</p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-span-12">
-                        <div class="inventual-material-btn pt-2.5 justify-end">
-                            <button mat-raised-button color="primary" (click)="updateCycle()">Modifier</button>
-                        </div>
+                        <table class="w-full border border-gray-300">
+                            <thead>
+                                <tr class="bg-gray-100 border border-gray-300">
+                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Nom</th>
+                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Quantité</th>
+                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Date de fin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border border-gray-300">
+                                    <td class="px-4 py-3">Aliment 0.5</td>
+                                    <td class="px-4 py-3">15 Kg</td>
+                                    <td class="px-4 py-3">{{ cycle.date_fin ? (cycle.date_fin | date:'dd/MM/yyyy') :
+                                        "Cycle en cours" }}</td>
+                                </tr>
+                                <tr class="border border-gray-300">
+                                    <td class="px-4 py-3">Aliment 0.2</td>
+                                    <td class="px-4 py-3">15 Kg</td>
+                                    <td class="px-4 py-3">{{ cycle.date_fin ? (cycle.date_fin | date:'dd/MM/yyyy') :
+                                        "Cycle en cours" }}</td>
+                                </tr>
+                                <tr class="border border-gray-300">
+                                    <td class="px-4 py-3">Aliment 0.7</td>
+                                    <td class="px-4 py-3">15 Kg</td>
+                                    <td class="px-4 py-3">{{ cycle.date_fin ? (cycle.date_fin | date:'dd/MM/yyyy') :
+                                        "Cycle en cours" }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    
                 </div>
             </div>
         </div>
-
         <div class="inventual-copyright-area">
             <app-copyright></app-copyright>
         </div>
     </div>
 
-   
+
 </div>
 
 
 
 
 <ng-template #updateModal>
-    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="updateModalLabel">Modifier les informations sur les alevins</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <!-- Ajouter les champs de formulaire pour modifier les informations ici -->
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary" (click)="updateAlevin()">Enregistrer</button>
-            
-          </div>
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLabel">Modifier les informations sur les alevins</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Ajouter les champs de formulaire pour modifier les informations ici -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" (click)="updateAlevin()">Enregistrer</button>
+
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </ng-template>
-
-
+</ng-template>

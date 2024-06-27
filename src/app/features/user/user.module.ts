@@ -6,6 +6,7 @@ import { AdduserComponent } from './pages/adduser/adduser.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ListuserComponent } from './pages/listuser/listuser.component';
 import { UpdateuserComponent } from './pages/updateuser/updateuser.component';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { UpdateuserComponent } from './pages/updateuser/updateuser.component';
     CommonModule,
     UserRoutingModule,
     SharedModule
-  ]
+  ],
+  providers: [UserService]
 })
 export class UserModule { }

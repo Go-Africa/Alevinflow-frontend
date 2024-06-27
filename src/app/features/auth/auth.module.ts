@@ -8,6 +8,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { InventualModule } from 'src/app/inventual/inventual.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guard/auth.guard';
 
 
 @NgModule({
@@ -19,8 +20,7 @@ import { AuthService } from './services/auth.service';
     CommonModule,
     AuthRoutingModule,
     SharedModule,
-    // ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [AuthService]
+  providers: [AuthService, AuthGuard]
 })
 export class AuthModule { }

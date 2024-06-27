@@ -8,6 +8,7 @@ import { DetailCycleComponent } from './pages/detail-cycle/detail-cycle.componen
 import { UpdateCycleComponent } from './pages/update-cycle/update-cycle.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductionResolver } from './resolvers/production.resolver';
+import { ProductionService } from './services/production.service';
 
 
 @NgModule({
@@ -22,6 +23,6 @@ import { ProductionResolver } from './resolvers/production.resolver';
     ProductionRoutingModule,
     SharedModule
   ],
-  providers: [ProductionResolver]
+  providers: [ProductionService, ProductionResolver]
 })
 export class ProductionModule { }
