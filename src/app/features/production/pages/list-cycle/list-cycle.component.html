@@ -131,21 +131,25 @@
                                         Action <mat-icon>arrow_drop_down</mat-icon>
                                     </button>
                                     <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                        <button mat-menu-item [routerLink]="row?.id">
+                                            <img src="../../../../../assets/img/icon/action-1.png" alt="icon not found">
+                                            <span>Detail Cycle</span>
+                                        </button>
                                         <button mat-menu-item>
-                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Editer Utilisateur</span>
+                                            <img src="../../../../../assets/img/icon/action-3.png" alt="icon not found">
+                                            <span>Editer Cycle</span>
                                         </button>
                                         <button mat-menu-item (click)="updateStatutCycle(+row.id, 'ACTIF')">
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
+                                            <img src="../../../../../assets/img/icon/action-4.png" alt="icon not found">
                                             <span>Démarrer le cycle</span>
                                         </button>
                                         <button mat-menu-item (click)="updateStatutCycle(+row.id, 'CLORURÉ')">
-                                            <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
+                                            <img src="../../../../../assets/img/icon/action-5.png" alt="icon not found">
                                             <span>Cloturer le cycle</span>
                                         </button>
                                         <button mat-menu-item (click)="deleteCycle(row.id)">
                                             <img src="../../../../../assets/img/icon/action-6.png" alt="icon not found">
-                                            <span>Supprimer Utilisateur</span>
+                                            <span>Supprimer Cycle</span>
                                         </button>
                                     </mat-menu>
                                 </div>

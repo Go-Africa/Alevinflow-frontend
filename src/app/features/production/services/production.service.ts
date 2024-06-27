@@ -42,8 +42,16 @@ export class ProductionService {
   */
   public getAllCycle(): Observable<any> {
     return this._http.get<any>(`${this.apiURL}/cycles`).pipe(
-      tap(users => {
-      }),
+      catchError(error => {
+        error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
+        error.status == 0 ? this._toastrService.error(`${error.message}`, "Echec") : ""
+        throw error
+      })
+    )
+  }
+
+  public getCycleById(idCycle: number): Observable<any> {
+    return this._http.get<any>(`${this.apiURL}/cycles/${idCycle}`).pipe(
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
         error.status == 0 ? this._toastrService.error(`${error.message}`, "Echec") : ""
