@@ -64,39 +64,54 @@ import { NotFoundComponent } from './inventual/not-found/not-found.component';
 import { AuthGuard } from './features/auth/guard/auth.guard';
 
 
-const routes: Routes = [ 
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  {path: 'customers',
-    loadChildren : () => import("./features/customer/customer.module").then(m => m.CustomerModule)
+const routes: Routes = [
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  {
+    path: 'auth',
+    loadChildren: () => import("./features/auth/auth.module").then(m => m.AuthModule)
   },
-  {path: 'products',
-    loadChildren : () => import("./features/product/product.module").then(m => m.ProductModule)
-  },
-  {path: 'productions',
-    loadChildren : () => import("./features/production/production.module").then(m => m.ProductionModule)
-  },
-  {path: 'stocks',
-    loadChildren : () => import("./features/stock/stock.module").then(m => m.StockModule)
-  },
-  {path: 'suppliers',
-    loadChildren : () => import("./features/supplier/supplier.module").then(m => m.SupplierModule)
-  },
-  {path: 'users',
-    loadChildren : () => import("./features/user/user.module").then(m => m.UserModule)
-  },
-  {path: 'auth',
-    loadChildren : () => import("./features/auth/auth.module").then(m => m.AuthModule)
-  },
-
-
-
-
-
   {
     path: 'dashboard',
     canActivate: [AuthGuard],
     component: DashboardComponent
   },
+  {
+    path: 'customers',
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./features/customer/customer.module").then(m => m.CustomerModule)
+  },
+  {
+    path: 'products',
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./features/product/product.module").then(m => m.ProductModule)
+  },
+  {
+    path: 'productions',
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./features/production/production.module").then(m => m.ProductionModule)
+  },
+  {
+    path: 'stocks',
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./features/stock/stock.module").then(m => m.StockModule)
+  },
+  {
+    path: 'suppliers',
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./features/supplier/supplier.module").then(m => m.SupplierModule)
+  },
+  {
+    path: 'users',
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./features/user/user.module").then(m => m.UserModule)
+  },
+  { path: '**', component: NotFoundComponent },
+
+
+
+
+
+
   // {
   //   path: 'trading/sales/possale',
   //   component: PossaleComponent
@@ -329,7 +344,7 @@ const routes: Routes = [
   //   path: 'elements',
   //   component: ElementsComponent
   // },
-  { path: '**', component: NotFoundComponent },
+  
 ];
 
 
@@ -337,4 +352,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

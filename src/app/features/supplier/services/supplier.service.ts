@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, tap, catchError } from 'rxjs';
 import { apiUrl } from 'src/environments/environment';
@@ -13,7 +14,9 @@ export class SupplierService {
 
   constructor(
     private _http: HttpClient,
-    private _toastrService: ToastrService
+    private _toastrService: ToastrService,
+    private router: Router
+
   ) { }
 
   /**

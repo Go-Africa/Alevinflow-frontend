@@ -22,11 +22,11 @@ export class ProductionService {
     * @param {any}
     * @returns {any[]}
   */
-  public createProduction(value: any): Observable<any> {
+  public createCycle(value: any): Observable<any> {
     const data = { ...value }
     return this._http.post<any>(`${this.apiURL}/cycles/create`, data).pipe(
       tap(users => {
-        users.status == 201 ? this._toastrService.success("Cycle crée avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Cycle crée avec succès !", "Succès") : ""
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -36,11 +36,11 @@ export class ProductionService {
   }
 
   /**
-    * Récupérer la liste totale des cycles
+    * Récupérer la liste totale des cycle
     * 
     * @returns {any[]}
   */
-  public getAllProduction(): Observable<any> {
+  public getAllCycle(): Observable<any> {
     return this._http.get<any>(`${this.apiURL}/cycles`).pipe(
       tap(users => {
       }),
@@ -75,11 +75,30 @@ export class ProductionService {
     * @param {any}
     * @returns {any[]}
   */
-  public updateProduction(value: any, id_cycle: number): Observable<any> {
+  public updateCycle(value: any, id_cycle: number): Observable<any> {
     const data = { ...value }
     return this._http.put<any>(`${this.apiURL}/cycles/update/${id_cycle}`, data).pipe(
       tap(users => {
-        users.status == 201 ? this._toastrService.success("Cycle mise à jour avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Cycle mise à jour avec succès !", "Succès") : ""
+      }),
+      catchError(error => {
+        error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
+        throw error
+      })
+    )
+  }
+
+  /**
+    * Mise à jour d'un cycle
+    * 
+    * @param {any}
+    * @returns {any[]}
+  */
+  public updateStatusCycle( id_cycle: number, statut: string,): Observable<any> {
+    const data = { statut }
+    return this._http.put<any>(`${this.apiURL}/cycles/update-statut/${id_cycle}`, data).pipe(
+      tap(cycle => {
+        cycle.status == 200 ? this._toastrService.success(`${cycle.message}`, "Succès") : ""
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -94,13 +113,13 @@ export class ProductionService {
     * @param {any}
     * @returns {any[]}
   */
-  public deleteProduction(id_cycle: number): Observable<any> {
-    return this._http.delete<any>(`${this.apiURL}/cycles/delete/${id_cycle}`).pipe(
+  public deleteCycle(id_fournisseur: number): Observable<any> {
+    return this._http.delete<any>(`${this.apiURL}/cycles/delete/${id_fournisseur}`).pipe(
       tap(users => {
-        users.status == 201 ? this._toastrService.success("Cycle mise à jour avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Cycle supprimé avec succès !", "Succès") : ""
       }),
       catchError(error => {
-        error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
+        error.status == 404 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
         throw error
       })
     )

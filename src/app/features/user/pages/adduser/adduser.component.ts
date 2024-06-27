@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adduser',
@@ -18,6 +19,7 @@ submitted: any;
     private _userService: UserService,
     private _toastrService: ToastrService,
     private _formBuilder: FormBuilder,
+    private router: Router
 
   ) { }
 
@@ -27,12 +29,14 @@ submitted: any;
 
   initialize() {
     this.createForm = this._formBuilder.group({
-      matricule: ['', [Validators.required]],
       nom: ['', Validators.required],
-      prenom: [''],
+      prenom: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      nom_utilisateur: ['', [Validators.required]], // Initialisé à false par défaut
+      adresse: ['', [Validators.required]],
+      telephone: [, [Validators.required]], // Initialisé à false par défaut
+      fonction: ['', [Validators.required]], // Initialisé à false par défaut
       mot_de_passe: ['', [Validators.required]], // Initialisé à false par défaut
+      statut: ['ACTIF', [Validators.required]], // Initialisé à false par défaut
       id_role: ['', [Validators.required]],
     });
   }
@@ -44,7 +48,6 @@ submitted: any;
       return ""
     }
     this._userService.createUser(this.createForm.value).subscribe(res => {
-      this.createForm.reset()
     })
     return ""
   }

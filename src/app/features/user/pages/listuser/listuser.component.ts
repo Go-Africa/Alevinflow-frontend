@@ -16,13 +16,13 @@ export class ListuserComponent implements OnInit {
     'select',
     'id',
     'nom',
-    'prénom',
-    'mot de passe',
+    'prenom',
     'email',
-    'tél',
+    "telephone",
     'adresse',
-    'fonction',
-    'rôle',
+    "statut",
+    "fonction",
+    'role',
     'action',
   ];
   dataSource: MatTableDataSource<UserInterfaceData>;
@@ -37,7 +37,7 @@ export class ListuserComponent implements OnInit {
     private _userService: UserService,
   ) {
     // Assign your data array to the data source
-    this.dataSource = new MatTableDataSource(this.users);
+    this.dataSource = new MatTableDataSource(userData);
   }
 
   users: any[] = [];
@@ -104,6 +104,12 @@ export class ListuserComponent implements OnInit {
   getAllUser(){
     this._userService.getAllUser().subscribe(res => {
       this.users = res.data
+    })
+  }
+
+  updateStatutUser(id_user: number, statut: string){
+    this._userService.updateStatutUser(id_user, statut).subscribe(res => {
+      this.getAllUser()
     })
   }
 }

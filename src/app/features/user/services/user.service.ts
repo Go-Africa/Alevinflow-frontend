@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { apiUrl } from 'src/environments/environment';
@@ -13,7 +14,8 @@ export class UserService {
 
   constructor(
     private _http: HttpClient,
-    private _toastrService: ToastrService
+    private _toastrService: ToastrService,
+    private router: Router
   ) { }
 
   /**
@@ -24,9 +26,10 @@ export class UserService {
   */
   public createUser(value: any): Observable<any> {
     const data = { ...value }
-    return this._http.post<any>(`${this.apiURL}/users/create`, data).pipe(
+    return this._http.post<any>(`${this.apiURL}/utilisateurs/create`, data).pipe(
       tap(users => {
-        users.status == 201 ? this._toastrService.success("Utilisateur crée avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Utilisateur crée avec succès !", "Succès") : ""
+        this.router.navigate(['/suppliers'])
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -41,7 +44,7 @@ export class UserService {
     * @returns {any[]}
   */
   public getAllUser(): Observable<any> {
-    return this._http.get<any>(`${this.apiURL}/users`).pipe(
+    return this._http.get<any>(`${this.apiURL}/utilisateurs`).pipe(
       tap(users => {
       }),
       catchError(error => {
@@ -51,5 +54,26 @@ export class UserService {
       })
     )
   }
+
+  /**
+    * Mise à jour du statut d'un utilisateur
+    * 
+    * @param {any}
+    * @returns {any[]}
+  */
+  public updateStatutUser( id_user: number, statut: string): Observable<any> {
+    const data = { statut }
+    return this._http.put<any>(`${this.apiURL}/utilisateurs/update-statut/${id_user}`, data).pipe(
+      tap(user => {
+        user.status == 200 ? this._toastrService.success(`Sucess`, `${user.message}`) : ""
+      }),
+      catchError(error => {
+        error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
+        throw error
+      })
+    )
+  }
+
+
 }
  

@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
     this.form = this._formBuilder.group(
       {
-        matricule: ['', [Validators.required, Validators.email]],
+        email: ['', [Validators.required, Validators.email]],
         mot_de_passe: ['',[Validators.required]
         ],
       }

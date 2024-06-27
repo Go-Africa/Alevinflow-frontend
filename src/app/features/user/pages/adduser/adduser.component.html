@@ -34,50 +34,6 @@
         <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0" [formGroup]="createForm">
           <div class="col-span-4 md:col-span-6 sm:col-span-12">
             <div class="inventual-select-field mb-5">
-              <h5 class="text-[15px] text-heading font-semibold mb-3">Matricule</h5>
-              <div class="inventual-input-field-style">
-                <mat-form-field class="w-full" [floatLabel]="'always'">
-                  <mat-label class="hidden"></mat-label>
-                  <input matInput [placeholder]="'Matricule'" formControlName="matricule">
-                </mat-form-field>
-                <small>
-                  <div class="text-danger mt-1"
-                    *ngIf="createForm.get('matricule')?.invalid && (createForm.get('matricule')?.dirty || submitted || createForm.get('matricule')?.touched)">
-                    Le matricule est requis !
-                  </div>
-                </small>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-4 md:col-span-6 sm:col-span-12">
-            <div class="inventual-select-field mb-5">
-              <h5 class="text-[15px] text-heading font-semibold mb-3">Nom</h5>
-              <div class="inventual-input-field-style">
-                <mat-form-field class="w-full" [floatLabel]="'always'">
-                  <mat-label class="hidden"></mat-label>
-                  <input matInput [placeholder]="'Nom'" formControlName="nom">
-                </mat-form-field>
-                <small>
-                  <div class="text-danger mt-1" *ngIf="createForm.get('matricule')?.invalid && (createForm.get('matricule')?.dirty || submitted || createForm.get('matricule')?.touched)">
-                      Le nom est requis !
-                  </div>
-              </small>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-4 md:col-span-6 sm:col-span-12">
-            <div class="inventual-select-field mb-5">
-              <h5 class="text-[15px] text-heading font-semibold mb-3">Prénom</h5>
-              <div class="inventual-input-field-style">
-                <mat-form-field class="w-full" [floatLabel]="'always'">
-                  <mat-label class="hidden"></mat-label>
-                  <input matInput [placeholder]="'Prenom'" formControlName="prenom">
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-4 md:col-span-6 sm:col-span-12">
-            <div class="inventual-select-field mb-5">
               <h5 class="text-[15px] text-heading font-semibold mb-3">Email</h5>
               <div class="inventual-input-field-style">
                 <mat-form-field class="w-full" [floatLabel]="'always'">
@@ -87,22 +43,6 @@
                 <small>
                   <div class="text-danger mt-1" *ngIf="createForm.get('email')?.invalid && (createForm.get('email')?.dirty || submitted || createForm.get('email')?.touched)">
                       L'email est requis !
-                  </div>
-              </small>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-4 md:col-span-6 sm:col-span-12">
-            <div class="inventual-select-field mb-5">
-              <h5 class="text-[15px] text-heading font-semibold mb-3">Nom d'utilisateur</h5>
-              <div class="inventual-input-field-style">
-                <mat-form-field class="w-full" [floatLabel]="'always'">
-                  <mat-label class="hidden"></mat-label>
-                  <input type="text" matInput [placeholder]="'Nom d\'utilisateur'" formControlName="nom_utilisateur">
-                </mat-form-field>
-                <small>
-                  <div class="text-danger mt-1" *ngIf="createForm.get('nom_utilisateur')?.invalid && (createForm.get('nom_utilisateur')?.dirty || submitted || createForm.get('nom_utilisateur')?.touched)">
-                      Le nom d'utilisateur est requis !
                   </div>
               </small>
               </div>
@@ -142,6 +82,91 @@
               </div>
             </div>
           </div>
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Nom</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input matInput [placeholder]="'Nom'" formControlName="nom">
+                </mat-form-field>
+                <small>
+                  <div class="text-danger mt-1" *ngIf="createForm.get('nom')?.invalid && (createForm.get('nom')?.dirty || submitted || createForm.get('nom')?.touched)">
+                      Le nom est requis !
+                  </div>
+              </small>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Prénom</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input matInput [placeholder]="'Prenom'" formControlName="prenom">
+                </mat-form-field>
+                <small>
+                  <div class="text-danger mt-1"
+                    *ngIf="createForm.get('prenom')?.invalid && (createForm.get('prenom')?.dirty || submitted || createForm.get('prenom')?.touched)">
+                    Le prenom est requis !
+                  </div>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Téléphone</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input type="number" matInput [placeholder]="'Téléphone'" formControlName="telephone">
+                </mat-form-field>
+                <small>
+                  <div class="text-danger mt-1"
+                    *ngIf="createForm.get('telephone')?.invalid && (createForm.get('telephone')?.dirty || submitted || createForm.get('telephone')?.touched)">
+                    Le téléphone est requis !
+                  </div>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Adresse</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input matInput [placeholder]="'Adresse'" formControlName="adresse">
+                </mat-form-field>
+                <small>
+                  <div class="text-danger mt-1"
+                    *ngIf="createForm.get('adresse')?.invalid && (createForm.get('adresse')?.dirty || submitted || createForm.get('adresse')?.touched)">
+                    L'adresse est requise !
+                  </div>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Fonction</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input matInput [placeholder]="'Fonction'" formControlName="fonction">
+                </mat-form-field>
+                <small>
+                  <div class="text-danger mt-1"
+                    *ngIf="createForm.get('fonction')?.invalid && (createForm.get('fonction')?.dirty || submitted || createForm.get('fonction')?.touched)">
+                    La fonction est requise !
+                  </div>
+                </small>
+              </div>
+            </div>
+          </div>
+          
           <div class="col-span-12">
             <div class="inventual-material-btn pt-2.5 justify-end">
               <button mat-raised-button color="primary" (click)="createUser()">Créer Utilisateur</button>

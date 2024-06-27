@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, tap, catchError } from 'rxjs';
 import { apiUrl } from 'src/environments/environment';
@@ -13,7 +14,8 @@ export class CustomerService {
 
   constructor(
     private _http: HttpClient,
-    private _toastrService: ToastrService
+    private _toastrService: ToastrService,
+    private router: Router
   ) { }
 
   /**
@@ -25,8 +27,9 @@ export class CustomerService {
   public createCustomer(value: any): Observable<any> {
     const data = { ...value }
     return this._http.post<any>(`${this.apiURL}/clients/create`, data).pipe(
-      tap(users => {
-        users.status == 201 ? this._toastrService.success("Client crée avec succès !", "Succès") : ""
+      tap(customer => {
+        customer.status == 200 ? this._toastrService.success(`${customer.message}`, "Succès") : ""
+        this.router.navigate(['/clients'])
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
