@@ -101,8 +101,23 @@ const routes: Routes = [
     loadChildren: () => import("./features/supplier/supplier.module").then(m => m.SupplierModule)
   },
   {
+    path: 'purchases',
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./features/purchase/purchase.module").then(m => m.PurchaseModule)
+  },
+  {
+    path: 'expenses',
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./features/expense/expense.module").then(m => m.ExpenseModule)
+  },
+  {
+    path: 'sales',
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./features/sale/sale.module").then(m => m.SaleModule)
+  },
+  {
     path: 'users',
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     loadChildren: () => import("./features/user/user.module").then(m => m.UserModule)
   },
 
@@ -340,22 +355,6 @@ const routes: Routes = [
     component: ElementsComponent
   },
 
-  
-  {
-    path: 'purchases',
-    // canActivate: [AuthGuard],
-    loadChildren: () => import("./features/purchase/purchase.module").then(m => m.PurchaseModule)
-  },
-  {
-    path: 'expenses',
-    // canActivate: [AuthGuard],
-    loadChildren: () => import("./features/expense/expense.module").then(m => m.ExpenseModule)
-  },
-  {
-    path: 'sales',
-    // canActivate: [AuthGuard],
-    loadChildren: () => import("./features/sale/sale.module").then(m => m.SaleModule)
-  },
   { path: '**', component: NotFoundComponent },
 
   

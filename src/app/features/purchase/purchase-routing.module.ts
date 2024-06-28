@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddpurchaseComponent } from './page/addpurchase/addpurchase.component';
-import { UpdatepurchaseComponent } from './page/updatepurchase/updatepurchase.component';
-import { ListpurchaseComponent } from './page/listpurchase/listpurchase.component';
-
+import { AddpurchaseComponent } from './pages/addpurchase/addpurchase.component';
+import { ManagepurchaseComponent } from './pages/managepurchase/managepurchase.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'list', pathMatch: 'full'},
   {path: 'add', component: AddpurchaseComponent},
-  {path: 'update', component: UpdatepurchaseComponent },
-  {path: 'list', component: ListpurchaseComponent},
+  {path: 'list', component: ManagepurchaseComponent},
 ];
 
 @NgModule({
