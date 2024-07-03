@@ -20,9 +20,8 @@ import {
 })
 export class AddpurchaseComponent implements AfterViewInit {
   displayedColumns: string[] = [
-    'image',
-    'name',
     'code',
+    'name',
     'unit',
     'price',
     'quantity',
