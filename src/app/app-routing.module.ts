@@ -12,13 +12,6 @@ import { PurchasereturnsComponent } from './inventual/trading/purchase/purchaser
 import { SaleinvoiceComponent } from './inventual/trading/invoice/saleinvoice/saleinvoice.component';
 import { SalesinvoiceComponent } from './inventual/trading/invoice/salesinvoice/salesinvoice.component';
 import { PurchaseinvoiceComponent } from './inventual/trading/invoice/purchaseinvoice/purchaseinvoice.component';
-import { ProductlistComponent } from './inventual/products/productlist/productlist.component';
-import { AddbrandComponent } from './inventual/products/addbrand/addbrand.component';
-import { AdjustmentComponent } from './inventual/products/adjustment/adjustment.component';
-import { AddadjustmentComponent } from './inventual/products/addadjustment/addadjustment.component';
-import { UnitComponent } from './inventual/products/unit/unit.component';
-import { AddproductComponent } from './inventual/products/addproduct/addproduct.component';
-import { GeneratebarcodeComponent } from './inventual/products/generatebarcode/generatebarcode.component';
 import { AddsuplierComponent } from './inventual/supplier/addsuplier/addsuplier.component';
 import { AddcustomerComponent } from './inventual/supplier/addcustomer/addcustomer.component';
 import { AddbillerComponent } from './inventual/supplier/addbiller/addbiller.component';
@@ -43,7 +36,6 @@ import { DiscountreportComponent } from './inventual/report/discountreport/disco
 import { TaxreportComponent } from './inventual/report/taxreport/taxreport.component';
 import { SupplierreportComponent } from './inventual/report/supplierreport/supplierreport.component';
 import { ShippingchargereportComponent } from './inventual/report/shippingchargereport/shippingchargereport.component';
-import { ProductcategoryComponent } from './inventual/products/productcategory/productcategory.component';
 import { RolepermissionComponent } from './inventual/settings/rolepermission/rolepermission.component';
 import { PurchaselistinvoiveComponent } from './inventual/trading/invoice/purchaselistinvoive/purchaselistinvoive.component';
 import { ExpenseinvoiceComponent } from './inventual/trading/invoice/expenseinvoice/expenseinvoice.component';
@@ -81,11 +73,6 @@ const routes: Routes = [
     loadChildren: () => import("./features/customer/customer.module").then(m => m.CustomerModule)
   },
   {
-    path: 'products',
-    canActivate: [AuthGuard],
-    loadChildren: () => import("./features/product/product.module").then(m => m.ProductModule)
-  },
-  {
     path: 'productions',
     canActivate: [AuthGuard],
     loadChildren: () => import("./features/production/production.module").then(m => m.ProductionModule)
@@ -96,15 +83,32 @@ const routes: Routes = [
     loadChildren: () => import("./features/stock/stock.module").then(m => m.StockModule)
   },
   {
+    path: 'nutritions',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import("./features/nutrition/nutrition.module").then(m => m.NutritionModule)
+  },
+  {
+    path: 'deces',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import("./features/deces/deces.module").then(m => m.DecesModule)
+  },
+  {
     path: 'suppliers',
     canActivate: [AuthGuard],
     loadChildren: () => import("./features/supplier/supplier.module").then(m => m.SupplierModule)
+  },
+  {
+    path: 'products',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import("./features/product/product.module").then(m => m.ProductModule)
   },
   {
     path: 'users',
     // canActivate: [AuthGuard],
     loadChildren: () => import("./features/user/user.module").then(m => m.UserModule)
   },
+  
+  
 
 
   {
@@ -163,35 +167,7 @@ const routes: Routes = [
     path: 'trading/invoice/purchaseinvoice',
     component: PurchaselistinvoiveComponent
   },
-  {
-    path: 'product/productlist',
-    component: ProductlistComponent
-  },
-  {
-    path: 'product/addbrand',
-    component: AddbrandComponent
-  },
-  {
-    path: 'product/adjustment',
-    component: AdjustmentComponent
-  },
-  {
-    path: 'product/addadjustment',
-    component: AddadjustmentComponent
-  },
-  {
-    path: 'product/unit',
-    component: UnitComponent
-  },
-  {
-    path: 'product/addproduct',
-    component: AddproductComponent
-  },
-  {
-    path: 'product/generatebarcode',
-    component: GeneratebarcodeComponent
-  },
-  {
+ {
     path: 'people/addsupplier',
     component: AddsuplierComponent
   },
@@ -298,10 +274,6 @@ const routes: Routes = [
   {
     path: 'report/shippingchargereport',
     component: ShippingchargereportComponent
-  },
-  {
-    path: 'product/productcategory',
-    component: ProductcategoryComponent
   },
   {
     path: 'rolepermission',

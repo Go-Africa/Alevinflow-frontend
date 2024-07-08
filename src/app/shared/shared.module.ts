@@ -23,11 +23,12 @@ import { CopyrightComponent } from '../inventual/dashboard/copyright/copyright.c
   imports: [
     CommonModule,
     MatPaginatorModule,
-    InventualModule,
     MatIconModule,
     ReactiveFormsModule,
+    InventualModule,
   ],
   exports: [
+    MatIconModule,
     ReactiveFormsModule,
     InventualModule,
     // HeaderComponent,
