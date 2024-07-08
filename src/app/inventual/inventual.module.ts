@@ -87,7 +87,7 @@ import { DiscountreportComponent } from './report/discountreport/discountreport.
 import { TaxreportComponent } from './report/taxreport/taxreport.component';
 import { SupplierreportComponent } from './report/supplierreport/supplierreport.component';
 import { ShippingchargereportComponent } from './report/shippingchargereport/shippingchargereport.component';
-import { ProductcategoryComponent } from './products/productcategory/productcategory.component';
+// import { ProductcategoryComponent } from './products/productcategory/productcategory.component';
 import { AdjustmentlistComponent } from './trading/sale/popup/adjustmentlist/adjustmentlist.component';
 import { RolepermissionComponent } from './settings/rolepermission/rolepermission.component';
 import { PurchaselistinvoiveComponent } from './trading/invoice/purchaselistinvoive/purchaselistinvoive.component';
@@ -139,6 +139,7 @@ import { BellIconComponent } from './common/icons/bell-icon/bell-icon.component'
 import { EmailIconComponent } from './common/icons/email-icon/email-icon.component';
 import { GlobeIconComponent } from './common/icons/globe-icon/globe-icon.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProductcategoryComponent } from './products/productcategory/productcategory.component';
 
 @NgModule({
   imports: [
