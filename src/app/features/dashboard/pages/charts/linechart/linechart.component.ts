@@ -68,7 +68,7 @@ export class LinechartComponent {
             show: false
           }
         },
-        colors: ["#2C6AE5", "#27DB8D"],
+        colors: ["#11562D", "#27DB8D"],
         dataLabels: {
           enabled: true
         },

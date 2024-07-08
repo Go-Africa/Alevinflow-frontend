@@ -43,12 +43,12 @@ export class BarchartComponent {
     this.chartOptions = {
       series: [
         {
-          name: "Opening Stock",
+          name: "Stock d'ouverture",
           type: "column",
           data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6],
         },
         {
-          name: "Closing Stock",
+          name: "Stock de clôture",
           type: "column",
           data: [1.1, 3, 3.1, 4, 4.1, 4.9, 6.5, 8.5],
         },
@@ -61,12 +61,12 @@ export class BarchartComponent {
       dataLabels: {
         enabled: false,
       },
-      colors: ["#FF9720", "#2C6AE5"],
+      colors: ["#FF9720", "#11562D"],
       stroke: {
         width: [1, 1, 4],
       },
       title: {
-        text: "Stock Analysis ",
+        text: "Analyse des stocks ",
         align: this.isRTL ? "right" : "left",
       },
       xaxis: {
@@ -87,7 +87,7 @@ export class BarchartComponent {
             },
           },
           title: {
-            text: "Stock (Amount)",
+            text: "Stock (Montant)",
             offsetX: 6,
             style: {
               color: "#FF9720",
@@ -98,7 +98,7 @@ export class BarchartComponent {
           },
         },
         {
-          seriesName: "Income",
+          seriesName: "Revenu",
           opposite: true,
           axisTicks: {
             show: true,

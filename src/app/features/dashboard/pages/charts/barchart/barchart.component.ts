@@ -61,7 +61,7 @@ export class BarchartComponent {
       dataLabels: {
         enabled: false,
       },
-      colors: ["#FF9720", "#2C6AE5"],
+      colors: ["#FF9720", "#11562D"],
       stroke: {
         width: [1, 1, 4],
       },

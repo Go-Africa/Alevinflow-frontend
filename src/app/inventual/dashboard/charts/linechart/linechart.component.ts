@@ -48,7 +48,7 @@ export class LinechartComponent {
             data: [7, 9, 13, 11, 14, 6, 9, 7, 13, 15, 11, 20]
           },
           {
-            name: "Loss",
+            name: "Perte",
             data: [5, 11, 7, 13, 6, 8, 10, 16, 12, 7, 11, 16]
           }
         ],
@@ -68,7 +68,7 @@ export class LinechartComponent {
             show: false
           }
         },
-        colors: ["#2C6AE5", "#27DB8D"],
+        colors: ["#11562D", "#27DB8D"],
         dataLabels: {
           enabled: true
         },
@@ -76,7 +76,7 @@ export class LinechartComponent {
           curve: "smooth"
         },
         title: {
-          text: "Profit & Loss Overview",
+          text: "Aperçu des profits et pertes",
           align: this.isRTL ? "right" : "left",
         },
         grid: {
@@ -86,7 +86,7 @@ export class LinechartComponent {
           size: 1
         },
         xaxis: {
-          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          categories: ["Jan", "Fev", "Mar", "Avr", "Mai", "Jui", "Jul", "Aou", "Sep", "Oct", "Nov", "Dec"],
         },
         yaxis: {
           min: 5,

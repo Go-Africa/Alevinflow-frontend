@@ -9,7 +9,7 @@ export const navbarData: INavbarData[] = [
   {
     routeLink: 'product',
     icon: 'fal fa-box-open',
-    label: 'Products',
+    label: 'Produits',
     items: [
       {
         routeLink: '/product/addproduct',
@@ -48,11 +48,11 @@ export const navbarData: INavbarData[] = [
   {
     routeLink: 'trading',
     icon: 'fal fa-sack-dollar',
-    label: 'Trading',
+    label: 'Commerce',
     items: [
       {
         routeLink: 'trading/sales',
-        label: 'Sales',
+        label: 'Ventes',
         items: [
           {
             routeLink: '/trading/sales/newsale',
@@ -74,7 +74,7 @@ export const navbarData: INavbarData[] = [
       },
       {
         routeLink: 'trading/purchase',
-        label: 'Purchase',
+        label: 'Achats',
         items: [
           {
             routeLink: '/trading/purchase/addpurchase',
@@ -92,7 +92,7 @@ export const navbarData: INavbarData[] = [
       },
       {
         routeLink: 'trading/invoice',
-        label: 'Invoice/Billing',
+        label: 'Facture/Facturation',
         items: [
           {
             routeLink: '/trading/invoice/saleinvoice',
@@ -123,32 +123,9 @@ export const navbarData: INavbarData[] = [
     ],
   },
   {
-    routeLink: 'expesne',
-    icon: 'fal fa-ballot',
-    label: 'Expesne',
-    items: [
-      {
-        routeLink: '/expesne/addexpense',
-        label: 'Add Expense',
-      },
-      {
-        routeLink: '/expesne/expenselist',
-        label: 'Expense List',
-      },
-      {
-        routeLink: '/expesne/expensecategory',
-        label: 'Expense Category',
-      },
-      {
-        routeLink: '/expesne/createpayment',
-        label: 'Payment Expense',
-      }
-    ],
-  },
-  {
     routeLink: 'people',
     icon: 'fal fa-users',
-    label: 'People',
+    label: 'Acteurs',
     items: [
       {
         routeLink: '/people/addcustomer',
@@ -177,9 +154,9 @@ export const navbarData: INavbarData[] = [
     ],
   },
   {
-    routeLink: 'client',
+    routeLink: 'users',
     icon: 'fal fa-user',
-    label: 'User Management',
+    label: 'Utilisateurs',
     items: [
       {
         routeLink: '/client/adduser',
@@ -257,7 +234,7 @@ export const navbarData: INavbarData[] = [
   {
     routeLink: 'transfer',
     icon: 'fal fa-tags',
-    label: 'Transfer',
+    label: 'Nutrition',
     items: [
       {
         routeLink: '/transfer/addtransfer',
@@ -272,11 +249,11 @@ export const navbarData: INavbarData[] = [
   {
     routeLink: '/warehouselist',
     icon: 'fal fa-building',
-    label: 'Warehouse',
+    label: 'Décès',
   },
   {
     routeLink: '/rolepermission',
     icon: 'fal fa-cog',
-    label: 'Administrative Tools',
+    label: 'Outils Administratifs',
   },
 ];
