@@ -6,8 +6,13 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./addgeniteur.component.scss']
 })
 export class AddgeniteurComponent implements OnInit {
+createUser() {
+throw new Error('Method not implemented.');
+}
   //sidebar menu activation start
   menuSidebarActive:boolean=false;
+createForm: any;
+submitted: any;
   myfunction(){
     if(this.menuSidebarActive==false){
       this.menuSidebarActive=true;

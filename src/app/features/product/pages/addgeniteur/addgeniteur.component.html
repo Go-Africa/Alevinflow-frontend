@@ -21,81 +21,107 @@
     </div>
     <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
       <div class="inventual-breadcrumb-area-inner px-0.5">
-        <h5 class="text-[20px] text-heading font-bold mb-3">Ajouter Géniteurs</h5>
+        <h5 class="text-[20px] text-heading font-bold mb-3">Ajouter géniteur</h5>
         <div class="inventual-breadcrumb-area-inner-wrap">
-          <span class="text-[14px] text-body font-normal inline-block me-2">Géniteurs</span>
+          <span class="text-[14px] text-body font-normal inline-block me-2">Gestion Géniteurs</span>
           <span class="text-[14px] text-body font-normal inline-block me-2">></span>
-          <span class="text-[14px] text-body font-normal inline-block me-2">Ajouter Géniteurs</span>
+          <span class="text-[14px] text-body font-normal inline-block me-2">Ajouter géniteurs</span>
         </div>
       </div>
     </div>
     <div class="inventual-content-area px-7">
-      <div class="inventual-unit-area bg-white p-7 custom-shadow rounded-8 mb-5">
-        <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
-          <div class="col-span-9 lg:col-span-8 sm:col-span-12 md:col-span-12">
-            <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
-              <div class="col-span-8 lg:col-span-6 md:col-span-6 sm:col-span-12">
-                <div class="inventual-select-field mb-5">
-                  <h5 class="text-[15px] text-heading font-semibold mb-3">Date_intervention</h5>
-                  <div class="inventual-input-field-style">
-                    <mat-form-field class="w-full" [floatLabel]="'always'">
-                      <mat-label class="hidden">Date_intervention</mat-label>
-                      <input matInput [placeholder]="'HP Elitebook'">
-                    </mat-form-field>
+      <div class="inventual-addsupplier-area bg-white p-7 custom-shadow rounded-8 mb-5">
+        <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0" [formGroup]="createForm">
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Date intervention</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input type="date" matInput [placeholder]="'Date'" formControlName="date">
+                </mat-form-field>
+                <small>
+                  <div class="text-danger mt-1" *ngIf="createForm.get('date')?.invalid && (createForm.get('date')?.dirty || submitted || createForm.get('date')?.touched)">
+                      La date est requis !
                   </div>
-                </div>
+              </small>
               </div>
-              <div class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
-                <div class="inventual-select-field mb-5">
-                  <h5 class="text-[15px] text-heading font-semibold mb-3">Poid_geniteur_male</h5>
-                  <div class="inventual-input-field-style">
-                    <mat-form-field class="w-full" [floatLabel]="'always'">
-                      <mat-label class="hidden">Poids_geniteur_male</mat-label>
-                      <input matInput [placeholder]="'8952202236'">
-                    </mat-form-field>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Poids géniteur male</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input type="poids géniteur male" matInput [placeholder]="'poids géniteur male'" formControlName="poids géniteur male">
+                </mat-form-field>
+                <small>
+                  <div class="text-danger mt-1" *ngIf="createForm.get('poids géniteur male')?.invalid && (createForm.get('poids géniteur male')?.dirty || submitted || createForm.get('poids géniteur male')?.touched)">
+                      Le poids geniteur male est requis !
                   </div>
-                </div>
+              </small>
               </div>
-              <div class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
-                <div class="inventual-select-field mb-5">
-                  <h5 class="text-[15px] text-heading font-semibold mb-3">Pois_geniteur_femelle</h5>
-                  <div class="inventual-input-field-style">
-                    <mat-form-field class="w-full" [floatLabel]="'always'">
-                      <mat-label class="hidden">Poids_geniteur_femelle</mat-label>
-                      <input matInput [placeholder]="'Scan Barcode'">
-                    </mat-form-field>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Poids géniteur femelle</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input type="poids géniteur femelle" matInput [placeholder]="'poids géniteur femelle'" formControlName="poids géniteur femelle">
+                </mat-form-field>
+                <small>
+                  <div class="text-danger mt-1" *ngIf="createForm.get('poids géniteur femelle')?.invalid && (createForm.get('poids géniteur femelle')?.dirty || submitted || createForm.get('poids géniteur femelle')?.touched)">
+                      Le poids geniteur femelle est requis !
                   </div>
-                </div>
+              </small>
               </div>
-              <div class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
-                <div class="inventual-select-field mb-5">
-                  <h5 class="text-[15px] text-heading font-semibold mb-3">Poids_des_oeufs</h5>
-                  <div class="inventual-input-field-style">
-                    <mat-form-field class="w-full" [floatLabel]="'always'">
-                      <mat-label class="hidden">Poids_des_oeufs</mat-label>
-                      <input type="number" matInput [placeholder]="'0'">
-                    </mat-form-field>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Poids des oeufs</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input type="Poids des oeufs" matInput [placeholder]="'poids des oeufs'" formControlName="poids des oeufs">
+                </mat-form-field>
+                <small>
+                  <div class="text-danger mt-1" *ngIf="createForm.get('poids des oeufs')?.invalid && (createForm.get('poids des oeufs')?.dirty || submitted || createForm.get('poids des oeufs')?.touched)">
+                      Le poids des oeufs est requis !
                   </div>
-                </div>
+              </small>
               </div>
-              <div class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
-                <div class="inventual-select-field mb-5">
-                  <h5 class="text-[15px] text-heading font-semibold mb-3">Poids_des_testicules</h5>
-                  <div class="inventual-input-field-style">
-                    <mat-form-field class="w-full" [floatLabel]="'always'">
-                      <mat-label class="hidden">Poids_des_testicules</mat-label>
-                      <input type="number" matInput [placeholder]="'0'">
-                    </mat-form-field>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Poids des testicules</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input type="Poids des testicules" matInput [placeholder]="'poids des testicules'" formControlName="poids des testicules">
+                </mat-form-field>
+                <small>
+                  <div class="text-danger mt-1" *ngIf="createForm.get('poids des testicules')?.invalid && (createForm.get('poids des testicules')?.dirty || submitted || createForm.get('poids des testicules')?.touched)">
+                      Le poids des testicules est requis !
                   </div>
-                </div>
+              </small>
               </div>
-          <div class="inventual-material-btn justify-end pt-2.5">
-            <button mat-raised-button color="primary">Ajouter Geniteur</button>
+            </div>
+          </div>
+          <div class="col-span-12">
+            <div class="inventual-material-btn pt-2.5 justify-end">
+              <button mat-raised-button color="primary" (click)="createUser()">Ajouter Décès</button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="inventual-copyright-area">
-        <app-copyright></app-copyright>
-      </div>
+    </div>
+    <div class="inventual-copyright-area pt-28 xl:pt-0 lg:pt-0 md:pt-0 sm:pt-0">
+      <app-copyright></app-copyright>
     </div>
   </div>
+</div>

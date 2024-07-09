@@ -118,6 +118,11 @@ const routes: Routes = [
     loadChildren: () => import("./features/product/product.module").then(m => m.ProductModule)
   },
   {
+    path: 'calibrages',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import("./features/calibrage/calibrage.module").then(m => m.CalibrageModule)
+  },
+  {
     path: 'users',
     canActivate: [AuthGuard],
     loadChildren: () => import("./features/user/user.module").then(m => m.UserModule)

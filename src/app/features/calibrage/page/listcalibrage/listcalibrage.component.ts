@@ -1,51 +1,43 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { PurchaseInterfaceData, purchaseData } from 'src/app/inventual/data/purchaseData';
-import { NutritionService } from '../../service/nutrition.service';
-
-// import { PurchaseInterfaceData, purchaseData } from 'src/app/inventual/data/purchaseData';
+import { CustomerService } from 'src/app/features/customer/services/customer.service';
+import { CustomerInterfaceData, customerData } from 'src/app/shared/utils/data/customerData';
 
 @Component({
-  selector: 'app-listnutritionge',
-  templateUrl: './listnutritionge.component.html',
-  styleUrls: ['./listnutritionge.component.scss']
+  selector: 'app-listcalibrage',
+  templateUrl: './listcalibrage.component.html',
+  styleUrls: ['./listcalibrage.component.scss']
 })
-export class ListnutritiongeComponent implements OnInit {
+export class ListcalibrageComponent implements AfterViewInit {
   displayedColumns: string[] = [
-    'select',
+   'select',
     'id',
     'date',
     'quantité',
-    'aliment',
-    'lot',
     'action',
   ];
-  dataSource: MatTableDataSource<PurchaseInterfaceData>;
-  selection = new SelectionModel<PurchaseInterfaceData>(true, []);
+  dataSource: MatTableDataSource<CustomerInterfaceData>;
+  selection = new SelectionModel<CustomerInterfaceData>(true, []);
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
+  customers: any = [];
 
   constructor(
-    private _nutritiongeService: NutritionService,
+    private _customerService: CustomerService
   ) {
     // Assign your data array to the data source
-    this.dataSource = new MatTableDataSource(purchaseData);
+    this.dataSource = new MatTableDataSource(customerData);
   }
 
-  users: any[] = [];
-
-
-  ngOnInit() {
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.getAllUser()
-
   }
 
   applyFilter(event: Event) {
@@ -75,7 +67,7 @@ export class ListnutritiongeComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PurchaseInterfaceData): string {
+  checkboxLabel(row?: CustomerInterfaceData): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
@@ -95,22 +87,14 @@ export class ListnutritiongeComponent implements OnInit {
   }
   //sidebar menu activation end
 
-  // ngOnInit(): void {
-  //   this.getAllUser()
-  // }
-
-  getAllUser(){
-    this._nutritiongeService.getAllUser().subscribe(res => {
-      this.users = res.data
-    })
+  ngOnInit(): void {
+    this.getAllCustomer()
   }
 
- 
+  getAllCustomer(){
+    this._customerService.getAllCustomer().subscribe((res: { data: any; }) => {
+      this.customers = res.data
+    })
+  }
 }
-
-
-
-
-
-
 
