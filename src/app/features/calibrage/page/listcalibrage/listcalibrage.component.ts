@@ -88,7 +88,7 @@ export class ListcalibrageComponent implements AfterViewInit {
   //sidebar menu activation end
 
   ngOnInit(): void {
-    this.getAllCustomer()
+    // this.getAllCustomer()
   }
 
   getAllCustomer(){

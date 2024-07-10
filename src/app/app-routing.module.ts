@@ -104,12 +104,12 @@ const routes: Routes = [
   },
   {
     path: 'expenses',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () => import("./features/expense/expense.module").then(m => m.ExpenseModule)
   },
   {
     path: 'sales',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () => import("./features/sale/sale.module").then(m => m.SaleModule)
   },
   {

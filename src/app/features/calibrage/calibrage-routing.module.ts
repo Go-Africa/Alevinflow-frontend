@@ -4,7 +4,7 @@ import { AddcalibrageComponent } from './page/addcalibrage/addcalibrage.componen
 import { ListcalibrageComponent } from './page/listcalibrage/listcalibrage.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'list', pathMatch: 'full' },
+  // { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: 'add', component: AddcalibrageComponent },
   { path: 'list', component: ListcalibrageComponent },
 
