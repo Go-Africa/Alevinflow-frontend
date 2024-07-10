@@ -21,11 +21,11 @@
         </div>
         <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
             <div class="inventual-breadcrumb-area-inner px-0.5">
-                <h5 class="text-[20px] text-heading font-bold mb-3">Liste Nutritions</h5>
+                <h5 class="text-[20px] text-heading font-bold mb-3">Liste Nutrition_Géniteurs</h5>
                 <div class="inventual-breadcrumb-area-inner-wrap">
-                    <span class="text-[14px] text-body font-normal inline-block me-2">Gestion Nutritions</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Gestion Nutrition_géniteurs</span>
                     <span class="text-[14px] text-body font-normal inline-block me-2">></span>
-                    <span class="text-[14px] text-body font-normal inline-block me-2">Liste Nutritions</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Liste Nutrition_géniteurs</span>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="inventual-common-material-table bg-white p-7 custom-shadow rounded-8 mb-5">
                 <div class="inventual-material-btn mb-7">
                     <button mat-raised-button color="accent" [routerLink]="['/users/add']"
-                        class="mb-1"><mat-icon>add_circle_outline</mat-icon> Créer une nutrition</button>
+                        class="mb-1"><mat-icon>add_circle_outline</mat-icon> Créer une nutrition_géniteur</button>
                 </div>
                 <div class="inventual-table-header-search-area">
                     <div class="grid grid-cols-12 gap-5 mb-7 pb-0.5">
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="inventual-common-table">
-                    <table mat-table [dataSource]="users" matSort>
+                    <table mat-table [dataSource]="nutitrions" matSort>
 
                         <!-- Checkbox Column -->
                         <ng-container matColumnDef="select">
@@ -105,7 +105,7 @@
 
                         <ng-container matColumnDef="quantité">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantité </th>
-                            <td mat-cell *matCellDef="let row"> {{row.quntite}} </td>
+                            <td mat-cell *matCellDef="let row"> {{row.quantite}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="aliment">
@@ -113,14 +113,9 @@
                             <td mat-cell *matCellDef="let row"> {{row.aliment}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="calibre_alevin">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Calibre_alevin </th>
-                            <td mat-cell *matCellDef="let row"> {{row.calibre_alevin}} </td>
-                        </ng-container>
-
                         <ng-container matColumnDef="cycle">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cycle </th>
-                            <td mat-cell *matCellDef="let row"> {{row.adresse}} </td>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Lot </th>
+                            <td mat-cell *matCellDef="let row"> {{row.lot}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="action">
@@ -134,7 +129,7 @@
                                     <mat-menu #beforeMenu="matMenu" xPosition="before">
                                         <button mat-menu-item>
                                             <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
-                                            <span>Editer Nutrition</span>
+                                            <span>Editer Nutrition_géniteur</span>
                                         </button>
 
                                     </mat-menu>

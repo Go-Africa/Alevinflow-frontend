@@ -1,26 +1,26 @@
-import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { SelectionModel } from '@angular/cdk/collections';
 import { PurchaseInterfaceData, purchaseData } from 'src/app/inventual/data/purchaseData';
 import { NutritionService } from '../../service/nutrition.service';
 
-// import { PurchaseInterfaceData, purchaseData } from 'src/app/inventual/data/purchaseData';
-
 @Component({
-  selector: 'app-listnutritionge',
-  templateUrl: './listnutritionge.component.html',
-  styleUrls: ['./listnutritionge.component.scss']
+  selector: 'app-listnutrition',
+  templateUrl: './listnutrition.component.html',
+  styleUrls: ['./listnutrition.component.scss']
 })
-export class ListnutritiongeComponent implements OnInit {
+export class ListnutritionComponent implements OnInit {
   displayedColumns: string[] = [
     'select',
     'id',
-    'date',
+    'date_nutrition',
     'quantité',
+    'heure',
     'aliment',
-    'lot',
+    "calibre_alevin",
+    'cycle',
     'action',
   ];
   dataSource: MatTableDataSource<PurchaseInterfaceData>;
@@ -32,19 +32,19 @@ export class ListnutritiongeComponent implements OnInit {
   sort!: MatSort;
 
   constructor(
-    private _nutritiongeService: NutritionService,
+    private _nutritionService: NutritionService,
   ) {
     // Assign your data array to the data source
     this.dataSource = new MatTableDataSource(purchaseData);
   }
 
-  users: any[] = [];
+  nutitions: any[] = [];
 
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.getAllUser()
+    this.getAllNutrition()
 
   }
 
@@ -99,15 +99,14 @@ export class ListnutritiongeComponent implements OnInit {
   //   this.getAllUser()
   // }
 
-  getAllUser(){
-    this._nutritiongeService.getAllUser().subscribe(res => {
-      this.users = res.data
+  getAllNutrition(){
+    this._nutritionService.getAllNutrition().subscribe(res => {
+      this.nutitions = res.data
     })
   }
 
  
 }
-
 
 
 

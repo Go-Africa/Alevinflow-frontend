@@ -9,8 +9,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: 'add', component: AddnutritionComponent },
   { path: 'list', component: ListnutritionComponent },
-  { path: 'add', component: AddnutritiongeComponent },
-  { path: 'list', component: ListnutritiongeComponent },
+  // { path: 'add', component: AddnutritiongeComponent },
+  // { path: 'list', component: ListnutritiongeComponent },
  
  
 ];

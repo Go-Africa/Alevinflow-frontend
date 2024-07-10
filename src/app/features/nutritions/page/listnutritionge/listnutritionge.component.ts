@@ -1,25 +1,26 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { PurchaseInterfaceData, purchaseData } from 'src/app/inventual/data/purchaseData';
 import { NutritionService } from '../../service/nutrition.service';
 
+// import { PurchaseInterfaceData, purchaseData } from 'src/app/inventual/data/purchaseData';
+
 @Component({
-  selector: 'app-listnutrition',
-  templateUrl: './listnutrition.component.html',
-  styleUrls: ['./listnutrition.component.scss']
+  selector: 'app-listnutritionge',
+  templateUrl: './listnutritionge.component.html',
+  styleUrls: ['./listnutritionge.component.scss']
 })
-export class ListnutritionComponent implements OnInit {
+export class ListnutritiongeComponent implements OnInit {
   displayedColumns: string[] = [
     'select',
     'id',
     'date',
     'quantité',
     'aliment',
-    "calibre_alevin",
-    'cycle',
+    'lot',
     'action',
   ];
   dataSource: MatTableDataSource<PurchaseInterfaceData>;
@@ -31,19 +32,19 @@ export class ListnutritionComponent implements OnInit {
   sort!: MatSort;
 
   constructor(
-    private _userService: NutritionService,
+    private _nutritiongeService: NutritionService,
   ) {
     // Assign your data array to the data source
     this.dataSource = new MatTableDataSource(purchaseData);
   }
 
-  users: any[] = [];
+  nutitrions: any[] = [];
 
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.getAllUser()
+    this.getAllNutrition()
 
   }
 
@@ -98,14 +99,15 @@ export class ListnutritionComponent implements OnInit {
   //   this.getAllUser()
   // }
 
-  getAllUser(){
-    this._userService.getAllUser().subscribe(res => {
-      this.users = res.data
+  getAllNutrition(){
+    this._nutritiongeService.getAllNutrition().subscribe(res => {
+      this.nutitrions = res.data
     })
   }
 
  
 }
+
 
 
 

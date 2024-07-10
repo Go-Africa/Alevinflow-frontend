@@ -85,7 +85,7 @@ const routes: Routes = [
   {
     path: 'nutritions',
     // canActivate: [AuthGuard],
-    loadChildren: () => import("./features/nutrition/nutrition.module").then(m => m.NutritionModule)
+    loadChildren: () => import("./features/nutritions/nutrition.module").then(m => m.NutritionModule)
   },
   {
     path: 'deces',
