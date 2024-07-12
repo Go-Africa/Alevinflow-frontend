@@ -5,7 +5,7 @@
         </div>
         <div
             class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
-            <!-- <app-menu></app-menu> -->
+            <app-menu></app-menu>
         </div>
         <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
     </div>
@@ -32,7 +32,7 @@
         <div class="inventual-content-area px-7">
             <div class="inventual-common-material-table bg-white p-7 custom-shadow rounded-8 mb-5">
                 <div class="inventual-material-btn mb-7">
-                    <button mat-raised-button color="accent" [routerLink]="['/customers/add']"
+                    <button mat-raised-button color="accent" [routerLink]="['/authors/customers/add']"
                         class="mb-1"><mat-icon>add_circle_outline</mat-icon> Ajouter un Client</button>
                 </div>
                 <div class="inventual-table-header-search-area">

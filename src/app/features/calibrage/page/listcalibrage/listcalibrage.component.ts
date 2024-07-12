@@ -3,34 +3,40 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { PurchaseInterfaceData, purchaseData } from 'src/app/inventual/data/purchaseData';
+import { CustomerService } from 'src/app/features/customer/services/customer.service';
+import { CustomerInterfaceData, customerData } from 'src/app/shared/utils/data/customerData';
+import { CalibrageService } from '../../service/calibrage.service';
 
 @Component({
-  selector: 'app-listpurchase',
-  templateUrl: './listpurchase.component.html',
-  styleUrls: ['./listpurchase.component.scss']
+  selector: 'app-listcalibrage',
+  templateUrl: './listcalibrage.component.html',
+  styleUrls: ['./listcalibrage.component.scss']
 })
-export class ListpurchaseComponent implements AfterViewInit {
+export class ListcalibrageComponent implements AfterViewInit {
   displayedColumns: string[] = [
-    'select',
+   'select',
     'id',
+    'date',
+    'cycle',
+    'calibre',
+    'newCalibre',
     'quantité',
-    'date_vente',
-    'date_livraison',
-    'statut',
     'action',
   ];
-  dataSource:MatTableDataSource<PurchaseInterfaceData>;
-  selection = new SelectionModel<PurchaseInterfaceData>(true, []);
+  dataSource: MatTableDataSource<CustomerInterfaceData>;
+  selection = new SelectionModel<CustomerInterfaceData>(true, []);
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
+  calibrages: any = [];
 
-  constructor() {
+  constructor(
+    private _calibrageService: CalibrageService
+  ) {
     // Assign your data array to the data source
-    this.dataSource = new MatTableDataSource(purchaseData);
+    this.dataSource = new MatTableDataSource(customerData);
   }
 
   ngAfterViewInit() {
@@ -65,7 +71,7 @@ export class ListpurchaseComponent implements AfterViewInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PurchaseInterfaceData): string {
+  checkboxLabel(row?: CustomerInterfaceData): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
@@ -85,8 +91,20 @@ export class ListpurchaseComponent implements AfterViewInit {
   }
   //sidebar menu activation end
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllCalibrageAlevincycle()
+  }
+
+  getAllCalibrageAlevincycle(){
+    this._calibrageService.getAllCalibrageAlevincycle().subscribe((res: { data: any; }) => {
+      this.calibrages = res.data
+    })
+  }
+
+  deleteAllCalibrageAlevincycle(id_calibrageAlevincycle: number){
+    this._calibrageService.deleteCalibrageAlevincycle(id_calibrageAlevincycle).subscribe(res => {
+      this.getAllCalibrageAlevincycle()
+    })
+  }
 }
-
-
 

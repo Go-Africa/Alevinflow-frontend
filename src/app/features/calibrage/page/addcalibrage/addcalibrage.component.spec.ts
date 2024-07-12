@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListnutritionComponent } from './listnutrition.component';
+import { AddcalibrageComponent } from './addcalibrage.component';
 
-describe('ListnutritionComponent', () => {
-  let component: ListnutritionComponent;
-  let fixture: ComponentFixture<ListnutritionComponent>;
+describe('AddcalibrageComponent', () => {
+  let component: AddcalibrageComponent;
+  let fixture: ComponentFixture<AddcalibrageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListnutritionComponent ]
+      declarations: [ AddcalibrageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListnutritionComponent);
+    fixture = TestBed.createComponent(AddcalibrageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,4 +22,4 @@ describe('ListnutritionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-})
+});

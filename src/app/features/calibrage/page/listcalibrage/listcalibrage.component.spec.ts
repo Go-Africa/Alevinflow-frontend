@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListpurchaseComponent } from './listpurchase.component';
+import { ListcalibrageComponent } from './listcalibrage.component';
 
-describe('ListpurchaseComponent', () => {
-  let component: ListpurchaseComponent;
-  let fixture: ComponentFixture<ListpurchaseComponent>;
+describe('ListcalibrageComponent', () => {
+  let component: ListcalibrageComponent;
+  let fixture: ComponentFixture<ListcalibrageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListpurchaseComponent ]
+      declarations: [ ListcalibrageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListpurchaseComponent);
+    fixture = TestBed.createComponent(ListcalibrageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,5 +22,4 @@ describe('ListpurchaseComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-})
-
+});

@@ -6,10 +6,14 @@ describe('ListdecesComponent', () => {
   let component: ListdecesComponent;
   let fixture: ComponentFixture<ListdecesComponent>;
 
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ ListdecesComponent ]
+    })
+    .compileComponents();
+  });
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [ListdecesComponent]
-    });
     fixture = TestBed.createComponent(ListdecesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,3 +23,4 @@ describe('ListdecesComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

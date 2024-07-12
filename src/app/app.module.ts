@@ -8,8 +8,6 @@ import { AuthInterceptor } from './features/auth/interceptors/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
-import { AdddecesComponent } from './features/deces/page/adddeces/adddeces.component';
-import { ListdecesComponent } from './features/deces/page/listdeces/listdeces.component';
 import { AuthGuard } from './features/auth/guard/auth.guard';
 
 

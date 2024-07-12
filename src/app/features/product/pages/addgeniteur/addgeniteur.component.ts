@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-addgeniteur',
@@ -6,19 +7,43 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./addgeniteur.component.scss']
 })
 export class AddgeniteurComponent implements OnInit {
+
+  constructor(
+    private _formBuilder: FormBuilder,
+
+  ) { }
+
+  ngOnInit(): void { 
+    this.initialize()
+  }
+
   //sidebar menu activation start
-  menuSidebarActive:boolean=false;
-  myfunction(){
-    if(this.menuSidebarActive==false){
-      this.menuSidebarActive=true;
+  menuSidebarActive: boolean = false;
+  createForm!: FormGroup;
+  submitted: any;
+
+  initialize() {
+    this.createForm = this._formBuilder.group({
+      date: [''],
+      poids_male: [''],
+      poids_femelle: ['', [Validators.required]],
+      poids_oeufs: ['', [Validators.required]],
+      poids_testicules: [, [Validators.required]], // Initialisé à false par défaut
+    });
+  }
+
+  myfunction() {
+    if (this.menuSidebarActive == false) {
+      this.menuSidebarActive = true;
     }
     else {
-      this.menuSidebarActive=false;
+      this.menuSidebarActive = false;
     }
   }
   //sidebar menu activation end
 
   showWarehouseRow: boolean = false;
+
 
   toggleWarehouseRow(event: any) {
     this.showWarehouseRow = event.target.checked;
@@ -61,10 +86,13 @@ export class AddgeniteurComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  createUser() {
+    throw new Error('Method not implemented.');
+  }
 
-  ngOnInit(): void {}
-  
+
+
+
 
 }
 

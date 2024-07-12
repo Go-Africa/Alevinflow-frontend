@@ -21,11 +21,11 @@
       </div>
       <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
         <div class="inventual-breadcrumb-area-inner px-0.5">
-          <h5 class="text-[20px] text-heading font-bold mb-3">Ajouter Nutrition_géniteurs</h5>
+          <h5 class="text-[20px] text-heading font-bold mb-3">Ajouter calibrage</h5>
           <div class="inventual-breadcrumb-area-inner-wrap">
-            <span class="text-[14px] text-body font-normal inline-block me-2">Gestion Nutrition_géniteurs</span>
+            <span class="text-[14px] text-body font-normal inline-block me-2">Gestion Calibrage</span>
             <span class="text-[14px] text-body font-normal inline-block me-2">></span>
-            <span class="text-[14px] text-body font-normal inline-block me-2">Ajouter Nutrition_géniteur</span>
+            <span class="text-[14px] text-body font-normal inline-block me-2">Ajouter calibrage</span>
           </div>
         </div>
       </div>
@@ -58,51 +58,15 @@
                   </mat-form-field>
                   <small>
                     <div class="text-danger mt-1" *ngIf="createForm.get('quantité')?.invalid && (createForm.get('quantité')?.dirty || submitted || createForm.get('quantité')?.touched)">
-                        La quantité est requis !
+                        La quantité est requise !
                     </div>
                 </small>
                 </div>
               </div>
             </div>
-            <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                <div class="inventual-select-field mb-5">
-                  <h5 class="text-[15px] text-heading font-semibold mb-3">Aliment</h5>
-                  <div class="inventual-select-field-style">
-                    <mat-form-field>
-                      <mat-select class="block" [placeholder]="'Select Aliment'" formControlName="id_aliment">
-                        <mat-option value="ALIMENT 0.2">Aliment 0.2</mat-option>
-                        <mat-option value="ALIMENT 0.4">Aliment 0.4 </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                    <small>
-                      <div class="text-danger mt-1" *ngIf="createForm.get('id_aliment')?.invalid && (createForm.get('id_aliment')?.dirty || submitted || createForm.get('id_aliment')?.touched)">
-                          L' aliment est requis !
-                      </div>
-                  </small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                <div class="inventual-select-field mb-5">
-                  <h5 class="text-[15px] text-heading font-semibold mb-3">Lot</h5>
-                  <div class="inventual-select-field-style">
-                    <mat-form-field>
-                      <mat-select class="block" [placeholder]="'Select Role'" formControlName="id_lot">
-                        <mat-option value="LOt 1">Lot 1</mat-option>
-                        <mat-option value="LOt 2">Lot 2</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                    <small>
-                      <div class="text-danger mt-1" *ngIf="createForm.get('id_lot')?.invalid && (createForm.get('id_lot')?.dirty || submitted || createForm.get('id_lot')?.touched)">
-                          Le lot est requis !
-                      </div>
-                  </small>
-                  </div>
-                </div>
-              </div>
             <div class="col-span-12">
               <div class="inventual-material-btn pt-2.5 justify-end">
-                <button mat-raised-button color="primary" (click)="createUser()">Créer Nutrition</button>
+                <button mat-raised-button color="primary" (click)="createUser()">Ajouter Calibrage</button>
               </div>
             </div>
           </div>

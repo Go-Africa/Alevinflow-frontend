@@ -7,41 +7,81 @@ export const navbarData: INavbarData[] = [
     label: 'Dashboard',
   },
   {
-    routeLink: 'product',
+    routeLink: 'products',
     icon: 'fal fa-box-open',
     label: 'Produits',
     items: [
       {
-        routeLink: '/product/addproduct',
-        label: 'Add Product',
+        routeLink: '/products/add',
+        label: 'Ajouter un géniteur',
       },
       {
-        routeLink: '/product/productlist',
-        label: 'Product List',
+        routeLink: '/products/add_aliment',
+        label: 'Ajouter un aliment',
       },
       {
-        routeLink: '/product/productcategory',
-        label: 'Category',
+        routeLink: '/products/list',
+        label: 'Liste de Products',
+      }
+    ],
+  },
+  {
+    routeLink: 'cycles',
+    icon: 'fal fa-fish',
+    label: 'Cycles',
+    items: [
+      {
+        routeLink: '/cycles/add',
+        label: 'Ajouter un Cycle',
       },
       {
-        routeLink: '/product/addbrand',
-        label: 'Brand',
+        routeLink: '/cycles/list',
+        label: 'Liste de Cycles',
+      }
+    ],
+  },
+  {
+    routeLink: 'calibrages',
+    icon: 'fal fa-tag',
+    label: 'Calibrage',
+    items: [
+      {
+        routeLink: '/calibrages/add',
+        label: 'Ajouter un calibrage',
       },
       {
-        routeLink: '/product/unit',
-        label: 'Unit/Value',
+        routeLink: '/calibrages/list',
+        label: 'Liste de Calibrage',
+      }
+    ],
+  },
+  {
+    routeLink: 'nutritions',
+    icon: 'fal fa-cookie',
+    label: 'Nutrition',
+    items: [
+      {
+        routeLink: '/nutritions/add',
+        label: 'Ajouter une nutrition',
       },
       {
-        routeLink: '/product/generatebarcode',
-        label: 'Generate Barcode',
+        routeLink: '/nutritions/list',
+        label: 'Liste des nutritions',
+      },
+    ],
+  },
+  {
+    routeLink: '/deces',
+    icon: 'fal fa-building',
+    label: 'Décès',
+    items: [
+      {
+        routeLink: '/deces/add',
+        label: 'Ajuter un décès',
       },
       {
-        routeLink: '/product/addadjustment',
-        label: 'Add Adjustment',
-      },
-      {
-        routeLink: '/product/adjustment',
-        label: 'Adjustment',
+        routeLink: '/deces/list',
+        label: 'Liste des décès',
       },
     ],
   },
@@ -55,20 +95,12 @@ export const navbarData: INavbarData[] = [
         label: 'Ventes',
         items: [
           {
-            routeLink: '/trading/sales/newsale',
-            label: 'New Sales',
+            routeLink: '/trading/sales/add',
+            label: 'Ajouter une vente',
           },
           {
-            routeLink: '/trading/sales/possale',
-            label: 'POS Sales',
-          },
-          {
-            routeLink: '/trading/sales/managesale',
-            label: 'Sales List',
-          },
-          {
-            routeLink: '/trading/sales/salereturns',
-            label: 'Sales Returns',
+            routeLink: '/trading/sales/list',
+            label: 'Liste des ventes',
           }
         ],
       },
@@ -77,79 +109,49 @@ export const navbarData: INavbarData[] = [
         label: 'Achats',
         items: [
           {
-            routeLink: '/trading/purchase/addpurchase',
-            label: 'Add Purchase',
+            routeLink: '/trading/purchases/add',
+            label: 'Ajouter un achat',
           },
           {
-            routeLink: '/trading/purchase/managepurchase',
-            label: 'Manage Purchase',
-          },
-          {
-            routeLink: '/trading/purchase/purchasereturns',
-            label: 'Purchase Returns',
+            routeLink: '/trading/purchases/list',
+            label: 'Liste des achats',
           }
         ],
-      },
-      {
-        routeLink: 'trading/invoice',
-        label: 'Facture/Facturation',
-        items: [
-          {
-            routeLink: '/trading/invoice/saleinvoice',
-            label: 'Sale Invoice',
-          },
-          {
-            routeLink: '/trading/invoice/salesinvoice',
-            label: 'Sale List Invoice',
-          },
-          {
-            routeLink: '/trading/invoice/purchaseinvoice',
-            label: 'Purchase Invoice',
-          },
-          {
-            routeLink: '/trading/invoice/purchaselistinvoice',
-            label: 'Purchase List Invoice',
-          },
-          {
-            routeLink: '/trading/invoice/expenseinvoice',
-            label: 'Expense Invoice',
-          },
-          {
-            routeLink: '/trading/invoice/expenselistinvoice',
-            label: 'Expense List Invoice',
-          }
-        ],
-      },
+      }
     ],
   },
   {
-    routeLink: 'people',
+    routeLink: 'authors',
     icon: 'fal fa-users',
     label: 'Acteurs',
     items: [
       {
-        routeLink: '/people/addcustomer',
-        label: 'Add Customer',
+        routeLink: '/authors/suppliers',
+        label: 'Fournisseurs',
+        items: [
+          {
+            routeLink: '/authors/suppliers/add',
+            label: 'Ajouter un fournisseur',
+          },
+          {
+            routeLink: '/authors/suppliers/list',
+            label: 'Liste des fournisseurs',
+          }
+        ],
       },
       {
-        routeLink: '/people/customerlist',
-        label: 'Customer List',
-      },
-      {
-        routeLink: '/people/addsupplier',
-        label: 'Add Supplier',
-      },
-      {
-        routeLink: '/people/supplierlist',
-        label: 'Supplier List',
-      },
-      {
-        routeLink: '/people/addbiller',
-        label: 'Add Biller',
-      },
-      {
-        routeLink: '/people/billerlist',
-        label: 'Biller List',
+        routeLink: '/authors/customers',
+        label: 'Clients',
+        items: [
+          {
+            routeLink: '/authors/customers/add',
+            label: 'Ajouter un client',
+          },
+          {
+            routeLink: '/authors/customers/list',
+            label: 'Liste des clients',
+          }
+        ],
       }
     ],
   },
@@ -159,19 +161,17 @@ export const navbarData: INavbarData[] = [
     label: 'Utilisateurs',
     items: [
       {
-        routeLink: '/client/adduser',
-        label: 'Add User',
+        routeLink: '/users/add',
+        label: 'Ajouter un utilisateur',
       },
       {
-        routeLink: '/client/userlist',
-        label: 'User List',
-      },
-      {
-        routeLink: '/client/createrole',
-        label: 'Create Role',
+        routeLink: '/users/list',
+        label: 'Liste des utilisateurs',
       },
     ],
   },
+ 
+  
   {
     routeLink: 'report',
     icon: 'fal fa-inventory',
@@ -230,26 +230,6 @@ export const navbarData: INavbarData[] = [
         label: 'Shipping Charge',
       }
     ],
-  },
-  {
-    routeLink: 'transfer',
-    icon: 'fal fa-tags',
-    label: 'Nutrition',
-    items: [
-      {
-        routeLink: '/transfer/addtransfer',
-        label: 'Add Transfer',
-      },
-      {
-        routeLink: '/transfer/transferlist',
-        label: 'Transfer List',
-      },
-    ],
-  },
-  {
-    routeLink: '/warehouselist',
-    icon: 'fal fa-building',
-    label: 'Décès',
   },
   {
     routeLink: '/rolepermission',

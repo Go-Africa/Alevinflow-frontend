@@ -68,12 +68,12 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-    path: 'customers',
+    path: 'authors/customers',
     canActivate: [AuthGuard],
     loadChildren: () => import("./features/customer/customer.module").then(m => m.CustomerModule)
   },
   {
-    path: 'productions',
+    path: 'cycles',
     canActivate: [AuthGuard],
     loadChildren: () => import("./features/production/production.module").then(m => m.ProductionModule)
   },
@@ -85,7 +85,7 @@ const routes: Routes = [
   {
     path: 'nutritions',
     // canActivate: [AuthGuard],
-    loadChildren: () => import("./features/nutritions/nutrition.module").then(m => m.NutritionModule)
+    loadChildren: () => import("./features/nutrition/nutrition.module").then(m => m.NutritionModule)
   },
   {
     path: 'deces',
@@ -93,29 +93,34 @@ const routes: Routes = [
     loadChildren: () => import("./features/deces/deces.module").then(m => m.DecesModule)
   },
   {
-    path: 'suppliers',
+    path: 'authors/suppliers',
     canActivate: [AuthGuard],
     loadChildren: () => import("./features/supplier/supplier.module").then(m => m.SupplierModule)
   },
   {
-    path: 'purchases',
+    path: 'trading/purchases',
     canActivate: [AuthGuard],
     loadChildren: () => import("./features/purchase/purchase.module").then(m => m.PurchaseModule)
   },
   {
     path: 'expenses',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () => import("./features/expense/expense.module").then(m => m.ExpenseModule)
   },
   {
-    path: 'sales',
-    canActivate: [AuthGuard],
+    path: 'trading/sales',
+    // canActivate: [AuthGuard],
     loadChildren: () => import("./features/sale/sale.module").then(m => m.SaleModule)
   },
   {
     path: 'products',
     // canActivate: [AuthGuard],
     loadChildren: () => import("./features/product/product.module").then(m => m.ProductModule)
+  },
+  {
+    path: 'calibrages',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import("./features/calibrage/calibrage.module").then(m => m.CalibrageModule)
   },
   {
     path: 'users',
