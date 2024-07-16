@@ -96,13 +96,13 @@ export class ListcalibrageComponent implements AfterViewInit {
   }
 
   getAllCalibrageAlevincycle(){
-    this._calibrageService.getAllCalibrageAlevincycle().subscribe((res: { data: any; }) => {
+    this._calibrageService.getAllCalibrage().subscribe((res: { data: any; }) => {
       this.calibrages = res.data
     })
   }
 
   deleteAllCalibrageAlevincycle(id_calibrageAlevincycle: number){
-    this._calibrageService.deleteCalibrageAlevincycle(id_calibrageAlevincycle).subscribe(res => {
+    this._calibrageService.deleteCalibrage(id_calibrageAlevincycle).subscribe(res => {
       this.getAllCalibrageAlevincycle()
     })
   }

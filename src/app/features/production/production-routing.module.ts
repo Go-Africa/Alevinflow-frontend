@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddCycleComponent } from './pages/add-cycle/add-cycle.component';
-import { UpdateCycleComponent } from './pages/update-cycle/update-cycle.component';
-import { ListCycleComponent } from './pages/list-cycle/list-cycle.component';
-import { DetailCycleComponent } from './pages/detail-cycle/detail-cycle.component';
-import { ProductionResolver } from './resolvers/production.resolver';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'list', pathMatch: 'full' },
-  { path: 'add', component: AddCycleComponent },
-  { path: 'update', component: UpdateCycleComponent },
-  { path: 'list', component: ListCycleComponent },
-  { path: 'list/:idCycle', component: DetailCycleComponent, resolve: {cycle: ProductionResolver}}
+  { path: '', redirectTo: 'cycles', pathMatch: 'full' },
+  {
+    path: 'cycles',
+    loadChildren: () => import("./modules/cycle/cycle.module").then(m => m.CycleModule)
+  },
+  {
+    path: 'eclosions',
+    loadChildren: () => import("./modules/eclosion/eclosion.module").then(m => m.EclosionModule)
+  },
 ];
 
 @NgModule({

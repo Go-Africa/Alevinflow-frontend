@@ -15,14 +15,14 @@ export class CalibrageService {
   ) { }
 
   /**
-    * Creation d'un calibrageAlevincycle
+    * Creation d'un calibrage
     * 
     * @param {any}
     * @returns {any[]}
   */
-  public createCalibrageAlevincycle(value: any): Observable<any> {
+  public createCalibrage(value: any): Observable<any> {
     const data = { ...value }
-    return this._http.post<any>(`${this.apiURL}/calibrageAlevincycles/create`, data).pipe(
+    return this._http.post<any>(`${this.apiURL}/calibrages/create`, data).pipe(
       tap(users => {
         users.status == 200 ? this._toastrService.success("Calibrage d'Alevin  crée avec succès !", "Succès") : ""
       }),
@@ -34,12 +34,12 @@ export class CalibrageService {
   }
 
   /**
-    * Récupérer la liste totale des calibrageAlevincycle
+    * Récupérer la liste totale des calibrage
     * 
     * @returns {any[]}
   */
-  public getAllCalibrageAlevincycle(): Observable<any> {
-    return this._http.get<any>(`${this.apiURL}/calibrageAlevincycles`).pipe(
+  public getAllCalibrage(): Observable<any> {
+    return this._http.get<any>(`${this.apiURL}/calibrageAlevinCycles`).pipe(
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
         error.status == 0 ? this._toastrService.error(`${error.message}`, "Echec") : ""
@@ -48,8 +48,8 @@ export class CalibrageService {
     )
   }
 
-  public getCalibrageAlevincycleById(idCalibrageAlevincycle: number): Observable<any> {
-    return this._http.get<any>(`${this.apiURL}/calibrageAlevincycles/${idCalibrageAlevincycle}`).pipe(
+  public getCalibrageById(idCalibrage: number): Observable<any> {
+    return this._http.get<any>(`${this.apiURL}/calibrageAlevinCycles/${idCalibrage}`).pipe(
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
         error.status == 0 ? this._toastrService.error(`${error.message}`, "Echec") : ""
@@ -60,16 +60,16 @@ export class CalibrageService {
 
 
    /**
-    * Mise à jour d'un calibrageAlevincycle
+    * Mise à jour d'un calibrage
     * 
     * @param {any}
     * @returns {any[]}
   */
-   public updateCalibrageAlevincycle(value: any, id_cycle: number): Observable<any> {
+   public updateCalibrage(value: any, id_cycle: number): Observable<any> {
     const data = { ...value }
-    return this._http.put<any>(`${this.apiURL}/calibrageAlevincycles/update/${id_cycle}`, data).pipe(
+    return this._http.put<any>(`${this.apiURL}/calibrageAlevinCycles/update/${id_cycle}`, data).pipe(
       tap(users => {
-        users.status == 200 ? this._toastrService.success("CalibrageAlevincycle mise à jour avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Calibrage mise à jour avec succès !", "Succès") : ""
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -79,15 +79,15 @@ export class CalibrageService {
   }
 
   /**
-    * Suppression d'un calibrageAlevincycle
+    * Suppression d'un calibrage
     * 
     * @param {any}
     * @returns {any[]}
   */
-  public deleteCalibrageAlevincycle(id_calibrageAlevincycle: number): Observable<any> {
-    return this._http.delete<any>(`${this.apiURL}/calibrageAlevincycles/delete/${id_calibrageAlevincycle}`).pipe(
+  public deleteCalibrage(id_calibrage: number): Observable<any> {
+    return this._http.delete<any>(`${this.apiURL}/calibrageAlevinCycles/delete/${id_calibrage}`).pipe(
       tap(users => {
-        users.status == 200 ? this._toastrService.success("CalibrageAlevincycle supprimé avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Calibrage supprimé avec succès !", "Succès") : ""
       }),
       catchError(error => {
         error.status == 404 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""

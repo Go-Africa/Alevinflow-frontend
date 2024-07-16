@@ -7,6 +7,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ListcalibrageComponent } from './page/listcalibrage/listcalibrage.component';
 import { CustomerService } from '../customer/services/customer.service';
 import { CalibrageService } from './service/calibrage.service';
+import { EclosionService } from '../production/modules/eclosion/services/eclosion.service';
+import { CycleService } from '../production/modules/cycle/services/cycle.service';
 
 
 @NgModule({
@@ -19,6 +21,6 @@ import { CalibrageService } from './service/calibrage.service';
     CalibrageRoutingModule, 
     SharedModule
   ],
-   providers: [CalibrageService]
+   providers: [CalibrageService, EclosionService, CycleService]
 })
 export class CalibrageModule { }

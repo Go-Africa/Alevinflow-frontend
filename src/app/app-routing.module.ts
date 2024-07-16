@@ -73,7 +73,7 @@ const routes: Routes = [
     loadChildren: () => import("./features/customer/customer.module").then(m => m.CustomerModule)
   },
   {
-    path: 'cycles',
+    path: 'productions',
     canActivate: [AuthGuard],
     loadChildren: () => import("./features/production/production.module").then(m => m.ProductionModule)
   },

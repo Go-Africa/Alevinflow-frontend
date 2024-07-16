@@ -12,31 +12,67 @@ export const navbarData: INavbarData[] = [
     label: 'Produits',
     items: [
       {
-        routeLink: '/products/add',
-        label: 'Ajouter un géniteur',
+        routeLink: 'products/aliments',
+        label: 'Aliments',
+        items: [
+          {
+            routeLink: '/products/aliments/add',
+            label: 'Ajouter un aliment',
+          },
+          {
+            routeLink: '/products/aliments/list',
+            label: 'Liste des aliments',
+          }
+        ],
       },
       {
-        routeLink: '/products/add_aliment',
-        label: 'Ajouter un aliment',
+        routeLink: 'products/geniteurs',
+        label: 'Geniteur',
+        items: [
+          {
+            routeLink: '/products/geniteurs/add',
+            label: 'Ajouter un géniteur',
+          },
+          {
+            routeLink: '/products/geniteurs/list',
+            label: 'Liste des gniteurs',
+          }
+        ],
       },
-      {
-        routeLink: '/products/list',
-        label: 'Liste de Products',
-      }
     ],
   },
   {
     routeLink: 'cycles',
     icon: 'fal fa-fish',
-    label: 'Cycles',
+    label: 'Productions',
     items: [
       {
-        routeLink: '/cycles/add',
-        label: 'Ajouter un Cycle',
+        routeLink: 'productions/cycles',
+        label: 'Cycles',
+        items: [
+          {
+            routeLink: '/productions/cycles/add',
+            label: 'Ajouter un cycle',
+          },
+          {
+            routeLink: '/productions/cycles/list',
+            label: 'Liste des cycles',
+          }
+        ],
       },
       {
-        routeLink: '/cycles/list',
-        label: 'Liste de Cycles',
+        routeLink: 'productions/eclosions',
+        label: 'Eclosion',
+        items: [
+          {
+            routeLink: '/productions/eclosions/add',
+            label: 'Ajouter une éclosion',
+          },
+          {
+            routeLink: '/productions/eclosions/list',
+            label: 'Liste des éclosions',
+          }
+        ],
       }
     ],
   },

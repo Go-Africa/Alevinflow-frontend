@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddgeniteurComponent } from './pages/addgeniteur/addgeniteur.component';
-import { AddalimentComponent } from './pages/addaliment/addaliment.component';
 import { ListproductComponent } from './pages/listproduct/listproduct.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'list', pathMatch: 'full'},
-  {path: 'add', component: AddgeniteurComponent},
-  {path: 'add_aliment', component: AddalimentComponent},
-  {path: 'list', component: ListproductComponent},
-
+  { path: '', redirectTo: 'aliments', pathMatch: 'full' },
+  {
+    path: 'aliments',
+    loadChildren: () => import("./modules/aliment/aliment.module").then(m => m.AlimentModule)
+  },
+  {
+    path: 'geniteurs',
+    loadChildren: () => import("./modules/geniteur/geniteur.module").then(m => m.GeniteurModule)
+  },
 ];
 
 @NgModule({

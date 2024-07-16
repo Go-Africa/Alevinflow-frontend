@@ -1,47 +1,57 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustomerService } from 'src/app/features/customer/services/customer.service';
 import { CustomerInterfaceData, customerData } from 'src/app/shared/utils/data/customerData';
 import { DecesService } from '../../service/deces.service';
+import { PurchaseInterfaceData } from 'src/app/shared/utils/data/purchaseData';
+import { purchaseData } from 'src/app/inventual/data/purchaseData';
 
 @Component({
   selector: 'app-listdeces',
   templateUrl: './listdeces.component.html',
   styleUrls: ['./listdeces.component.scss']
 })
-export class ListdecesComponent implements AfterViewInit {
+export class ListdecesComponent implements OnInit {
+ 
+
   displayedColumns: string[] = [
-   'select',
-    'id',
-    'date',
-    'quantité',
-    'calibre_alevin',
-    'lot',
-    'cycle',
-    'action',
-  ];
-  dataSource: MatTableDataSource<CustomerInterfaceData>;
-  selection = new SelectionModel<CustomerInterfaceData>(true, []);
+    'select',
+     'id',
+     'date',
+     'alevin',
+     'cycle',
+     'quantite',
+     'lot',
+     'poids',
+     'action',
+   ];
+   
+  dataSource: MatTableDataSource<PurchaseInterfaceData>;
+  selection = new SelectionModel<PurchaseInterfaceData>(true, []);
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
-  customers: any = [];
 
   constructor(
-    private _decesService: DecesService
+    private _decesService: DecesService,
   ) {
     // Assign your data array to the data source
-    this.dataSource = new MatTableDataSource(customerData);
+    this.dataSource = new MatTableDataSource(purchaseData);
   }
 
-  ngAfterViewInit() {
+  allDeces: any[] = [];
+
+
+  ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.getAllDeces()
+
   }
 
   applyFilter(event: Event) {
@@ -71,7 +81,7 @@ export class ListdecesComponent implements AfterViewInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: CustomerInterfaceData): string {
+  checkboxLabel(row?: PurchaseInterfaceData): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
@@ -91,13 +101,19 @@ export class ListdecesComponent implements AfterViewInit {
   }
   //sidebar menu activation end
 
-  ngOnInit(): void {
-    this.getAllCustomer()
+  // ngOnInit(): void {
+  //   this.getAllUser()
+  // }
+
+  getAllDeces(){
+    this._decesService.getAllDeces().subscribe(res => {
+      this.allDeces = res.data
+    })
   }
 
-  getAllCustomer(){
-    this._decesService.getAllDeces().subscribe((res: { data: any; }) => {
-      this.customers = res.data
+  deleteDeces(id_deces: number){
+    this._decesService.deleteDeces(id_deces).subscribe(res => {
+      this.getAllDeces()
     })
   }
 }
