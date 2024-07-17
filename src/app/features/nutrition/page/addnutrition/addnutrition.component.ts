@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { NutritionService } from '../../service/nutrition.service';
-import { ProductionService } from 'src/app/features/production/services/production.service';
+import { CycleService } from 'src/app/features/production/modules/cycle/services/cycle.service';
 
 @Component({
   selector: 'app-addnutrition',
@@ -18,14 +16,13 @@ export class AddnutritionComponent implements OnInit {
   aliments: any[] = []
   allAlevins: any[] = []
   alevins: any[] = []
+  id_cycle!: number;
 
 
   constructor(
     private _nutritionServeice: NutritionService,
-    private _productionService: ProductionService,
-    private _toastrService: ToastrService,
+    private _cycleService: CycleService,
     private _formBuilder: FormBuilder,
-    private router: Router
 
   ) { }
 
@@ -44,30 +41,31 @@ export class AddnutritionComponent implements OnInit {
       id_cycle: ['', [Validators.required]], // Initialisé à false par défaut
     });
 
-    this.getAllCycle() 
+    this.getAllCycle()
     this.getAllAliment()
     this.getAllAlevinCycle()
   }
 
   getAllCycle() {
-    this._productionService.getAllCycle().subscribe(res => {
+    this._cycleService.getAllCycle().subscribe(res => {
       this.cycles = res.data
     })
   }
 
-  getAllAliment(){
+  getAllAliment() {
     this._nutritionServeice.getAllAliment().subscribe(res => {
       this.aliments = res.data
     })
   }
 
-  filterAlevinByCycle(){
+  async filterAlevinByCycle() {
     console.log(" Cycle change ");
-    const is_cycle = 
-    this.alevins = this.allAlevins.filter(allAlevin =>  allAlevin.cycle.id == +this.createForm.get("id_cycle")?.value!)
+    await console.log("before : ", this.alevins, this.id_cycle);
+    this.alevins = await this.allAlevins.filter(allAlevin => allAlevin.cycle.id == this.id_cycle)
+    await console.log("after : ", this.alevins, this.id_cycle);
   }
 
-  getAllAlevinCycle(){
+  getAllAlevinCycle() {
     this._nutritionServeice.getAllAlevinCycle().subscribe(res => {
       this.allAlevins = res.data
     })
@@ -80,7 +78,7 @@ export class AddnutritionComponent implements OnInit {
       return ""
     }
     this._nutritionServeice.createNutrition(this.createForm.value).subscribe(res => {
-      
+
     })
     return ""
   }

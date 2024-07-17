@@ -23,7 +23,7 @@
       <div class="inventual-breadcrumb-area-inner px-0.5">
         <h5 class="text-[20px] text-heading font-bold mb-3">Ajouter Aliment</h5>
         <div class="inventual-breadcrumb-area-inner-wrap">
-          <span class="text-[14px] text-body font-normal inline-block me-2">Gestion Aliments</span>
+          <span class="text-[14px] text-body font-normal inline-block me-2"><a  routerLink="/products/aliments">Gestion Aliments</a></span>
           <span class="text-[14px] text-body font-normal inline-block me-2">></span>
           <span class="text-[14px] text-body font-normal inline-block me-2">Ajouter Aliment</span>
         </div>
@@ -70,10 +70,10 @@
               <div class="inventual-input-field-style">
                 <mat-form-field class="w-full" [floatLabel]="'always'">
                   <mat-label class="hidden"></mat-label>
-                  <input type="number" matInput [placeholder]="'Quantité'" formControlName="quantite">
+                  <input type="number" matInput [placeholder]="'Quantité'" formControlName="stock">
                 </mat-form-field>
                 <small>
-                  <div class="text-danger mt-1" *ngIf="createForm.get('quantite')?.invalid && (createForm.get('quantite')?.dirty || submitted || createForm.get('quantite')?.touched)">
+                  <div class="text-danger mt-1" *ngIf="createForm.get('stock')?.invalid && (createForm.get('stock')?.dirty || submitted || createForm.get('stock')?.touched)">
                       La quantité est requise !
                   </div>
               </small>
@@ -106,11 +106,11 @@
                 <div class="inventual-input-field-style">
                   <mat-form-field class="w-full" [floatLabel]="'always'">
                     <mat-label class="hidden"></mat-label>
-                    <input type="number" matInput [placeholder]="'Prix'" formControlName="prix">
+                    <input type="number" matInput [placeholder]="'Prix'" formControlName="prix_unitaire">
                   </mat-form-field>
                   <small>
-                    <div class="text-danger mt-1" *ngIf="createForm.get('prix')?.invalid && (createForm.get('prix')?.dirty || submitted || createForm.get('prix')?.touched)">
-                        La prix est requis !
+                    <div class="text-danger mt-1" *ngIf="createForm.get('prix_unitaire')?.invalid && (createForm.get('prix_unitaire')?.dirty || submitted || createForm.get('prix_unitaire')?.touched)">
+                        La prix unitaire est requis !
                     </div>
                 </small>
                 </div>

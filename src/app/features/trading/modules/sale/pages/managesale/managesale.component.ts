@@ -8,40 +8,48 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
+// import { AddpaymentComponent } from '../../popup/addpayment/addpayment.component';
 import { MatDialog } from '@angular/material/dialog';
-import {
-  PurchaseInterfaceData,
-  purchaseData,
-} from 'src/app/inventual/data/purchaseData';
+// import { ViewpaymentComponent } from '../../popup/viewpayment/viewpayment.component';
+import { InvoiceComponent } from '../../components/invoice/invoice.component';
+import { SaleInterfaceData} from 'src/app/shared/utils/data/saleData';
+import { SaleService } from '../../services/sale.service';
 
 @Component({
-  selector: 'app-managepurchase',
-  templateUrl: './managepurchase.component.html',
-  styleUrls: ['./managepurchase.component.scss'],
+  selector: 'app-managesale',
+  templateUrl: './managesale.component.html',
+  styleUrls: ['./managesale.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ManagepurchaseComponent implements AfterViewInit {
+export class ManagesaleComponent implements AfterViewInit {
   displayedColumns: string[] = [
     'select',
-    'date',
     'reference',
-    'quantite',
+    'date',
     'statut',
-    'fournisseur',
+    'quantite',
+    'date de livraison',
+    'client',
+    'vendeur',
     'total',
     'action',
   ];
-  dataSource: MatTableDataSource<PurchaseInterfaceData>;
-  selection = new SelectionModel<PurchaseInterfaceData>(true, []);
+  sales! : SaleInterfaceData[]
+  dataSource!: MatTableDataSource<SaleInterfaceData>;
+  selection = new SelectionModel<SaleInterfaceData>(true, []);
+
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(public dialog: MatDialog) {
+  constructor(
+    private _saleService: SaleService,
+    public dialog: MatDialog,
+
+  ) {
     // Assign your data array to the data source
-    this.dataSource = new MatTableDataSource(purchaseData);
   }
 
   ngAfterViewInit() {
@@ -76,7 +84,7 @@ export class ManagepurchaseComponent implements AfterViewInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PurchaseInterfaceData): string {
+  checkboxLabel(row?: SaleInterfaceData): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
@@ -97,5 +105,33 @@ export class ManagepurchaseComponent implements AfterViewInit {
   }
   //sidebar menu activation end
 
-  ngOnInit(): void {}
+  // addPayment() {
+  //   this.dialog.open(AddpaymentComponent);
+  // }
+
+  // viewPayment() {
+  //   this.dialog.open(ViewpaymentComponent);
+  // }
+
+  invoice() {
+    this.dialog.open(InvoiceComponent);
+  }
+
+  getAllSale(){
+    this._saleService.getAllSale().subscribe(res => {
+      this.sales = res.data
+    })
+  }
+
+  deleteSale(id_sale: number){
+    this._saleService.deleteSale(id_sale).subscribe(res => {
+      this.getAllSale()
+    })
+  }
+
+  ngOnInit(): void {
+    this.getAllSale()
+    this.dataSource = new MatTableDataSource(this.sales);
+
+  }
 }

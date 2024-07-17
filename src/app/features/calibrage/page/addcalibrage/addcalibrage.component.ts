@@ -1,8 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { ProductionService } from 'src/app/features/production/services/production.service';
 import { CalibrageService } from '../../service/calibrage.service';
 import { EclosionService } from 'src/app/features/production/modules/eclosion/services/eclosion.service';
 import { CycleService } from 'src/app/features/production/modules/cycle/services/cycle.service';
@@ -20,6 +17,7 @@ export class AddcalibrageComponent implements OnInit {
   aliments: any[] = []
   allAlevins: any[] = []
   alevins: any[] = []
+  id_cycle!: number;
 
 
   constructor(
@@ -54,10 +52,11 @@ export class AddcalibrageComponent implements OnInit {
   }
 
 
-  filterAlevinByCycle(){
+  async filterAlevinByCycle() {
     console.log(" Cycle change ");
-    const is_cycle = 
-    this.alevins = this.allAlevins.filter(allAlevin =>  allAlevin.cycle.id == +this.createForm.get("id_cycle")?.value!)
+    await console.log("before : ", this.alevins, this.id_cycle);
+    this.alevins = await this.allAlevins.filter(allAlevin => allAlevin.cycle.id == this.id_cycle)
+    await console.log("after : ", this.alevins, this.id_cycle);
   }
 
   getAllAlevinCycle(){

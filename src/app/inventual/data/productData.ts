@@ -18,8 +18,90 @@ export interface ProductInterfaceData {
     isFeatured?: boolean,
     selected?: boolean,
     type?: any,
-  }
-  export const productData: ProductInterfaceData[] = [
+}
+
+export interface AlevinInterfaceData {
+    id_alevin: any;
+    image: string;
+    grammage: string;
+    quantite: number;
+    prix_unitaire: number;
+    prix_total: number;
+    stock: number;
+    tax: 0;
+    discount: number;
+    subTotal: number;
+    action?: any;
+    isFeatured?: boolean,
+    selected?: boolean,
+}
+
+export interface AlimentInterfaceData {
+    id_aliment: any;
+    nom: string;
+    image: string;
+    type: string;
+    quantite: number;
+    prix_unitaire: number;
+    prix_total: number;
+    stock: number;
+    tax: 0;
+    discount: number;
+    subTotal: number;
+    action?: any;
+    isFeatured?: boolean,
+    selected?: boolean,
+}
+
+export const alevinData: AlevinInterfaceData[] = [
+    {
+        id_alevin: 1,
+        image: '../../../assets/img/product/tab-8.png',
+        grammage: "2-4",
+        quantite: 999,
+        prix_unitaire: 250,
+        prix_total: 2500,
+        stock: 1000,
+        tax: 0,
+        discount: 0,
+        subTotal: 0,
+        action: 'action',
+        isFeatured: true,
+
+    },
+    {
+        id_alevin: 2,
+        image: '../../../assets/img/product/tab-7.png',
+        grammage: "5-7",
+        quantite: 100,
+        prix_unitaire: 350,
+        prix_total: 2500,
+        stock: 1000,
+        tax: 0,
+        discount: 0,
+        subTotal: 0,
+        action: 'action',
+        isFeatured: true,
+
+    },
+    {
+        id_alevin: 1,
+        image: '../../../assets/img/product/tab-6.png',
+        grammage: "8-10",
+        quantite: 100,
+        prix_unitaire: 400,
+        prix_total: 2500,
+        stock: 1000,
+        tax: 0,
+        discount: 0,
+        subTotal: 0,
+        action: 'action',
+        isFeatured: true,
+
+    },
+];
+
+export const productData: ProductInterfaceData[] = [
     {
         id: 1,
         image: '../../../assets/img/product/tab-3.png',
@@ -252,5 +334,4 @@ export interface ProductInterfaceData {
         quantity: 1,
         type: 'addition',
     },
-  ];
-  
+];

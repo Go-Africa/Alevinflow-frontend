@@ -4,9 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable, tap, catchError } from 'rxjs';
 import { apiUrl } from 'src/environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CycleService {
 
   private apiURL = apiUrl.baseUrl

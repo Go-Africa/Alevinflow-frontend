@@ -23,7 +23,7 @@
       <div class="inventual-breadcrumb-area-inner px-0.5">
         <h5 class="text-[20px] text-heading font-bold mb-3">Ajouter Deces</h5>
         <div class="inventual-breadcrumb-area-inner-wrap">
-          <span class="text-[14px] text-body font-normal inline-block me-2">Gestion Decess</span>
+          <span class="text-[14px] text-body font-normal inline-block me-2"><a routerLink="/deces">Gestion Deces</a></span>
           <span class="text-[14px] text-body font-normal inline-block me-2">></span>
           <span class="text-[14px] text-body font-normal inline-block me-2">Ajouter Deces</span>
         </div>
@@ -88,7 +88,7 @@
               <h5 class="text-[15px] text-heading font-semibold mb-3">Cycle</h5>
               <div class="inventual-select-field-style">
                 <mat-form-field>
-                  <mat-select class="block" [placeholder]="'Selectionne le cycle'" formControlName="id_cycle"
+                  <mat-select class="block" [placeholder]="'Selectionne le cycle'" [(ngModel)]="id_cycle" formControlName="id_cycle"
                     (valueChange)="filterAlevinByCycle()">
                     <mat-option>Selectionne le cycle</mat-option>
                     <mat-option *ngFor="let cycle of cycles" value={{cycle.id}}>{{cycle.nom}}</mat-option>

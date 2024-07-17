@@ -24,10 +24,9 @@
         </div>
         <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
             <div class="inventual-breadcrumb-area-inner px-0.5">
-                <h5 class="text-[20px] text-heading font-bold mb-3">Détail du cycle : {{ cycle.nom }}</h5>
+                <h5 class="text-[20px] text-heading font-bold mb-3">Détail du cycle : {{ cycle.cycle.nom }}</h5>
                 <div class="inventual-breadcrumb-area-inner-wrap">
-                    <span class="text-[14px] text-body font-normal inline-block me-2" routerLink="/productions">Gestion
-                        de la production</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2"><a routerLink="/productions/cycles">Gestion des cycles</a></span>
                     <span class="text-[14px] text-body font-normal inline-block me-2">></span>
                     <span class="text-[14px] text-body font-normal inline-block me-2">Détail du cycle</span>
                 </div>
@@ -40,7 +39,7 @@
                         <div class="inventual-select-field row mb-5">
                             <h5 class="text-[15px] text-heading mb-3">Nom</h5>
                             <div class="inventual-input-field-style font-bold">
-                                <p>{{ cycle.nom }}</p>
+                                <p>{{ cycle.cycle.nom }}</p>
                             </div>
                         </div>
                     </div>
@@ -48,7 +47,7 @@
                         <div class="inventual-select-field mb-5">
                             <h5 class="text-[15px] text-heading mb-3">Date de début</h5>
                             <div class="inventual-input-field-style font-bold">
-                                <p>{{ cycle.date_debut | date:'dd/MM/yyyy' }}</p>
+                                <p>{{ cycle.cycle.date_debut | date:'dd/MM/yyyy' }}</p>
                             </div>
                         </div>
                     </div>
@@ -56,7 +55,7 @@
                         <div class="inventual-select-field mb-5">
                             <h5 class="text-[15px] text-heading mb-3">Date de fin</h5>
                             <div class="inventual-input-field-style font-bold">
-                                <p>{{ cycle.date_fin ? (cycle.date_fin | date:'dd/MM/yyyy' ) : "Cycle en cours"}}</p>
+                                <p>{{ cycle.cycle.date_fin ? (cycle.cycle.date_fin | date:'dd/MM/yyyy' ) : "Cycle en cours"}}</p>
                             </div>
                         </div>
                     </div>
@@ -64,7 +63,7 @@
                         <div class="inventual-select-field mb-5">
                             <h5 class="text-[15px] text-heading mb-3">Statut</h5>
                             <div class="inventual-input-field-style font-bold">
-                                <p>{{ cycle.statut }}</p>
+                                <p>{{ cycle.cycle.statut }}</p>
                             </div>
                         </div>
                     </div>
@@ -72,13 +71,14 @@
                         <div class="inventual-select-field mb-5">
                             <h5 class="text-[15px] text-heading mb-3">Durée (jours)</h5>
                             <div class="inventual-input-field-style font-bold">
-                                <p>{{ cycle.duree ? cycle.duree : 'En cours' }}</p>
+                                <p>{{ cycle.cycle.duree ? cycle.cycle.duree : 'En cours' }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-span-12">
                         <div class="inventual-material-btn pt-2.5 justify-end">
-                            <button mat-raised-button color="warn" (click)="deleteCycle()">{{cycle.statut == "ACTIF" ?
+                            <button mat-raised-button color="warn" (click)="deleteCycle()">{{cycle.cycle.statut ==
+                                "ACTIF" ?
                                 "Cloturer" : "Démarrer"}}</button>
                             <button mat-raised-button color="primary" (click)="updateCycle()">Modifier</button>
                         </div>
@@ -123,14 +123,15 @@
                                 <tr class="bg-gray-100 border border-gray-300">
                                     <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Calibre</th>
                                     <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Quantité</th>
-                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Nombre de décès</th>
+                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Nombre de décès
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="border border-gray-300">
-                                    <td class="px-4 py-3">{{0}} - {{2}} gr</td>
-                                    <td class="px-4 py-3">{{ 26 }} Kg</td>
-                                    <td class="px-4 py-3">{{ 15 }} Kg</td>
+                                <tr class="border border-gray-300" *ngFor="let alevin of cycle?.alevins">
+                                    <td class="px-4 py-3">{{alevin.alevin.grammage}} gr</td>
+                                    <td class="px-4 py-3">{{ alevin.quantite }} Kg</td>
+                                    <td class="px-4 py-3">{{ "--" }} Kg</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -189,23 +190,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="border border-gray-300">
-                                    <td class="px-4 py-3">Aliment 0.5</td>
-                                    <td class="px-4 py-3">15 Kg</td>
-                                    <td class="px-4 py-3">{{ cycle.date_fin ? (cycle.date_fin | date:'dd/MM/yyyy') :
-                                        "Cycle en cours" }}</td>
-                                </tr>
-                                <tr class="border border-gray-300">
-                                    <td class="px-4 py-3">Aliment 0.2</td>
-                                    <td class="px-4 py-3">15 Kg</td>
-                                    <td class="px-4 py-3">{{ cycle.date_fin ? (cycle.date_fin | date:'dd/MM/yyyy') :
-                                        "Cycle en cours" }}</td>
-                                </tr>
-                                <tr class="border border-gray-300">
-                                    <td class="px-4 py-3">Aliment 0.7</td>
-                                    <td class="px-4 py-3">15 Kg</td>
-                                    <td class="px-4 py-3">{{ cycle.date_fin ? (cycle.date_fin | date:'dd/MM/yyyy') :
-                                        "Cycle en cours" }}</td>
+                                <tr class="border border-gray-300" *ngFor="let aliment of cycle?.aliments">
+                                    <td class="px-4 py-3">{{aliment.nom}}</td>
+                                    <td class="px-4 py-3">{{aliment.quantite}} Kg</td>
+                                    <td class="px-4 py-3">{{ "--"}}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, tap, catchError } from 'rxjs';
+import { SaleInterfaceData } from 'src/app/inventual/data/saleData';
 import { apiUrl } from 'src/environments/environment';
-import { IResAlimentGet } from '../interfaces/aliment.interface';
+import { ICalibreGet, IResCalibreGet } from '../interfaces/calibre.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AlimentService {
+@Injectable()
+export class SaleService {
+
+  
 
   private apiURL = apiUrl.baseUrl
 
@@ -27,15 +28,15 @@ export class AlimentService {
     * @param {any}
     * @returns {any[]}
   */
-   public createAliment(value: any): Observable<any> {
+   public createSale(value: any): Observable<any> {
     const data = { ...value }
-    return this._http.post<any>(`${this.apiURL}/aliments/create`, data).pipe(
+    return this._http.post<any>(`${this.apiURL}/sales/create`, data).pipe(
       tap(users => {
-        users.status == 200 ? this._toastrService.success("Aliment crée avec succès !", "Succès") : ""
-        this.router.navigate(['/products/aliments/list'])
+        users.status == 200 ? this._toastrService.success("Sale crée avec succès !", "Succès") : ""
+        this.router.navigate(['/trading/sales'])
       }),
       catchError(error => {
-        error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
+        error.status == 404 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
         error.status == 500 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
         throw error
       })
@@ -43,12 +44,28 @@ export class AlimentService {
   }
 
     /**
+    * Récupérer la liste totale des cycle
+    * 
+    * @returns {any[]}
+  */
+    public getAllSale(): Observable<any> {
+      return this._http.get<any>(`${this.apiURL}/sales`).pipe(
+        catchError(error => {
+          error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
+          error.status == 500 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
+          error.status == 0 ? this._toastrService.error(`${error.message}`, "Echec") : ""
+          throw error
+        })
+      )
+    }
+
+     /**
     * Récupérer la liste totale d'alements
     * 
     * @returns {any[]}
   */
-    public getAllAliment(): Observable<IResAlimentGet> {
-      return this._http.get<IResAlimentGet>(`${this.apiURL}/aliments`).pipe(
+     public getAllCalibre(): Observable<IResCalibreGet> {
+      return this._http.get<IResCalibreGet>(`${this.apiURL}/alevins`).pipe(
         catchError(error => {
           error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
           error.status == 500 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -65,11 +82,11 @@ export class AlimentService {
     * @param {any}
     * @returns {any[]}
   */
-   public updateAliment(value: any, id_aliment: number): Observable<any> {
+   public updateSale(value: any, id_sale: number): Observable<any> {
     const data = { ...value }
-    return this._http.put<any>(`${this.apiURL}/aliments/update/${id_aliment}`, data).pipe(
+    return this._http.put<any>(`${this.apiURL}/sales/update/${id_sale}`, data).pipe(
       tap(users => {
-        users.status == 200 ? this._toastrService.success("Aliments mise à jour avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Sales mise à jour avec succès !", "Succès") : ""
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -84,10 +101,10 @@ export class AlimentService {
     * @param {any}
     * @returns {any[]}
   */
-  public deleteAliment(id_aliment: number): Observable<any> {
-    return this._http.delete<any>(`${this.apiURL}/aliments/delete/${id_aliment}`).pipe(
+  public deleteSale(id_sale: number): Observable<any> {
+    return this._http.delete<any>(`${this.apiURL}/sales/delete/${id_sale}`).pipe(
       tap(users => {
-        users.status == 200 ? this._toastrService.success("Aliments supprimé avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Sales supprimé avec succès !", "Succès") : ""
       }),
       catchError(error => {
         error.status == 404 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
@@ -95,7 +112,5 @@ export class AlimentService {
       })
     )
   }
-
-
-
+  
 }

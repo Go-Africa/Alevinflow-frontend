@@ -98,19 +98,14 @@ const routes: Routes = [
     loadChildren: () => import("./features/supplier/supplier.module").then(m => m.SupplierModule)
   },
   {
-    path: 'trading/purchases',
+    path: 'trading',
     canActivate: [AuthGuard],
-    loadChildren: () => import("./features/purchase/purchase.module").then(m => m.PurchaseModule)
+    loadChildren: () => import("./features/trading/trading.module").then(m => m.TradingModule)
   },
   {
     path: 'expenses',
     // canActivate: [AuthGuard],
     loadChildren: () => import("./features/expense/expense.module").then(m => m.ExpenseModule)
-  },
-  {
-    path: 'trading/sales',
-    // canActivate: [AuthGuard],
-    loadChildren: () => import("./features/sale/sale.module").then(m => m.SaleModule)
   },
   {
     path: 'products',

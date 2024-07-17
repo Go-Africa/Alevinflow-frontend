@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ProductionService } from 'src/app/features/production/services/production.service';
 import { EclosionService } from '../../services/eclosion.service';
-import { ProductService } from 'src/app/features/product/service/product.service';
+import { CycleService } from '../../../cycle/services/cycle.service';
 
 @Component({
   selector: 'app-add-eclosion',
@@ -20,10 +19,8 @@ export class AddEclosionComponent {
 
   constructor(
     private _eclosionService: EclosionService,
-    private _productionService: ProductionService,
-    private _toastrService: ToastrService,
+    private _cycleService: CycleService,
     private _formBuilder: FormBuilder,
-    private router: Router
 
   ) { }
 
@@ -43,7 +40,7 @@ export class AddEclosionComponent {
   }
 
   getAllCycle() {
-    this._productionService.getAllCycle().subscribe(res => {
+    this._cycleService.getAllCycle().subscribe(res => {
       this.cycles = res.data
     })
   }

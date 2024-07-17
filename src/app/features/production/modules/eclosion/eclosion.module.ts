@@ -7,6 +7,8 @@ import { AddEclosionComponent } from './pages/add-eclosion/add-eclosion.componen
 import { DetailEclosionComponent } from './pages/detail-eclosion/detail-eclosion.component';
 import { UpdateEclosionComponent } from './pages/update-eclosion/update-eclosion.component';
 import { SharedModule } from "../../../../shared/shared.module";
+import { EclosionService } from './services/eclosion.service';
+import { CycleService } from '../cycle/services/cycle.service';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { SharedModule } from "../../../../shared/shared.module";
     CommonModule,
     EclosionRoutingModule,
     SharedModule
-]
+],
+providers : [EclosionService, CycleService]
 })
 export class EclosionModule { }

@@ -1,8 +1,11 @@
 import { AfterViewInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProductInterfaceData, productData } from 'src/app/inventual/data/productData';
+import { AlevinInterfaceData, ProductInterfaceData, alevinData, productData } from 'src/app/inventual/data/productData';
+import { SaleService } from '../../services/sale.service';
+import { SaleInterfaceData } from 'src/app/inventual/data/saleData';
 
 @Component({
   selector: 'app-newsale',
@@ -11,16 +14,19 @@ import { ProductInterfaceData, productData } from 'src/app/inventual/data/produc
   encapsulation: ViewEncapsulation.None,
 })
 export class NewsaleComponent implements AfterViewInit {
+  createForm!: FormGroup
+  submitted: any;
   displayedColumns: string[] = [
     'name',
-    'unit',
     'price',
+    'stock',
     'quantity',
     'tax',
     'subTotal',
     'action',
   ];
-  dataSource: MatTableDataSource<ProductInterfaceData> = new MatTableDataSource<ProductInterfaceData>([]);
+  calibres!: AlevinInterfaceData[]
+  dataSource: MatTableDataSource<AlevinInterfaceData> = new MatTableDataSource<AlevinInterfaceData>([]);
   totalAmount: number = 0;
   totalDiscount: number = 0;
   totalTax: number = 0;
@@ -31,9 +37,12 @@ export class NewsaleComponent implements AfterViewInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor() {
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _saleService: SaleService
+  ) {
     // Assign an empty array to the data source initially
-    this.dataSource = new MatTableDataSource<ProductInterfaceData>([]);
+    this.dataSource = new MatTableDataSource<AlevinInterfaceData>([]);
     this.calculateSubtotals();
     this.calculateTotalAmount();
     this.calculateTotalDiscount();
@@ -44,7 +53,21 @@ export class NewsaleComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  addProductToTable(product: ProductInterfaceData) {
+  initialize() {
+    this.createForm = this._formBuilder.group({
+      date_vente: [, Validators.required],
+      statut: ['', Validators.required],
+      date_livraison: ['', [Validators.required]],
+      prix_total: ['', [Validators.required]],
+      id_client: ['', [Validators.required]],
+      id_utilisateur: ['', [Validators.required]],
+      id_facture: [],
+    });
+
+    this.getAllCalibre()
+  }
+
+  addProductToTable(product: AlevinInterfaceData) {
     this.dataSource.data = [product]; // Set the table data to contain only the selected product
     this.updateValues(); // Recalculate totals
   }
@@ -54,9 +77,9 @@ export class NewsaleComponent implements AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  calculateSubtotal(product: ProductInterfaceData): number {
-    const price = product.price || 0;
-    const quantity = product.quantity || 0;
+  calculateSubtotal(product: AlevinInterfaceData): number {
+    const price = product.prix_unitaire || 0;
+    const quantity = product.quantite || 0;
     const tax = product.tax || 0;
     const discount = product.discount || 0;
 
@@ -69,12 +92,12 @@ export class NewsaleComponent implements AfterViewInit {
 
   calculateSubtotals() {
     this.dataSource.data.forEach((product) => {
-      product.subTotal = this.calculateSubtotal(product);
+      product.prix_total = this.calculateSubtotal(product);
     });
   }
   calculateTotalAmount() {
     this.totalAmount = this.dataSource.data.reduce(
-      (acc, product) => acc + product.price * product.quantity,
+      (acc, product) => acc + product.prix_unitaire * product.quantite,
       0
     );
   }
@@ -82,7 +105,7 @@ export class NewsaleComponent implements AfterViewInit {
   calculateTotalDiscount() {
     this.totalDiscount = this.dataSource.data.reduce(
       (acc, product) =>
-        acc + (product.discount / 100) * product.price * product.quantity,
+        acc + (product.discount / 100) * product.prix_unitaire * product.quantite,
       0
     );
   }
@@ -90,19 +113,21 @@ export class NewsaleComponent implements AfterViewInit {
   calculateTotalTax() {
     this.totalTax = this.dataSource.data.reduce(
       (acc, product) =>
-        acc + (product.tax / 100) * product.price * product.quantity,
+        acc + (product.tax / 100) * product.prix_unitaire * product.quantite,
       0
     );
   }
 
-  increaseQuantity(product: ProductInterfaceData) {
-    product.quantity += 1;
-    this.updateValues();
+  increaseQuantity(product: AlevinInterfaceData) {
+    if (product.quantite < product.stock) {
+      product.quantite += 1;
+      this.updateValues();
+    }
   }
 
-  decreaseQuantity(product: ProductInterfaceData) {
-    if (product.quantity > 1) {
-      product.quantity -= 1;
+  decreaseQuantity(product: AlevinInterfaceData) {
+    if (product.quantite > 1) {
+      product.quantite -= 1;
       this.updateValues();
     }
   }
@@ -113,7 +138,7 @@ export class NewsaleComponent implements AfterViewInit {
     this.calculateTotalDiscount();
     this.calculateTotalTax();
   }
-  removeProduct(product: ProductInterfaceData) {
+  removeProduct(product: AlevinInterfaceData) {
     const index = this.dataSource.data.indexOf(product);
     if (index >= 0) {
       this.dataSource.data.splice(index, 1);
@@ -122,19 +147,21 @@ export class NewsaleComponent implements AfterViewInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initialize()
+  }
 
-  searchResults: ProductInterfaceData[] = [];
+  searchResults: AlevinInterfaceData[] = [];
 
   updateSearchResults(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-    this.searchResults = productData.filter((product) =>
-      product.name.toLowerCase().includes(filterValue)
+    this.searchResults = this.calibres.filter((product) =>
+      product.grammage.toLowerCase().includes(filterValue)
     );
   }
 
   // Function to toggle selected state of a product
-  toggleSelected(product: ProductInterfaceData) {
+  toggleSelected(product: AlevinInterfaceData) {
     product.selected = !product.selected;
     if (product.selected) {
       // Add the product to the table data if selected
@@ -170,4 +197,47 @@ export class NewsaleComponent implements AfterViewInit {
     }
   }
   //sidebar menu activation end
+
+  getAllCalibre() {
+    this._saleService.getAllCalibre().subscribe(res => {
+      this.calibres = res.data.map(calibre => ({
+        id_alevin: calibre.id,
+        image: 'assets/img/product/tab-8.png',
+        grammage: calibre.grammage,
+        quantite: 0,
+        prix_unitaire: calibre.prix_unitaire,
+        prix_total: 0,
+        stock: calibre.stock,
+        tax: 0,
+        discount: 0,
+        subTotal: 0,
+        action: 'action',
+        isFeatured: false,
+        selected: false
+      }));
+    })
+  }
+
+  public createVente() {
+    const grandTotal = this.totalAmount - this.totalDiscount + this.totalTax + this.shippingValue
+    this.createForm.get("prix_total")?.setValue(grandTotal)
+    this.submitted = true;
+    console.log("Values : ", this.createForm.value);
+    console.log("Alevins : ", this.dataSource.data);
+
+
+    if (!this.createForm.valid) {
+      return ""
+    }
+
+
+
+    const datas = { ...this.createForm.value, alevins: this.dataSource.data }
+    this._saleService.createSale(datas).subscribe(res => {
+
+    })
+    return ""
+  }
+
+
 }

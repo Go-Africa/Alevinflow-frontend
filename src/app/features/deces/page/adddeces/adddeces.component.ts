@@ -1,14 +1,6 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { PurchaseInterfaceData, purchaseData } from 'src/app/shared/utils/data/purchaseData';
+import { Component, OnInit } from '@angular/core';
 import { DecesService } from '../../service/deces.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { ProductionService } from 'src/app/features/production/services/production.service';
 import { CycleService } from 'src/app/features/production/modules/cycle/services/cycle.service';
 import { GeniteurService } from 'src/app/features/product/modules/geniteur/services/geniteur.service';
 
@@ -25,6 +17,7 @@ export class AdddecesComponent implements OnInit {
   geniteurs: any[] = []
   allAlevins: any[] = []
   alevins: any[] = []
+  id_cycle!: number;
 
 
   constructor(
@@ -65,9 +58,11 @@ export class AdddecesComponent implements OnInit {
     })
   }
 
-  filterAlevinByCycle(){
+  async filterAlevinByCycle() {
     console.log(" Cycle change ");
-    this.alevins = this.allAlevins.filter(allAlevin =>  allAlevin.cycle.id == +this.createForm.get("id_cycle")?.value!)
+    await console.log("before : ", this.alevins, this.id_cycle);
+    this.alevins = await this.allAlevins.filter(allAlevin => allAlevin.cycle.id == this.id_cycle)
+    await console.log("after : ", this.alevins, this.id_cycle);
   }
 
   getAllAlevinCycle(){
