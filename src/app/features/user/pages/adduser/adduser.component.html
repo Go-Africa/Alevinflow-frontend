@@ -70,8 +70,8 @@
               <div class="inventual-select-field-style">
                 <mat-form-field>
                   <mat-select class="block" [placeholder]="'Select Role'" formControlName="id_role">
-                    <mat-option value="ADMIN">Administrateur</mat-option>
-                    <mat-option value="PERSONEL">Personnel de la ferme</mat-option>
+                    <mat-option>Slectionnez un role</mat-option>
+                    <mat-option *ngFor="let role of roles" value={{role.id}}>{{role.nom}}</mat-option>
                   </mat-select>
                 </mat-form-field>
                 <small>

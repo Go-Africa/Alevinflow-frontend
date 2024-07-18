@@ -111,7 +111,7 @@
                   <mat-select class="block" [placeholder]="'Select Calibre'" formControlName="id_alevinCycle">
                     <mat-option>Select Calibre</mat-option>
                     <mat-option *ngFor="let alevin of alevins"
-                      value={{alevin.id}}>{{alevin.alevin.grammage}}</mat-option>
+                      [value]="alevin.id">{{alevin.alevin.grammage}}</mat-option>
                   </mat-select>
                 </mat-form-field>
                 <small>

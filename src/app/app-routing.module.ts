@@ -122,6 +122,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import("./features/user/user.module").then(m => m.UserModule)
   },
+  {
+    path: 'roles',
+    loadChildren: () => import("./features/role/role.module").then(m => m.RoleModule)
+  },
   
   
 

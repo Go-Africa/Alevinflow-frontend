@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'eclosions',
     loadChildren: () => import("./modules/eclosion/eclosion.module").then(m => m.EclosionModule)
   },
+  {
+    path: 'fecondations',
+    loadChildren: () => import("./modules/fecondation/fecondation.module").then(m => m.FecondationModule)
+  },
 ];
 
 @NgModule({

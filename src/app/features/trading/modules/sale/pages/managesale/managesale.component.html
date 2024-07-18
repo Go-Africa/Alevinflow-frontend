@@ -116,11 +116,11 @@
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Statut </th>
                             <td mat-cell *matCellDef="let row">
                                 <div>
-                                    <span *ngIf="row.statut === 'Completed'"
-                                        class="badge badge-success">Completed</span>
-                                    <span *ngIf="row.statut === 'Ordered'" class="badge badge-teal">Ordered</span>
-                                    <span *ngIf="row.statut === 'Draft'" class="badge badge-warning">Draft</span>
-                                    <span *ngIf="row.statut !== 'Draft' && row.statut !== 'Ordered' && row.statut !== 'Completed'" class="badge badge-danger">Draft</span>
+                                    <span *ngIf="row.statut === 'Paid'"
+                                        class="badge badge-success">Payé</span>
+                                    <span *ngIf="row.statut === 'Unpaid'" class="badge badge-teal">Non payé</span>
+                                    <span *ngIf="row.statut === 'Draft'" class="badge badge-warning">Brouillon</span>
+                                    <span *ngIf="row.statut !== 'Draft' && row.statut !== 'Paid' && row.statut !== 'Unpaid'" class="badge badge-danger">Autre</span>
                                 </div>
                             </td>
                         </ng-container>
@@ -166,6 +166,10 @@
                                         <button mat-menu-item>
                                             <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
                                             <span>Modifier la vente</span>
+                                        </button>
+                                        <button mat-menu-item *ngIf="row.statut == 'Unpaid'">
+                                            <img src="../../../../../assets/img/icon/action-2.png" alt="icon not found">
+                                            <span>Marquer comme payé</span>
                                         </button>
                                         <button mat-menu-item (click)="invoice()">
                                             <img src="../../../../../assets/img/icon/action-3.png" alt="icon not found">

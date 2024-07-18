@@ -65,22 +65,6 @@
             </div>
           </div>
           <div class="col-span-4 md:col-span-6 sm:col-span-12">
-            <div class="inventual-select-field mb-5">
-              <h5 class="text-[15px] text-heading font-semibold mb-3">Quantité</h5>
-              <div class="inventual-input-field-style">
-                <mat-form-field class="w-full" [floatLabel]="'always'">
-                  <mat-label class="hidden"></mat-label>
-                  <input type="number" matInput [placeholder]="'Quantité'" formControlName="stock">
-                </mat-form-field>
-                <small>
-                  <div class="text-danger mt-1" *ngIf="createForm.get('stock')?.invalid && (createForm.get('stock')?.dirty || submitted || createForm.get('stock')?.touched)">
-                      La quantité est requise !
-                  </div>
-              </small>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-4 md:col-span-6 sm:col-span-12">
               <div class="inventual-select-field mb-5">
                 <h5 class="text-[15px] text-heading font-semibold mb-3">Catégorie</h5>
                 <div class="inventual-select-field-style">

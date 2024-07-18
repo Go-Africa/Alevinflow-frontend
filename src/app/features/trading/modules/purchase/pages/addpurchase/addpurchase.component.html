@@ -58,7 +58,7 @@
                                 <mat-form-field>
                                     <mat-select class="block" [placeholder]="'Selectionnez un fournisseur'" formControlName="id_fournisseur">
                                         <mat-option>Selctionnez un fournisseur</mat-option>
-                                        <mat-option *ngFor="let supplier of suppliers" value={{supplier.id}}>{{supplier.nom}}</mat-option>
+                                        <mat-option *ngFor="let supplier of suppliers" value={{supplier.id}}>{{supplier.nom ? supplier.nom : supplier.nom_entreprise}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                                 <small>

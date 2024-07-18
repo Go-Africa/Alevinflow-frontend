@@ -31,7 +31,6 @@ export class AddalimentComponent implements OnInit {
     this.createForm = this._formBuilder.group({
       nom: ['', Validators.required],
       type: ['', Validators.required],
-      stock: [, [Validators.required]],
       categorie: ['', [Validators.required]],
       prix_unitaire: [, [Validators.required]], // Initialisé à false par défaut
     });

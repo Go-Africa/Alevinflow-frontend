@@ -3,9 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, tap, catchError } from 'rxjs';
-import { SaleInterfaceData } from 'src/app/inventual/data/saleData';
+import { IResAlimentGet } from 'src/app/features/product/modules/aliment/interfaces/aliment.interface';
 import { apiUrl } from 'src/environments/environment';
-import { ICalibreGet, IResCalibreGet } from '../interfaces/calibre.interface';
 
 @Injectable()
 export class SaleService {
@@ -50,22 +49,6 @@ export class SaleService {
   */
     public getAllSale(): Observable<any> {
       return this._http.get<any>(`${this.apiURL}/sales`).pipe(
-        catchError(error => {
-          error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
-          error.status == 500 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
-          error.status == 0 ? this._toastrService.error(`${error.message}`, "Echec") : ""
-          throw error
-        })
-      )
-    }
-
-     /**
-    * Récupérer la liste totale d'alements
-    * 
-    * @returns {any[]}
-  */
-     public getAllCalibre(): Observable<IResCalibreGet> {
-      return this._http.get<IResCalibreGet>(`${this.apiURL}/alevins`).pipe(
         catchError(error => {
           error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
           error.status == 500 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""

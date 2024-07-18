@@ -57,14 +57,8 @@
                             <div class="inventual-select-field-style">
                                 <mat-form-field>
                                     <mat-select class="block" [placeholder]="'Selectionnez un client'" formControlName="id_client">
-                                        <mat-option value={{1}}>Shane Watson</mat-option>
-                                        <mat-option value={{2}}>David Warner</mat-option>
-                                        <mat-option value={{3}}>David Miller</mat-option>
-                                        <mat-option value="language-4">Hashim Amla</mat-option>
-                                        <mat-option value="language-5">Imran Tahir</mat-option>
-                                        <mat-option value="language-6">JP Duminy</mat-option>
-                                        <mat-option value="language-6">Kagiso Rabada</mat-option>
-                                        <mat-option value="language-6">Stuart Broad</mat-option>
+                                        <mat-option>Selectionnez le client</mat-option>
+                                        <mat-option *ngFor="let customer of customers" value={{customer.id}}>{{customer.nom ? customer.nom : customer.nom_entreprise}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                                 <small>
@@ -83,14 +77,8 @@
                             <div class="inventual-select-field-style">
                                 <mat-form-field>
                                     <mat-select class="block" [placeholder]="'Selectionnez un vendeur'" formControlName="id_utilisateur">
-                                        <mat-option value={{1}}>Shane Watson</mat-option>
-                                        <mat-option value={{2}}>David Warner</mat-option>
-                                        <mat-option value={{3}}>David Miller</mat-option>
-                                        <mat-option value="language-4">Hashim Amla</mat-option>
-                                        <mat-option value="language-5">Imran Tahir</mat-option>
-                                        <mat-option value="language-6">JP Duminy</mat-option>
-                                        <mat-option value="language-6">Kagiso Rabada</mat-option>
-                                        <mat-option value="language-6">Stuart Broad</mat-option>
+                                        <mat-option>Selectionnez l'utlisateur</mat-option>
+                                        <mat-option *ngFor="let user of users" value={{user.id}}>{{user.nom}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                                 <small>
@@ -222,8 +210,8 @@
                             <div class="inventual-select-field-style">
                                 <mat-form-field>
                                     <mat-select class="block" [placeholder]="'Statut de la vente'" formControlName="statut">
-                                        <mat-option value="Completed">Complète</mat-option>
-                                        <mat-option value="Ordered">Incomplète</mat-option>
+                                        <mat-option value="Paid">Payé</mat-option>
+                                        <mat-option value="Unpaid">Non payé</mat-option>
                                         <mat-option value="Draft">Brouillon</mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -241,7 +229,7 @@
                             <h5 class="text-[15px] text-heading font-semibold mb-3">Date de livraison</h5>
                             <div class="inventual-select-field-style">
                                 <mat-form-field appearance="fill" floatLabel="always">
-                                    <mat-label class="hidden">Choose a date</mat-label>
+                                    <mat-label class="hidden">Choisir une date</mat-label>
                                     <input matInput [matDatepicker]="picke" [placeholder]="'DD/MM/YYYY'" formControlName="date_livraison">
                                     <mat-datepicker-toggle matSuffix [for]="picke"></mat-datepicker-toggle>
                                     <mat-datepicker #picke></mat-datepicker>
@@ -249,7 +237,7 @@
                                 <small>
                                     <div class="text-danger mt-1"
                                       *ngIf="createForm.get('date_livraison')?.invalid && (createForm.get('date_livraison')?.dirty || submitted || createForm.get('date_livraison')?.touched)">
-                                      La dat de livraison est requise !
+                                      La date de livraison est requise !
                                     </div>
                                   </small>
                             </div>

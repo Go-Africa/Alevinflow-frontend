@@ -27,7 +27,7 @@ export class UserService {
     return this._http.post<any>(`${this.apiURL}/users/create`, data).pipe(
       tap(users => {
         users.status == 200 ? this._toastrService.success("Utilisateur crée avec succès !", "Succès") : ""
-        this.router.navigate(['/suppliers'])
+        this.router.navigate(['/users'])
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""

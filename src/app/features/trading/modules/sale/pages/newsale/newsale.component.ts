@@ -6,6 +6,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AlevinInterfaceData, ProductInterfaceData, alevinData, productData } from 'src/app/inventual/data/productData';
 import { SaleService } from '../../services/sale.service';
 import { SaleInterfaceData } from 'src/app/inventual/data/saleData';
+import { CalibreService } from 'src/app/features/product/modules/calibre/service/calibre.service';
+import { CustomerService } from 'src/app/features/customer/services/customer.service';
+import { UserService } from 'src/app/features/user/services/user.service';
 
 @Component({
   selector: 'app-newsale',
@@ -32,6 +35,9 @@ export class NewsaleComponent implements AfterViewInit {
   totalTax: number = 0;
   shippingValue: number = 0;
 
+  customers: any[] = []
+  users: any[] = []
+
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
@@ -39,7 +45,10 @@ export class NewsaleComponent implements AfterViewInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _saleService: SaleService
+    private _saleService: SaleService,
+    private _calibreService: CalibreService,
+    private _customerService: CustomerService,
+    private _userService: UserService,
   ) {
     // Assign an empty array to the data source initially
     this.dataSource = new MatTableDataSource<AlevinInterfaceData>([]);
@@ -65,6 +74,8 @@ export class NewsaleComponent implements AfterViewInit {
     });
 
     this.getAllCalibre()
+    this.getAllCustomer()
+    this.getAllUser()
   }
 
   addProductToTable(product: AlevinInterfaceData) {
@@ -199,7 +210,7 @@ export class NewsaleComponent implements AfterViewInit {
   //sidebar menu activation end
 
   getAllCalibre() {
-    this._saleService.getAllCalibre().subscribe(res => {
+    this._calibreService.getAllCalibre().subscribe(res => {
       this.calibres = res.data.map(calibre => ({
         id_alevin: calibre.id,
         image: 'assets/img/product/tab-8.png',
@@ -215,6 +226,18 @@ export class NewsaleComponent implements AfterViewInit {
         isFeatured: false,
         selected: false
       }));
+    })
+  }
+
+  getAllCustomer() {
+    this._customerService.getAllCustomer().subscribe(res => {
+      this.customers = res.data
+    })
+  }
+
+  getAllUser() {
+    this._userService.getAllUser().subscribe(res => {
+      this.users = res.data
     })
   }
 

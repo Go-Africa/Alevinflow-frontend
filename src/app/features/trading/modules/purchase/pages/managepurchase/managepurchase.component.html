@@ -119,7 +119,7 @@
 
                         <ng-container matColumnDef="fournisseur">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Fournisseur </th>
-                            <td mat-cell *matCellDef="let row"> {{row?.fournisseur?.nom}} </td>
+                            <td mat-cell *matCellDef="let row"> {{row?.fournisseur?.nom ? row?.fournisseur?.nom : row?.fournisseur?.nom_entreprise}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="vendeur">

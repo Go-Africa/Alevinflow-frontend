@@ -66,23 +66,7 @@
               </div>
             </div>
           </div>
-          <div class="col-span-4 md:col-span-6 sm:col-span-12">
-            <div class="inventual-select-field mb-5">
-              <h5 class="text-[15px] text-heading font-semibold mb-3">Quantité</h5>
-              <div class="inventual-input-field-style">
-                <mat-form-field class="w-full" [floatLabel]="'always'">
-                  <mat-label class="hidden"></mat-label>
-                  <input type="number" matInput [placeholder]="'Quantité'" formControlName="quantite_aliment">
-                </mat-form-field>
-                <small>
-                  <div class="text-danger mt-1"
-                    *ngIf="createForm.get('quantite_aliment')?.invalid && (createForm.get('quantite_aliment')?.dirty || submitted || createForm.get('quantite_aliment')?.touched)">
-                    La quantité est requise !
-                  </div>
-                </small>
-              </div>
-            </div>
-          </div>
+         
           <div class="col-span-4 md:col-span-6 sm:col-span-12">
             <div class="inventual-select-field mb-5">
               <h5 class="text-[15px] text-heading font-semibold mb-3">Cycle</h5>
@@ -125,6 +109,25 @@
           </div>
           <div class="col-span-4 md:col-span-6 sm:col-span-12">
             <div class="inventual-select-field mb-5">
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Lot de Géniteur</h5>
+              <div class="inventual-select-field-style">
+                <mat-form-field>
+                  <mat-select class="block" [placeholder]="'Select Role'" formControlName="id_geniteur">
+                    <mat-option>Selectionnez le lot de géniteur</mat-option>
+                    <mat-option *ngFor="let geniteur of geniteurs" value={{geniteur.id}}>{{geniteur.nom}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <small>
+                  <div class="text-danger mt-1"
+                    *ngIf="createForm.get('id_geniteur')?.invalid && (createForm.get('id_geniteur')?.dirty || submitted || createForm.get('id_geniteur')?.touched)">
+                    Le lot est requis !
+                  </div>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-5">
               <h5 class="text-[15px] text-heading font-semibold mb-3">Aliment</h5>
               <div class="inventual-select-field-style">
                 <mat-form-field>
@@ -144,23 +147,22 @@
           </div>
           <div class="col-span-4 md:col-span-6 sm:col-span-12">
             <div class="inventual-select-field mb-5">
-              <h5 class="text-[15px] text-heading font-semibold mb-3">Lot de Géniteur</h5>
-              <div class="inventual-select-field-style">
-                <mat-form-field>
-                  <mat-select class="block" [placeholder]="'Select Role'" formControlName="id_geniteur">
-                    <mat-option value="LOt 1">Lot 1</mat-option>
-                    <mat-option value="LOt 2">Lot 2</mat-option>
-                  </mat-select>
+              <h5 class="text-[15px] text-heading font-semibold mb-3">Quantité</h5>
+              <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                  <mat-label class="hidden"></mat-label>
+                  <input type="number" matInput [placeholder]="'Quantité'" formControlName="quantite_aliment">
                 </mat-form-field>
                 <small>
                   <div class="text-danger mt-1"
-                    *ngIf="createForm.get('id_geniteur')?.invalid && (createForm.get('id_geniteur')?.dirty || submitted || createForm.get('id_geniteur')?.touched)">
-                    Le lot est requis !
+                    *ngIf="createForm.get('quantite_aliment')?.invalid && (createForm.get('quantite_aliment')?.dirty || submitted || createForm.get('quantite_aliment')?.touched)">
+                    La quantité est requise !
                   </div>
                 </small>
               </div>
             </div>
           </div>
+          
           <div class="col-span-12">
             <div class="inventual-material-btn pt-2.5 justify-end">
               <button mat-raised-button color="primary" (click)="createNutrition()">Ajouter nutrition</button>

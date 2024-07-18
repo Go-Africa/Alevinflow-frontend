@@ -7,6 +7,7 @@ import { ListnutritionComponent } from './page/listnutrition/listnutrition.compo
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NutritionService } from './service/nutrition.service';
 import { CycleService } from '../production/modules/cycle/services/cycle.service';
+import { GeniteurService } from '../product/modules/geniteur/services/geniteur.service';
 
 
 @NgModule({
@@ -19,6 +20,6 @@ import { CycleService } from '../production/modules/cycle/services/cycle.service
     NutritionRoutingModule, 
     SharedModule
   ],
-  providers: [NutritionService, CycleService]
+  providers: [NutritionService, CycleService, GeniteurService]
 })
 export class NutritionModule { }

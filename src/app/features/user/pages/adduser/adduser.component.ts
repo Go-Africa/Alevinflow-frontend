@@ -3,6 +3,8 @@ import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RoleService } from 'src/app/features/role/services/role.service';
+import { IRoleGet } from 'src/app/features/role/interfaces/role.interface';
 
 @Component({
   selector: 'app-adduser',
@@ -13,17 +15,18 @@ import { Router } from '@angular/router';
 export class AdduserComponent implements OnInit {
 
   createForm!: FormGroup
-submitted: any;
+  submitted: any;
+
+  roles: IRoleGet[] = []
 
   constructor(
-    private _userService: UserService,
-    private _toastrService: ToastrService,
     private _formBuilder: FormBuilder,
-    private router: Router
+    private _userService: UserService,
+    private _roleService: RoleService,
 
   ) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.initialize()
   }
 
@@ -39,6 +42,8 @@ submitted: any;
       statut: ['ACTIF', [Validators.required]], // Initialisé à false par défaut
       id_role: ['', [Validators.required]],
     });
+
+    this.getAllRole()
   }
 
 
@@ -66,5 +71,11 @@ submitted: any;
   }
   //sidebar menu activation end
   hide = true;
+
+  getAllRole(){
+    this._roleService.getAllRole().subscribe(roles => {
+      this.roles = roles.data
+    })
+  }
 
 }

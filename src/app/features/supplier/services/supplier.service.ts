@@ -28,7 +28,7 @@ export class SupplierService {
     return this._http.post<any>(`${this.apiURL}/suppliers/create`, data).pipe(
       tap(users => {
         users.status == 200 ? this._toastrService.success("Fournisseur crée avec succès !", "Succès") : ""
-        this.router.navigate(['/suppliers'])
+        this.router.navigate(['/authors/suppliers'])
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""

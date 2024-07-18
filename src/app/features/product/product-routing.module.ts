@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'geniteurs',
     loadChildren: () => import("./modules/geniteur/geniteur.module").then(m => m.GeniteurModule)
   },
+  {
+    path: 'calibres',
+    loadChildren: () => import("./modules/calibre/calibre.module").then(m => m.CalibreModule)
+  },
 ];
 
 @NgModule({

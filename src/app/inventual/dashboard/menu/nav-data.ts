@@ -39,6 +39,20 @@ export const navbarData: INavbarData[] = [
           }
         ],
       },
+      {
+        routeLink: 'products/calibres',
+        label: 'Calibre',
+        items: [
+          {
+            routeLink: '/products/calibres/add',
+            label: 'Ajouter un calibre',
+          },
+          {
+            routeLink: '/products/calibres/list',
+            label: 'Liste des calibres',
+          }
+        ],
+      },
     ],
   },
   {
@@ -71,6 +85,20 @@ export const navbarData: INavbarData[] = [
           {
             routeLink: '/productions/eclosions/list',
             label: 'Liste des éclosions',
+          }
+        ],
+      },
+      {
+        routeLink: 'productions/fecondations',
+        label: 'Fécondation',
+        items: [
+          {
+            routeLink: '/productions/fecondations/add',
+            label: 'Ajouter une fécondations',
+          },
+          {
+            routeLink: '/productions/fecondations/list',
+            label: 'Liste des fécondations',
           }
         ],
       }
@@ -206,8 +234,21 @@ export const navbarData: INavbarData[] = [
       },
     ],
   },
- 
-  
+  {
+    routeLink: 'roles',
+    icon: 'fal fa-user',
+    label: 'Roles',
+    items: [
+      {
+        routeLink: '/roles/add',
+        label: 'Ajouter un role',
+      },
+      {
+        routeLink: '/roles/list',
+        label: 'Liste des roles',
+      },
+    ],
+  },
   {
     routeLink: 'report',
     icon: 'fal fa-inventory',

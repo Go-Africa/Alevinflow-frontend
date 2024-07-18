@@ -27,7 +27,7 @@ export class CustomerService {
     return this._http.post<any>(`${this.apiURL}/customers/create`, data).pipe(
       tap(customer => {
         customer.status == 200 ? this._toastrService.success(`${customer.message}`, "Succès") : ""
-        this.router.navigate(['/customers'])
+        this.router.navigate(['/authors/customers'])
       }),
       catchError(error => {
         error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""

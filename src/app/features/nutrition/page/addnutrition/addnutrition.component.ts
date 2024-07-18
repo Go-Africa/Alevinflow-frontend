@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NutritionService } from '../../service/nutrition.service';
 import { CycleService } from 'src/app/features/production/modules/cycle/services/cycle.service';
+import { GeniteurService } from 'src/app/features/product/modules/geniteur/services/geniteur.service';
 
 @Component({
   selector: 'app-addnutrition',
@@ -16,12 +17,15 @@ export class AddnutritionComponent implements OnInit {
   aliments: any[] = []
   allAlevins: any[] = []
   alevins: any[] = []
+  geniteurs: any = []
+
   id_cycle!: number;
 
 
   constructor(
     private _nutritionServeice: NutritionService,
     private _cycleService: CycleService,
+    private _geniteurService: GeniteurService,
     private _formBuilder: FormBuilder,
 
   ) { }
@@ -42,6 +46,7 @@ export class AddnutritionComponent implements OnInit {
     });
 
     this.getAllCycle()
+    this.getAllGeniteur()
     this.getAllAliment()
     this.getAllAlevinCycle()
   }
@@ -49,6 +54,12 @@ export class AddnutritionComponent implements OnInit {
   getAllCycle() {
     this._cycleService.getAllCycle().subscribe(res => {
       this.cycles = res.data
+    })
+  }
+
+  getAllGeniteur() {
+    this._geniteurService.getAllGeniteur().subscribe(res => {
+      this.geniteurs = res.data
     })
   }
 
