@@ -9,6 +9,7 @@ import { UpdateEclosionComponent } from './pages/update-eclosion/update-eclosion
 import { SharedModule } from "../../../../shared/shared.module";
 import { EclosionService } from './services/eclosion.service';
 import { CycleService } from '../cycle/services/cycle.service';
+import { CalibreService } from 'src/app/features/product/modules/calibre/service/calibre.service';
 
 
 @NgModule({
@@ -23,6 +24,6 @@ import { CycleService } from '../cycle/services/cycle.service';
     EclosionRoutingModule,
     SharedModule
 ],
-providers : [EclosionService, CycleService]
+providers : [EclosionService, CycleService, CalibreService]
 })
 export class EclosionModule { }

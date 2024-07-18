@@ -93,27 +93,19 @@
                     <div class="col-span-12">
                         <h4 class="text-[18px] text-heading font-bold mb-5">Informations sur les Alevins</h4>
                     </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                    <div class="col-span-6 md:col-span-6 sm:col-span-12">
                         <div class="inventual-select-field row mb-5">
                             <h5 class="text-[15px] text-heading mb-3">Quantité total</h5>
                             <div class="inventual-input-field-style font-bold">
-                                <p>{{ 10000 }}</p>
+                                <p>{{ totalAlevin }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Poids total</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ 720 }}Kg</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                    <div class="col-span-6 md:col-span-6 sm:col-span-12">
                         <div class="inventual-select-field mb-5">
                             <h5 class="text-[15px] text-heading mb-3">Quantité décédé</h5>
                             <div class="inventual-input-field-style font-bold">
-                                <p>{{ 50 }}Kg</p>
+                                <p>{{ 0 }}Kg</p>
                             </div>
                         </div>
                     </div>
@@ -131,7 +123,7 @@
                                 <tr class="border border-gray-300" *ngFor="let alevin of cycle?.alevins">
                                     <td class="px-4 py-3">{{alevin.alevin.grammage}} gr</td>
                                     <td class="px-4 py-3">{{ alevin.quantite }} Kg</td>
-                                    <td class="px-4 py-3">{{ "--" }} Kg</td>
+                                    <td class="px-4 py-3">{{ 0 }} Kg</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -146,29 +138,23 @@
                     <div class="col-span-12">
                         <h4 class="text-[18px] text-heading font-bold mb-5">Informations sur les géniteurs</h4>
                     </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field row mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Date d'intervention</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ cycle.date_debut | date:'dd/MM/yyyy' }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Poids des géniteurs</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ 150 }}Kg</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="inventual-select-field mb-5">
-                            <h5 class="text-[15px] text-heading mb-3">Poids des oeufs</h5>
-                            <div class="inventual-input-field-style font-bold">
-                                <p>{{ 3 }}Kg</p>
-                            </div>
-                        </div>
+                    <div class="col-span-12 mt-10">
+                        <table class="w-full border border-gray-300">
+                            <thead>
+                                <tr class="bg-gray-100 border border-gray-300">
+                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Geniteur</th>
+                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Poids des géniteurs</th>
+                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Poids oeufs</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border border-gray-300" *ngFor="let geniteur of cycle?.geniteurs">
+                                    <td class="px-4 py-3">{{geniteur?.geniteur}} gr</td>
+                                    <td class="px-4 py-3">{{geniteur?.totalPoidsMales + geniteur?.totalPoidsFemelles}} Kg</td>
+                                    <td class="px-4 py-3">{{ geniteur?.totalPoidsOeufs  }} Kg</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -186,14 +172,12 @@
                                 <tr class="bg-gray-100 border border-gray-300">
                                     <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Nom</th>
                                     <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Quantité</th>
-                                    <th class="px-4 py-3 text-left text-[15px] text-heading font-bold">Date de fin</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="border border-gray-300" *ngFor="let aliment of cycle?.aliments">
                                     <td class="px-4 py-3">{{aliment.nom}}</td>
                                     <td class="px-4 py-3">{{aliment.quantite}} Kg</td>
-                                    <td class="px-4 py-3">{{ "--"}}</td>
                                 </tr>
                             </tbody>
                         </table>

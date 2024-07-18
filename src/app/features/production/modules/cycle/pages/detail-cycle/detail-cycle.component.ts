@@ -11,19 +11,17 @@ import { CycleService } from '../../services/cycle.service';
 })
 export class DetailCycleComponent {
   @ViewChild('updateModal') updateModal!: TemplateRef<any>;
-  
+
   createForm!: FormGroup
   submitted: any;
   cycle: any;
+  totalAlevin: number = 0
   idCycle!: number;
 
 
   constructor(
     private _route: ActivatedRoute,
     private _cycleService: CycleService,
-    private _toastrService: ToastrService,
-    private _formBuilder: FormBuilder,
-    private router: Router
 
   ) { }
 
@@ -34,6 +32,7 @@ export class DetailCycleComponent {
   initialize() {
     this._route.data.subscribe(({ cycle }) => {
       this.cycle = cycle.data;
+      this.totalAlevin = this.calculeTotal(this.cycle?.alevins)
     })
   }
 
@@ -41,6 +40,14 @@ export class DetailCycleComponent {
     this._cycleService.getCycleById(this.idCycle).subscribe(res => {
       this.cycle = res
     })
+  }
+
+  calculeTotal(alevins: any[]){
+    let total = 0
+    alevins.map(res => {
+      total += res.quantite
+    })
+    return total
   }
 
   updateAlevin() {
@@ -64,13 +71,13 @@ export class DetailCycleComponent {
 
 
 
-openUpdateModal() {
-  this.isModalOpen = true;
-}
+  openUpdateModal() {
+    this.isModalOpen = true;
+  }
 
-closeModal() {
-  this.isModalOpen = false;
-}
+  closeModal() {
+    this.isModalOpen = false;
+  }
 
 
 

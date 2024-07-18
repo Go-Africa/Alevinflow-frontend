@@ -5,10 +5,10 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable, tap, catchError } from 'rxjs';
 import { apiUrl } from 'src/environments/environment';
 
-@Injectable()
-export class EclosionService {
-
-  
+@Injectable({
+  providedIn: 'root'
+})
+export class FecondationService {
 
   private apiURL = apiUrl.baseUrl
 
@@ -26,15 +26,15 @@ export class EclosionService {
     * @param {any}
     * @returns {any[]}
   */
-   public createEclosion(value: any): Observable<any> {
+   public createFecondation(value: any): Observable<any> {
     const data = { ...value }
-    return this._http.post<any>(`${this.apiURL}/alevincycles/create`, data).pipe(
+    return this._http.post<any>(`${this.apiURL}/fecondations/create`, data).pipe(
       tap(users => {
-        users.status == 200 ? this._toastrService.success("Eclosion crée avec succès !", "Succès") : ""
-        this.router.navigate(['/productions/eclosions'])
+        users.status == 200 ? this._toastrService.success("Fecondation crée avec succès !", "Succès") : ""
+        this.router.navigate(['/productions/fecondations'])
       }),
       catchError(error => {
-        error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
+        error.status == 404 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
         error.status == 500 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
         throw error
       })
@@ -46,10 +46,10 @@ export class EclosionService {
     * 
     * @returns {any[]}
   */
-    public getAllEclosion(): Observable<any> {
-      return this._http.get<any>(`${this.apiURL}/alevincycles`).pipe(
+    public getAllFecondation(): Observable<any> {
+      return this._http.get<any>(`${this.apiURL}/fecondations`).pipe(
         catchError(error => {
-          error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
+          error.status == 404 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
           error.status == 500 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
           error.status == 0 ? this._toastrService.error(`${error.message}`, "Echec") : ""
           throw error
@@ -63,14 +63,14 @@ export class EclosionService {
     * @param {any}
     * @returns {any[]}
   */
-   public updateEclosion(value: any, id_eclosion: number): Observable<any> {
+   public updateFecondation(value: any, id_fecondation: number): Observable<any> {
     const data = { ...value }
-    return this._http.put<any>(`${this.apiURL}/alevincycles/update/${id_eclosion}`, data).pipe(
+    return this._http.put<any>(`${this.apiURL}/fecondations/update/${id_fecondation}`, data).pipe(
       tap(users => {
-        users.status == 200 ? this._toastrService.success("Eclosions mise à jour avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Fecondations mise à jour avec succès !", "Succès") : ""
       }),
       catchError(error => {
-        error.status == 400 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
+        error.status == 404 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""
         throw error
       })
     )
@@ -82,10 +82,10 @@ export class EclosionService {
     * @param {any}
     * @returns {any[]}
   */
-  public deleteEclosion(id_eclosion: number): Observable<any> {
-    return this._http.delete<any>(`${this.apiURL}/alevincycles/delete/${id_eclosion}`).pipe(
+  public deleteFecondation(id_fecondation: number): Observable<any> {
+    return this._http.delete<any>(`${this.apiURL}/fecondations/delete/${id_fecondation}`).pipe(
       tap(users => {
-        users.status == 200 ? this._toastrService.success("Eclosions supprimé avec succès !", "Succès") : ""
+        users.status == 200 ? this._toastrService.success("Fecondations supprimé avec succès !", "Succès") : ""
       }),
       catchError(error => {
         error.status == 404 ? this._toastrService.error(`${error.error.message}`, "Echec") : ""

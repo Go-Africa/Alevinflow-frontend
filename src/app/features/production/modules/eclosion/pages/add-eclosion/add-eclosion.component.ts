@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EclosionService } from '../../services/eclosion.service';
 import { CycleService } from '../../../cycle/services/cycle.service';
+import { CalibreService } from 'src/app/features/product/modules/calibre/service/calibre.service';
 
 @Component({
   selector: 'app-add-eclosion',
@@ -19,6 +20,7 @@ export class AddEclosionComponent {
 
   constructor(
     private _eclosionService: EclosionService,
+    private _calibreService: CalibreService,
     private _cycleService: CycleService,
     private _formBuilder: FormBuilder,
 
@@ -46,7 +48,7 @@ export class AddEclosionComponent {
   }
 
   getAllCalibre() {
-    this._eclosionService.getAllCalibre().subscribe(res => {
+    this._calibreService.getAllCalibre().subscribe(res => {
       this.alevins = res.data
     })
   }
